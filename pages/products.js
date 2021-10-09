@@ -15,17 +15,8 @@ const Products = ({ products }) => {
 };
 
 export const getStaticProps = async () => {
-  try {
-    const { data } = await axios.get(`${server}/api/products`);
-    console.log("data", data);
-  } catch (e) {
-    console.log("error", e);
-  }
-
   return {
-    props: {
-      products: data,
-    },
+    props: {},
   };
 };
 
