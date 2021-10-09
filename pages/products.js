@@ -3,13 +3,13 @@ import { server } from "../config";
 import axios from "axios";
 import ProductsComponent from "../components/Products";
 
-const Products = ({ products }) => {
+const Products = () => {
   return (
     <>
       <Head>
         <title>Products</title>
       </Head>
-      <ProductsComponent products></ProductsComponent>
+      <ProductsComponent></ProductsComponent>
     </>
   );
 };
