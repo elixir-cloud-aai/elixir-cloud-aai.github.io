@@ -4,7 +4,6 @@ import axios from "axios";
 import ProductsComponent from "../components/Products";
 
 const Products = ({ products }) => {
-  console.log(products);
   return (
     <>
       <Head>
@@ -16,7 +15,13 @@ const Products = ({ products }) => {
 };
 
 export const getStaticProps = async () => {
-  const { data } = await axios.get(`${server}/api/products`);
+  try {
+    const { data } = await axios.get(`${server}/api/products`);
+    console.log("data", data);
+  } catch (e) {
+    console.log("error", e);
+  }
+
   return {
     props: {
       products: data,

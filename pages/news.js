@@ -17,7 +17,6 @@ export async function getStaticProps(context) {
     auth: process.env.NOTION_TOKEN,
   });
   const listUsersResponse = await notion.users.list();
-  console.log(listUsersResponse);
   return {
     props: {},
   };
