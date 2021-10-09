@@ -4,6 +4,9 @@ const { Client } = require("@notionhq/client");
 const News = () => {
   return (
     <div>
+      <Head>
+        <title>News</title>
+      </Head>
       <div className="text-lg">Hello</div>
     </div>
   );
