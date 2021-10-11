@@ -35,6 +35,7 @@ const handler = async (req, res) => {
         github: result.properties.Github.url,
         url: result.url,
         createdAt: result.created_time,
+        updatedAt: result.last_edited_time,
       };
     });
     res.status(200).json(results);
