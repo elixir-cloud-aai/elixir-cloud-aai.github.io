@@ -112,9 +112,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { data } = await axios.get(`${server}/api/product/${params.id}`);
+  console.log(data);
   return {
     props: {
-      data,
+      //   data,
     },
     revalidate: 30,
   };
