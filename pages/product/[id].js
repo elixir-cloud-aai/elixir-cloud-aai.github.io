@@ -8,7 +8,6 @@ const Product = ({ data }) => {
   const renderContent = () => {
     return data.content.map((para) => {
       if (para) {
-        console.log(para.text);
         return (
           <div className="leading-relaxed my-3 tracking-wide" key={para.id}>
             {para.text.map((block) => {
