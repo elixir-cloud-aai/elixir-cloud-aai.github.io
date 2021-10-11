@@ -12,15 +12,15 @@ const handler = async (req, res) => {
     };
     var { results } = await notion.request(payload);
     results = results.map((result) => {
-      if (result.image && result.image.type == "external") {
-        return {
-          id: result.id,
-          type: result.type,
-          image: result.image.external.url,
-          createdAt: result.created_time,
-          updatedAt: result.last_edited_time,
-        };
-      }
+      // if (result.image && result.image.type == "external") {
+      //   return {
+      //     id: result.id,
+      //     type: result.type,
+      //     image: result.image.external.url,
+      //     createdAt: result.created_time,
+      //     updatedAt: result.last_edited_time,
+      //   };
+      // }
       if (result.paragraph && result.paragraph.text[0]) {
         return {
           id: result.id,
