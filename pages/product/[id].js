@@ -53,7 +53,7 @@ const Product = ({ data }) => {
       <div className="mt-28 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
         <div className="text-3xl font-bold my-1.5">{data.title}</div>
         <div className="text-lg text-gray-400 mb-7 font-semibold">{data.description}</div>
-        <div className="">{renderContent()}</div>
+        {/* <div className="">{renderContent()}</div> */}
         <div className="leading-relaxed my-3 tracking-wide">
           <div className="font-bold text-lg">Useful Links</div>
           <ul className="list-inside list-disc">
