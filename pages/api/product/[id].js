@@ -12,7 +12,7 @@ const handler = async (req, res) => {
     };
     var { results } = await notion.request(payload);
     results = results.map((result) => {
-      if (result.type == "image" && result.image.type == "external") {
+      if (result.image && result.image.type == "external") {
         return {
           id: result.id,
           type: result.type,
@@ -21,7 +21,7 @@ const handler = async (req, res) => {
           updatedAt: result.last_edited_time,
         };
       }
-      if (result.type == "paragraph" && result.paragraph.text[0]) {
+      if (result.paragraph && result.paragraph.text[0]) {
         return {
           id: result.id,
           type: result.type,
