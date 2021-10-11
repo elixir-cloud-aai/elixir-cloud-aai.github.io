@@ -5,18 +5,18 @@ import Link from "next/link";
 import dayjs from "dayjs";
 
 const Product = ({ data }) => {
-  console.log(data);
   const renderContent = () => {
     return data.content.map((para) => {
-      return para ? (
-        <div className="leading-relaxed my-3 tracking-wide" key={para.id}>
-          {para.text.map((block) => {
-            return <span key={block.content}>{block.content}</span>;
-          })}
-        </div>
-      ) : (
-        <></>
-      );
+      if (para) {
+        console.log(para.text);
+        return (
+          <div className="leading-relaxed my-3 tracking-wide" key={para.id}>
+            {para.text.map((block) => {
+              return <span key={block.content}>{block.content}</span>;
+            })}
+          </div>
+        );
+      }
     });
   };
 
