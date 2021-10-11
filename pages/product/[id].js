@@ -6,27 +6,41 @@ import dayjs from "dayjs";
 
 const Product = ({ data }) => {
   const renderContent = () => {
-    return data.content.map((para) => {
-      if (para) {
-        return (
-          <div className="leading-relaxed my-3 tracking-wide" key={para.id}>
-            {para.text.map((block) => {
-              if (block.link) {
+    return data.content.map((block) => {
+      if (block) {
+        console.log(block);
+        if (block.type == "image") {
+          return <img src={block.image} alt="Image" className="my-10"></img>;
+        } else if (block.type == "paragraph") {
+          return (
+            <div className="leading-relaxed my-3 tracking-wide" key={block.id}>
+              {block.text.map((segment) => {
+                console.log(segment);
                 return (
-                  <a
-                    key={block.content}
-                    href={block.link}
-                    className="text-elixirblue hover:underline"
+                  <span
+                    className={`${segment.annotations.bold ? "font-semibold" : ""} 
+                        ${segment.annotations.italic ? "italic" : ""}
+                        ${segment.annotations.underline ? "underline" : ""}
+                        ${segment.annotations.code ? "font-mono bg-gray-200 p-1 rounded-md" : ""}`}
+                    key={segment.content}
                   >
-                    {block.content}
-                  </a>
+                    {segment.link ? (
+                      <a
+                        key={segment.content}
+                        href={segment.link}
+                        className={`text-elixirblue hover:underline `}
+                      >
+                        {segment.content}
+                      </a>
+                    ) : (
+                      <span key={segment.content}>{segment.content}</span>
+                    )}
+                  </span>
                 );
-              } else {
-                return <span key={block.content}>{block.content}</span>;
-              }
-            })}
-          </div>
-        );
+              })}
+            </div>
+          );
+        }
       }
     });
   };
