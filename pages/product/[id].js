@@ -8,7 +8,7 @@ const Product = ({ data }) => {
   const renderContent = () => {
     return data.content.map((block) => {
       if (block) {
-        if (block.type == "image") {
+        if (block.image) {
           return <img src={block.image} alt="Image" className="my-10"></img>;
         } else if (block.type == "paragraph") {
           return (
