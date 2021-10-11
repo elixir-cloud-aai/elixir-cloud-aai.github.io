@@ -58,6 +58,7 @@ const handler = async (req, res) => {
     };
     res.status(200).json(results);
   } catch (e) {
+    console.log(e);
     res.status(500).json({ message: "Server error", error: e });
   }
 };

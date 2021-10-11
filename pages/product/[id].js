@@ -8,14 +8,12 @@ const Product = ({ data }) => {
   const renderContent = () => {
     return data.content.map((block) => {
       if (block) {
-        console.log(block);
         if (block.type == "image") {
           return <img src={block.image} alt="Image" className="my-10"></img>;
         } else if (block.type == "paragraph") {
           return (
             <div className="leading-relaxed my-3 tracking-wide" key={block.id}>
               {block.text.map((segment) => {
-                console.log(segment);
                 return (
                   <span
                     className={`${segment.annotations.bold ? "font-semibold" : ""} 
