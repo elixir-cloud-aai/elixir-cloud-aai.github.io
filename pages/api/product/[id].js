@@ -11,32 +11,32 @@ const handler = async (req, res) => {
       method: `GET`,
     };
     var { results } = await notion.request(payload);
-    results = results.map((result) => {
-      // if (result.image && result.image.type == "external") {
-      //   return {
-      //     id: result.id,
-      //     type: result.type,
-      //     image: result.image.external.url,
-      //     createdAt: result.created_time,
-      //     updatedAt: result.last_edited_time,
-      //   };
-      // }
-      if (result.paragraph && result.paragraph.text[0]) {
-        return {
-          id: result.id,
-          type: result.type,
-          text: result.paragraph.text.map((block) => {
-            return {
-              content: block.plain_text,
-              link: block.href,
-              annotations: { ...block.annotations },
-            };
-          }),
-          createdAt: result.created_time,
-          updatedAt: result.last_edited_time,
-        };
-      }
-    });
+    // results = results.map((result) => {
+    //   if (result.image && result.image.type == "external") {
+    //     return {
+    //       id: result.id,
+    //       type: result.type,
+    //       image: result.image.external.url,
+    //       createdAt: result.created_time,
+    //       updatedAt: result.last_edited_time,
+    //     };
+    //   }
+    //   if (result.paragraph && result.paragraph.text[0]) {
+    //     return {
+    //       id: result.id,
+    //       type: result.type,
+    //       text: result.paragraph.text.map((block) => {
+    //         return {
+    //           content: block.plain_text,
+    //           link: block.href,
+    //           annotations: { ...block.annotations },
+    //         };
+    //       }),
+    //       createdAt: result.created_time,
+    //       updatedAt: result.last_edited_time,
+    //     };
+    //   }
+    // });
     var content = results;
     var payload = {
       path: `pages/${req.query.id}`,
