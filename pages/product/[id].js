@@ -11,7 +11,19 @@ const Product = ({ data }) => {
         return (
           <div className="leading-relaxed my-3 tracking-wide" key={para.id}>
             {para.text.map((block) => {
-              return <span key={block.content}>{block.content}</span>;
+              if (block.link) {
+                return (
+                  <a
+                    key={block.content}
+                    href={block.link}
+                    className="text-elixirblue hover:underline"
+                  >
+                    {block.content}
+                  </a>
+                );
+              } else {
+                return <span key={block.content}>{block.content}</span>;
+              }
             })}
           </div>
         );
