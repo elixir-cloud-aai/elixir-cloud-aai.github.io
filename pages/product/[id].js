@@ -10,7 +10,7 @@ const Product = ({ data }) => {
       if (block) {
         if (block.type == "paragraph") {
           return (
-            <div className="leading-relaxed my-3 tracking-wide" key={block.id}>
+            <div className="leading-relaxed my-3 tracking-wide text-justify" key={block.id}>
               {block.text.map((segment) => {
                 return (
                   <span
@@ -49,8 +49,13 @@ const Product = ({ data }) => {
         <title>Product</title>
       </Head>
       <div className="mt-28 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
-        <div className="text-3xl font-bold my-1.5">{data.title}</div>
-        <div className="text-lg text-gray-400 mb-7 font-semibold">{data.description}</div>
+        <div className="flex justify-around">
+          <img src={data.icon} className="rounded-lg md:w-32 md:h-32" alt="Icon"></img>
+        </div>
+        <div className="text-3xl font-bold mb-1.5 mt-5 text-center">{data.title}</div>
+        <div className="text-lg text-gray-400 mb-7 font-semibold text-center">
+          {data.description}
+        </div>
         <div className="">{renderContent()}</div>
         <div className="leading-relaxed my-3 tracking-wide">
           <div className="font-bold text-lg">Useful Links</div>

@@ -48,6 +48,7 @@ const handler = async (req, res) => {
       title: results.properties.Name.title[0].text.content,
       github: results.properties.Github.url,
       web: results.properties.Web.url,
+      icon: results.properties.Icon.files[0].name,
       description: results.properties.Description.rich_text[0]
         ? results.properties.Description.rich_text[0].text.content
         : "",
