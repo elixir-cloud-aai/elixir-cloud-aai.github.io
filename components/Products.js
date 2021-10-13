@@ -30,7 +30,7 @@ const Products = ({ products }) => {
               <div className="flex md:flex-row flex-col">
                 <img
                   src={product.icon}
-                  className="md:rounded-l-lg md:rounded-t-none rounded-t-lg md:w-32 md:h-32"
+                  className="md:rounded-l-lg md:rounded-t-none rounded-t-lg md:w-32 md:h-32 p-5"
                   alt="Icon"
                 ></img>
                 <div className="flex-grow p-5">
