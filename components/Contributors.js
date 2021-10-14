@@ -67,6 +67,12 @@ const Contributors = ({ contributors }) => {
     );
   };
 
+  const renderPositions = (contributor) => {
+    return contributor.positions.map((position) => {
+      return <div key={position}>{position}</div>;
+    });
+  };
+
   const renderContributors = () => {
     return contributors.map((contributor) => {
       return (
@@ -78,14 +84,17 @@ const Contributors = ({ contributors }) => {
             <div className="flex md:flex-row flex-col">
               <img
                 src={contributor.image}
-                className="md:rounded-l-lg md:rounded-t-none rounded-t-lg md:w-32 md:h-32"
+                className="md:rounded-l-lg md:rounded-t-none rounded-t-lg md:w-36 md:h-36"
                 alt="Icon"
               ></img>
-              <div className="flex-grow flex p-5 justify-between">
-                <div className="text-xl font-semibold flex justify-between">
-                  <div>{contributor.name}</div>
+              <div className="flex-grow p-5">
+                <div className="flex justify-between">
+                  <div className="text-xl font-semibold flex justify-between">
+                    <div>{contributor.name}</div>
+                  </div>
+                  <div>{renderLinks(contributor)}</div>
                 </div>
-                <div>{renderLinks(contributor)}</div>
+                <div>{renderPositions(contributor)}</div>
               </div>
             </div>
           </div>
