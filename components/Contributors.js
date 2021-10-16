@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const Contributors = ({ contributors }) => {
   const renderLinks = (contributor) => {
-    console.log(contributor);
     return (
       <div className="flex pt-0.5">
         {contributor.email ? (
