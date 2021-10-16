@@ -78,7 +78,7 @@ const Contributors = ({ contributors }) => {
         <>
           <div
             key={contributor.id}
-            className="w-full rounded-lg border-2 hover:shadow-lg my-5 hover:bg-gray-100"
+            className="w-full rounded-lg border-2 shadow-lg hover:shadow-md my-5 hover:bg-gray-100"
           >
             <div className="flex md:flex-row flex-col">
               <img
