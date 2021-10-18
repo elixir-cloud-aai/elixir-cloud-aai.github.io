@@ -49,7 +49,7 @@ const Product = ({ data }) => {
         <title>Guide</title>
       </Head>
       <div className="mt-28 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
-        {/* <div className="text-3xl font-bold mb-1.5 mt-5 text-center">{data.title}</div>
+        <div className="text-3xl font-bold mb-1.5 mt-5 text-center">{data.title}</div>
         <div className="text-lg text-gray-400 mb-7 font-semibold text-center">
           {data.description}
         </div>
@@ -80,7 +80,7 @@ const Product = ({ data }) => {
               Go Back
             </div>
           </Link>
-        </div> */}
+        </div>
       </div>
     </>
   );
@@ -93,10 +93,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  // const { data } = await axios.get(`${server}/api/guide/${params.id}`);
+  const { data } = await axios.get(`${server}/api/guide/${params.id}`);
   return {
     props: {
-      // data,
+      data,
     },
     revalidate: 30,
   };
