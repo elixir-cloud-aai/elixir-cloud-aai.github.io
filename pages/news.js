@@ -1,12 +1,14 @@
+import axios from "axios";
 import Head from "next/head";
+import NewsComponent from "../components/News";
 
-const News = () => {
+const News = ({ news }) => {
   return (
     <div>
       <Head>
         <title>News</title>
       </Head>
-      <div className="text-lg">Hello</div>
+      <NewsComponent news={news}></NewsComponent>
     </div>
   );
 };
