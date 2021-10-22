@@ -1,13 +1,13 @@
 import Head from "next/head";
 import NewsComponent from "../components/News";
 
-const News = ({ news }) => {
+const News = () => {
   return (
     <div>
       <Head>
         <title>News</title>
       </Head>
-      <NewsComponent news={news}></NewsComponent>
+      <NewsComponent></NewsComponent>
     </div>
   );
 };
