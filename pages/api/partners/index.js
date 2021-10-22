@@ -24,6 +24,9 @@ const handler = async (req, res) => {
       return {
         id: result.id,
         name: result.properties.Name.title[0].text.content,
+        description: result.properties.Description.rich_text[0]
+          ? result.properties.Description.rich_text[0].text.content
+          : "",
         website: result.properties.Website.rich_text[0]
           ? result.properties.Website.rich_text[0].text.content
           : "",
