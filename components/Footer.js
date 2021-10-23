@@ -49,7 +49,7 @@ const Footer = () => {
   const renderFooterLinks = () => {
     return (
       <>
-        <div className="px-10 md:px-10 flex flex-wrap text-base justify-between md:justify-end">
+        <div className="px-0 md:px-10 flex flex-wrap text-base justify-between md:justify-end">
           {footers.map((footer) => {
             return (
               <div
