@@ -8,7 +8,7 @@ const Footer = () => {
       links: [
         {
           name: "Overview",
-          link: "/about-us",
+          link: "/about",
         },
         {
           name: "Contributors",

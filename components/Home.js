@@ -45,13 +45,15 @@ const Home = () => {
             handleMouseMove(e);
           }}
         >
-          <div className="leading-relaxed">
-            <div className="text-lg md:text-2xl leading-relaxed font-bold md:font-extrabold">
-              ELIXIR Cloud and Authentication & Authorisation Infrastructure
+          <Zoom>
+            <div className="leading-relaxed">
+              <div className="text-lg md:text-2xl leading-relaxed font-bold md:font-extrabold">
+                ELIXIR Cloud and Authentication & Authorisation Infrastructure
+              </div>
+              Aims at the {renderTextLoop()} of{" "}
+              <span className="inline md:block">the patient disease data.</span>
             </div>
-            Aims at the {renderTextLoop()} of{" "}
-            <span className="inline md:block">the patient disease data.</span>
-          </div>
+          </Zoom>
         </div>
         <Zoom>
           <div className="p-0 md:px-10">
