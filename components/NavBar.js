@@ -91,7 +91,7 @@ const NavBar = ({ scroll, toggleDarkMode, darkMode }) => {
     return (
       <Slide when={navOpen} duration={5} top={true}>
         <div
-          className={`left-0 w-full bg-white py-5 text-lg top-20 transition duration-200 ease-in-out ${
+          className={`left-0 w-full bg-white py-5 text-lg top-20 transition duration-200 ease-in-out dark:bg-gray-900 ${
             navOpen ? "block" : "hidden"
           }`}
         >
