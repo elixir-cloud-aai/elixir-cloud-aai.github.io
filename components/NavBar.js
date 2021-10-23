@@ -212,7 +212,7 @@ const NavBar = ({ scroll, toggleDarkMode, darkMode }) => {
             <div className="block md:hidden">{renderNavButton()}</div>
             <div
               onClick={() => toggleDarkMode()}
-              className="cursor-pointer hidden md:block p-1 m-1 rounded-md"
+              className="cursor-pointer hidden md:block p-1 px-3 m-1 rounded-md"
             >
               {renderDarkModeIcon()}
             </div>
