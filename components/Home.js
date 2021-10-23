@@ -6,10 +6,11 @@ import window from "global/window";
 const Home = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const [backgroundImgUrl, setBackgroundImgUrl] = useState("url(/Landing.svg)");
+  const [backgroundImgUrl, setBackgroundImgUrl] = useState("url(/Landing_Dark.svg)");
   const [innerWidth, setinnerWidth] = useState(1000);
 
   const handleMouseMove = (e) => {
+    console.log(e.clientX);
     setX(e.clientX);
     setY(e.clientY);
     setinnerWidth(window.innerWidth);
@@ -30,15 +31,15 @@ const Home = () => {
   };
 
   return (
-    <div className="font-pop">
+    <div className="font-pop dark:bg-gray-800 dark:text-white">
       <div>
         <div
           className="px-10 md:px-72 text-center text-4xl md:text-5xl font-extrabold h-screen flex items-center text-gray-800"
           style={{
             backgroundImage: innerWidth >= 650 ? backgroundImgUrl : "",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "100% 100%",
-            backgroundPositionX: `${x / 50}px`,
+            backgroundSize: "101% 101%",
+            backgroundPositionX: `${(x - 1000) / 100}px`,
             backgroundPositionY: `${y / 50}px`,
           }}
           onMouseMove={(e) => {
@@ -46,8 +47,8 @@ const Home = () => {
           }}
         >
           <Zoom>
-            <div className="leading-relaxed">
-              <div className="text-lg md:text-2xl leading-relaxed font-bold md:font-extrabold">
+            <div className="leading-relaxed dark:text-gray-200">
+              <div className="text-lg md:text-2xl leading-relaxed font-bold md:font-extrabold ">
                 ELIXIR Cloud and Authentication & Authorisation Infrastructure
               </div>
               Aims at the {renderTextLoop()} of{" "}
@@ -58,7 +59,7 @@ const Home = () => {
         <Zoom>
           <div className="p-0 md:px-10">
             <div className="flex items-center px-10 flex-col md:flex-row">
-              <div className="text-lg text-gray-700 leading-loose text-justify">
+              <div className="text-lg text-gray-700 dark:text-gray-200 leading-loose text-justify">
                 The <span className="font-semibold">ELIXIR Cloud and AAI</span> project aims to
                 leverage a coordinated network of{" "}
                 <a

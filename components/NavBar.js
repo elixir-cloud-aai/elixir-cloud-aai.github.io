@@ -161,7 +161,7 @@ const NavBar = ({ scroll, toggleDarkMode, darkMode }) => {
   };
 
   return (
-    <div className="text-gray-700 font-pop dark:text-gray-200 dark:bg-gray-800">
+    <div className="text-gray-700 font-pop dark:text-gray-200 dark:bg-gray-900">
       <div
         id="navbar"
         style={
@@ -179,8 +179,8 @@ const NavBar = ({ scroll, toggleDarkMode, darkMode }) => {
         }
         className={
           scroll <= 1
-            ? "z-10 fixed px-5 w-full flex flex-col bg-white dark:bg-gray-800"
-            : "z-10 fixed px-5 w-full shadow-lg flex flex-col bg-white dark:bg-gray-800"
+            ? "z-10 fixed px-5 w-full flex flex-col bg-white dark:bg-gray-900"
+            : "z-10 fixed px-5 w-full shadow-lg flex flex-col bg-white dark:bg-gray-900"
         }
       >
         <div className="flex items-center justify-between">
