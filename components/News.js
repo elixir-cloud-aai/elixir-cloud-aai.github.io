@@ -1,7 +1,7 @@
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import ContentLoader from "react-content-loader";
 
-const News = () => {
+const News = ({ darkMode }) => {
   const renderLoading = () => {
     return (
       <>
@@ -55,13 +55,15 @@ const News = () => {
   };
 
   return (
-    <div className="mt-28 md:mx-96 mx-10">
+    <div className="mt-32 md:mx-96 mx-10">
       <TwitterTimelineEmbed
         sourceType="profile"
         userId={2375288959}
         noHeader={true}
         noFooter={true}
         placeholder={renderLoading()}
+        theme="dark"
+        transparent={true}
       />
     </div>
   );

@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
 
   const toggleDarkMode = () => {
     document.body.classList.toggle("dark");
-    document.body.classList.toggle("bg-gray-900");
+    document.body.classList.toggle("bg-gray-800");
     setDarkMode(!darkMode);
   };
 
