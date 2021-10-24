@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+import { DarkModeProvider } from "../context/darkMode";
 
 const Layout = ({ children }) => {
   const [scroll, setScroll] = useState(0);
@@ -24,7 +25,9 @@ const Layout = ({ children }) => {
         <nav>
           <NavBar scroll={scroll} toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         </nav>
-        <main className="flex-grow mb-10">{children}</main>
+        <main className="flex-grow mb-10">
+          <DarkModeProvider value={darkMode}>{children}</DarkModeProvider>
+        </main>
         <footer>
           <Footer></Footer>
         </footer>

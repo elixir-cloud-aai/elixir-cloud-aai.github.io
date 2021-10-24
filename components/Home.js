@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TextLoop from "react-text-loop";
 import Zoom from "react-reveal/Zoom";
 import window from "global/window";
@@ -10,7 +10,6 @@ const Home = () => {
   const [innerWidth, setinnerWidth] = useState(1000);
 
   const handleMouseMove = (e) => {
-    console.log(e.clientX);
     setX(e.clientX);
     setY(e.clientY);
     setinnerWidth(window.innerWidth);

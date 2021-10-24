@@ -1,7 +1,11 @@
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import ContentLoader from "react-content-loader";
+import { useContext } from "react";
+import DarkModeContext from "../context/darkMode";
 
-const News = ({ darkMode }) => {
+const News = () => {
+  const darkMode = useContext(DarkModeContext);
+  console.log(darkMode);
   const renderLoading = () => {
     return (
       <>
@@ -55,14 +59,13 @@ const News = ({ darkMode }) => {
   };
 
   return (
-    <div className="mt-32 md:mx-96 mx-10">
+    <div className="mt-32 md:mx-96 mx-5 dark:bg-gray-900 p-2 rounded-md">
       <TwitterTimelineEmbed
         sourceType="profile"
         userId={2375288959}
-        noHeader={true}
         noFooter={true}
         placeholder={renderLoading()}
-        theme="dark"
+        theme="light"
         transparent={true}
       />
     </div>
