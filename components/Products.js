@@ -10,11 +10,8 @@ const Products = ({ products }) => {
     setQuery(e.target.value);
     const newFilteredProducts = products.filter((product) => {
       const title = product.title.trim().toLowerCase();
-      if (title.includes(e.target.value.trim().toLowerCase())) {
-        return true;
-      } else {
-        return false;
-      }
+      const term = e.target.value.trim().toLowerCase();
+      return title.includes(term);
     });
     setFilteredProducts(newFilteredProducts);
   };
@@ -59,7 +56,7 @@ const Products = ({ products }) => {
           handleSearch(e);
         }}
       ></input>
-      <Zoom>{renderProducts()}</Zoom>
+      {renderProducts()}
     </div>
   );
 };

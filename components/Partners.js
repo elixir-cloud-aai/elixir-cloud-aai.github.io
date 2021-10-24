@@ -9,11 +9,8 @@ const Partners = ({ partners }) => {
     setQuery(e.target.value);
     const newFilteredPartners = partners.filter((partner) => {
       const title = partner.name.trim().toLowerCase();
-      if (title.includes(e.target.value.trim().toLowerCase())) {
-        return true;
-      } else {
-        return false;
-      }
+      const term = e.target.value.trim().toLowerCase();
+      return title.includes(term);
     });
     setFilteredPartners(newFilteredPartners);
   };
@@ -54,7 +51,7 @@ const Partners = ({ partners }) => {
           handleSearch(e);
         }}
       ></input>
-      <Zoom>{renderPartners()}</Zoom>
+      {renderPartners()}
     </div>
   );
 };
