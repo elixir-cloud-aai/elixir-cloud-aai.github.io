@@ -61,7 +61,7 @@ const News = () => {
 
   return (
     <Zoom>
-      <div className="mt-32 md:mx-96 mx-5 dark:bg-gray-900 p-2 rounded-md">
+      <div className="mt-32 md:mx-96 mx-5 p-2 rounded-lg shadow-lg dark:text-gray-200 dark:bg-gray-900 dark:border-gray-800 dark:hover:border-gray-900 border-2">
         <TwitterTimelineEmbed
           key={darkMode}
           sourceType="profile"
