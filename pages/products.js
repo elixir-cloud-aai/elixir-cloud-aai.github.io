@@ -9,14 +9,13 @@ const Products = ({ products }) => {
       <Head>
         <title>Products</title>
       </Head>
-      {/* <ProductsComponent products={products}></ProductsComponent> */}
+      <ProductsComponent products={products}></ProductsComponent>
     </>
   );
 };
 
 export const getStaticProps = async () => {
-  // const { data } = await axios.get(`${server}/api/products`);
-  const { data } = [];
+  const { data } = await axios.get(`${server}/api/products`);
 
   return {
     props: {
