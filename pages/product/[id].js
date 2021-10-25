@@ -60,7 +60,16 @@ const Product = ({ data }) => {
 
 export const getStaticPaths = async () => {
   // const { data } = await axios.get(`${server}/api/products`);
-  const { data } = [];
+  const { data } = [
+    {
+      id: 1,
+      title: "Product 1",
+      description: "Description 1",
+      icon: "https://via.placeholder.com/150",
+      content: "Content 1",
+      updatedAt: "2020-01-01",
+    },
+  ];
   const paths = data.map(({ id }) => ({ params: { id: `${id}` } }));
   return { paths, fallback: false };
 };
