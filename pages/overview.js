@@ -2,27 +2,27 @@ import Head from "next/head";
 import { server } from "../config";
 import axios from "axios";
 import OverviewComponent from "../components/Overview";
-
-const Overview = ({ overview }) => {
+// {overview}
+const Overview = () => {
   return (
     <div>
       <Head>
         <title>Overview</title>
       </Head>
-      <OverviewComponent data={overview} />
+      {/* <OverviewComponent data={overview} /> */}
     </div>
   );
 };
 
-export const getStaticProps = async () => {
-  const { data } = await axios.get(`${server}/api/overview`);
+// export const getStaticProps = async () => {
+//   const { data } = await axios.get(`${server}/api/overview`);
 
-  return {
-    props: {
-      overview: data,
-    },
-    revalidate: 30,
-  };
-};
+//   return {
+//     props: {
+//       overview: data,
+//     },
+//     revalidate: 30,
+//   };
+// };
 
 export default Overview;
