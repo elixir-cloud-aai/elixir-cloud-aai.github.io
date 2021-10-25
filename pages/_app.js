@@ -3,10 +3,9 @@ import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <div>Hello</div>
-    // <Layout>
-    //   <Component {...pageProps} />
-    // </Layout>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 };
 
