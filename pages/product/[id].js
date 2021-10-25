@@ -12,7 +12,7 @@ const Product = ({ data }) => {
       <Head>
         <title>Product</title>
       </Head>
-      <div className="mt-32 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
+      {/* <div className="mt-32 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
         <Zoom>
           <div className="flex justify-around">
             <img src={data.icon} className="rounded-lg w-28 h-28 md:w-32 md:h-32" alt="Icon"></img>
@@ -53,25 +53,26 @@ const Product = ({ data }) => {
             </div>
           </Link>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
 
 export const getStaticPaths = async () => {
-  const { data } = await axios.get(`${server}/api/products`);
+  // const { data } = await axios.get(`${server}/api/products`);
+  const { data } = [];
   const paths = data.map(({ id }) => ({ params: { id: `${id}` } }));
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const { data } = await axios.get(`${server}/api/product/${params.id}`);
-  return {
-    props: {
-      data,
-    },
-    revalidate: 30,
-  };
-};
+// export const getStaticProps = async ({ params }) => {
+//   const { data } = await axios.get(`${server}/api/product/${params.id}`);
+//   return {
+//     props: {
+//       data,
+//     },
+//     revalidate: 30,
+//   };
+// };
 
 export default Product;

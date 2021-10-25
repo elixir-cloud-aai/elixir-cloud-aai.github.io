@@ -9,7 +9,7 @@ const Products = ({ products }) => {
       <Head>
         <title>Products</title>
       </Head>
-      <ProductsComponent products={products}></ProductsComponent>
+      {/* <ProductsComponent products={products}></ProductsComponent> */}
     </>
   );
 };
