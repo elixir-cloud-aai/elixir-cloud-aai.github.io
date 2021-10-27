@@ -12,14 +12,13 @@ const Product = ({ data }) => {
   const [show, setShow] = useState(false);
 
   const renderPopoverContent = () => {
-    console.log(data.author);
     return (
-      <div className="border p-3 rounded-lg shadow-lg bg-white">
+      <div className="border p-3 rounded-lg shadow-lg bg-white dark:bg-gray-900 dark:border-gray-900">
         <div className="flex">
           <img src={data.author.image} className="w-20 rounded-full"></img>
           <div className="ml-3 mt-1">
-            <div className="teext-sm">{data.author.name}</div>
-            <div className="text-xs text-gray-500">
+            <div className="teext-sm dark:text-gray-100">{data.author.name}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">
               {data.author.positions.map((position, index) => {
                 return <div key={index}>{position}</div>;
               })}
@@ -27,30 +26,32 @@ const Product = ({ data }) => {
           </div>
         </div>
         <hr className="my-3"></hr>
-        {data.author.email && (
-          <div className="flex text-sm">
-            <div>Email</div>
-            <div className="ml-3 text-elixirblue hover:underline">
-              <a href={`mailto:${data.author.email}`}>{data.author.email}</a>
+        <div className="text-gray-500 dark:text-gray-400">
+          {data.author.email && (
+            <div className="flex text-sm">
+              <div>Email</div>
+              <div className="ml-3 text-elixirblue hover:underline">
+                <a href={`mailto:${data.author.email}`}>{data.author.email}</a>
+              </div>
             </div>
-          </div>
-        )}
-        {data.author.website && (
-          <div className="flex text-sm">
-            <div>Website</div>
-            <div className="ml-3 text-elixirblue hover:underline">
-              <a href={data.author.website}>{data.author.website}</a>
+          )}
+          {data.author.website && (
+            <div className="flex text-sm">
+              <div>Website</div>
+              <div className="ml-3 text-elixirblue hover:underline">
+                <a href={data.author.website}>{data.author.website}</a>
+              </div>
             </div>
-          </div>
-        )}
-        {data.author.linkedin && (
-          <div className="flex text-sm">
-            <div>LinkedIn</div>
-            <div className="ml-3 text-elixirblue hover:underline">
-              <a href={data.author.linkedin}>{data.author.linkedin}</a>
+          )}
+          {data.author.linkedin && (
+            <div className="flex text-sm">
+              <div>LinkedIn</div>
+              <div className="ml-3 text-elixirblue hover:underline">
+                <a href={data.author.linkedin}>{data.author.linkedin}</a>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   };
