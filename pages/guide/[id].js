@@ -15,7 +15,12 @@ const Product = ({ data }) => {
     return (
       <div className="border p-3 rounded-lg shadow-lg bg-white dark:bg-gray-900 dark:border-gray-900">
         <div className="flex">
-          <img src={data.author.image} className="w-20 rounded-full"></img>
+          <img
+            src={data.author.image}
+            className="w-20 rounded-full"
+            width="auto"
+            height="auto"
+          ></img>
           <div className="ml-3 mt-1">
             <div className="teext-sm dark:text-gray-100">{data.author.name}</div>
             <div className="text-xs text-gray-500 dark:text-gray-400">

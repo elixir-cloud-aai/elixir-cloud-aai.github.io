@@ -13,7 +13,13 @@ const Product = ({ data }) => {
       <div className="mt-32 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
         <Zoom>
           <div className="flex justify-around">
-            <img src={data.icon} className="rounded-lg w-28 h-28 md:w-32 md:h-32" alt="Icon"></img>
+            <img
+              src={data.icon}
+              className="rounded-lg w-28 h-28 md:w-32 md:h-32"
+              alt="Icon"
+              width="auto"
+              height="auto"
+            ></img>
           </div>
         </Zoom>
         <Zoom>
