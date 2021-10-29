@@ -1,17 +1,15 @@
-import Head from "next/head";
 import { server } from "../../config";
 import axios from "axios";
 import Link from "next/link";
 import dayjs from "dayjs";
 import Content from "../../components/Content";
 import Zoom from "react-reveal/Zoom";
+import { NextSeo } from "next-seo";
 
 const Product = ({ data }) => {
   return (
     <>
-      <Head>
-        <title>Product</title>
-      </Head>
+      <NextSeo title={data.title} description={data.description} />
       <div className="mt-32 md:mx-64 mx-10 font-pop text-gray-700 tracking-wide">
         <Zoom>
           <div className="flex justify-around">
