@@ -34,6 +34,14 @@ const seo = {
       rel: "manifest",
       href: "/manifest.json",
     },
+    {
+      rel: "theme-color",
+      content: "#3DA9F6",
+    },
+    {
+      rel: "mask-icon",
+      href: "/elixir-cloud-aai.png",
+    },
   ],
 };
 
