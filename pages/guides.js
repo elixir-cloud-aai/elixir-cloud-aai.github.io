@@ -6,7 +6,7 @@ import { NextSeo } from "next-seo";
 const Guides = ({ guides }) => {
   return (
     <>
-      <NextSeo title="Products" />
+      <NextSeo title="Guides" />
       <GuidesComponent guides={guides}></GuidesComponent>
     </>
   );

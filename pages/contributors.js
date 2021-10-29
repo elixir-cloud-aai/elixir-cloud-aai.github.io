@@ -7,7 +7,7 @@ const Contributors = ({ contributors }) => {
   return (
     <>
       <NextSeo
-        title="Products"
+        title="Contributors"
         description="Elixir Cloud & AAI contributor devloping the solutions. "
       />
       <ContributorsComponent contributors={contributors}></ContributorsComponent>

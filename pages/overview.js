@@ -6,7 +6,7 @@ import { NextSeo } from "next-seo";
 const Overview = ({ overview }) => {
   return (
     <>
-      <NextSeo title="Products" />
+      <NextSeo title="Overview" />
       <OverviewComponent data={overview} />
     </>
   );
