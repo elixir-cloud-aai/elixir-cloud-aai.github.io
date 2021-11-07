@@ -19,11 +19,10 @@ const Home = () => {
     return (
       <span className="block md:inline">
         <TextLoop springConfig={{ stiffness: 180, damping: 8 }} noWrap={false}>
-          <span className="text-elixirblue">aggregation</span>
-          <span className="text-elixirgreen">standardisation</span>
-          <span className="text-elixiryellow">integration</span>
-          <span className="text-elixirred">harmonisation</span>
-          <span className="text-elixirgreen">security</span>
+          <span className="text-elixirblue">Findable</span>
+          <span className="text-elixirgreen">Accessible</span>
+          <span className="text-elixiryellow">Interoperable</span>
+          <span className="text-elixirred">Reusable</span>
         </TextLoop>
       </span>
     );
@@ -48,10 +47,10 @@ const Home = () => {
           <Zoom>
             <div className="leading-relaxed dark:text-gray-200">
               <div className="text-lg md:text-2xl leading-relaxed font-bold md:font-extrabold ">
-                ELIXIR Cloud and Authentication & Authorisation Infrastructure
+                ELIXIR Cloud %26 AAI
               </div>
-              Aims at the {renderTextLoop()} of{" "}
-              <span className="inline md:block">the patient disease data.</span>
+              Making cloud infrastructure for{" "}
+              <span className="inline md:block">the Life Sciences {renderTextLoop()}.</span>
             </div>
           </Zoom>
         </div>
@@ -59,7 +58,7 @@ const Home = () => {
           <div className="p-0 md:px-10">
             <div className="flex items-center px-10 flex-col md:flex-row">
               <div className="text-lg text-gray-700 dark:text-gray-200 leading-loose text-justify">
-                The <span className="font-semibold">ELIXIR Cloud and AAI</span> project aims to
+                The <span className="font-semibold">ELIXIR Cloud and Authentication and Authorization Infrastructure (AAI)</span> project aims to
                 leverage a coordinated network of{" "}
                 <a
                   href="https://elixir-europe.org/about-us/who-we-are/nodes"
@@ -75,14 +74,7 @@ const Home = () => {
                   GA4GH
                 </a>{" "}
                 standards-compliant federated environment to enable population scale genomic and
-                phenotypic data analysis across international boundaries and a potential
-                infrastructure to enable{" "}
-                <a
-                  href="https://ec.europa.eu/digital-single-market/en/news/towards-access-least-1-million-genomes-eu-2022-1-year"
-                  className="text-elixirblue font-semibold hover:underline"
-                >
-                  1M Genome analysis
-                </a>
+                phenotypic data analysis across international boundaries.
                 .
               </div>
               <div>
