@@ -1,0 +1,9 @@
+[elixir]: <elixir-europe.org/>
+[elixir-cloud-aai]: <https://elixir-cloud.dcc.sib.swiss/>
+[elixir-cloud-aai-github]: <https://github.com/elixir-cloud-aai/>
+[elixir-cloud-aai-slack]: <https://join.slack.com/t/elixir-cloud/shared_invite/enQtNzA3NTQ5Mzg2NjQ3LTZjZGI1OGQ5ZTRiOTRkY2ExMGUxNmQyODAxMDdjM2EyZDQ1YWM0ZGFjOTJhNzg5NjE0YmJiZTZhZDVhOWE4MWM>
+[elixir-cloud-aai-forum]: <https://github.com/elixir-cloud-aai/elixir-cloud-aai/discussions>
+[elixir-cloud-aai-twitter]: <https://twitter.com/ELIXIRcloud_aai>
+[elixir-cloud-aai-email]: <mailto:cloud-service@elixir-europe.org>
+[ga4gh]: <https://ga4gh.org/>
+[ga4gh-dps]: <https://www.ga4gh.org/how-we-work/driver-projects/>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block announce %}
+  This page is under construction. Check back later for more content!
+{% endblock %}
+
+{% block outdated %}
+  You're not viewing the latest version.
+  <a href="{{ '../' ~ base_url }}"> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+{% endblock %}

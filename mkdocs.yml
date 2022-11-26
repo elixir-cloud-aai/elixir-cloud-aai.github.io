@@ -1,0 +1,117 @@
+copyright: >
+  Copyright &copy; 2022 ELIXIR Cloud & AAI –
+  <a href="#__consent">Change cookie settings</a>
+extra:
+  analytics:
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback
+            form</a>.
+    provider: google
+    property: G-65GGNT08KH
+  consent:
+    cookies:
+      analytics:
+        name: Google Analytics
+        checked: false
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    title: Cookie consent
+  social:
+    - icon: custom/elixir-cloud-aai
+      link: https://elixir-cloud.dcc.sib.swiss/
+      name: ELIXIR Cloud & AAI website
+    - icon: custom/elixir
+      link: https://elixir-europe.org/
+      name: ELIXIR website
+    - icon: custom/ga4gh
+      link: https://ga4gh.org/
+      name: GA4GH website
+    - icon: custom/github
+      link: https://github.com/elixir-cloud-aai
+      name: ELIXIR Cloud & AAI GitHub organization
+    - icon: custom/twitter
+      link: https://twitter.com/ELIXIRcloud_aai
+      name: ELIXIR Cloud & AAI Twitter profile
+    - icon: custom/slack
+      link: https://join.slack.com/t/elixir-cloud/shared_invite/enQtNzA3NTQ5Mzg2NjQ3LTZjZGI1OGQ5ZTRiOTRkY2ExMGUxNmQyODAxMDdjM2EyZDQ1YWM0ZGFjOTJhNzg5NjE0YmJiZTZhZDVhOWE4MWM
+      name: ELIXIR Cloud & AAI Slack board
+    - icon: custom/forum
+      link: https://github.com/elixir-cloud-aai/elixir-cloud-aai/discussions
+      name: ELIXIR Cloud & AAI Q&A forum
+    - icon: custom/email
+      link: mailto:cloud-service@elixir-europe.org
+      name: ELIXIR Cloud & AAI service email
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+        - includes/references.md
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+nav:
+  - Home: "index.md"
+  - Guides:
+      - "Users": "guides/guide-user.md"
+      - "Developers": "guides/guide-dev.md"
+      - "Administrators": "guides/guide-admin.md"
+      - "Contributors": "guides/guide-contributor.md"
+  - About:
+      - "Contact": "about/contact.md"
+      - "License": "about/license.md"
+      - "Release Notes": "about/release-notes.md"
+plugins:
+  - search
+repo_name: Visit us on GitHub
+repo_url: https://github.com/elixir-cloud-aai/
+site_name: ELIXIR Cloud & AAI Documentation Hub
+theme:
+  custom_dir: overrides
+  features:
+    - announce.dismiss
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+  favicon: images/logo.32px.png
+  icon:
+    repo: fontawesome/brands/github
+  language: en
+  logo: images/logo.256px.png
+  name: material
+  palette:
+    scheme: default
+    primary: blue grey
+    accent: indigo
