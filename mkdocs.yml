@@ -76,13 +76,23 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
 nav:
   - Home: "index.md"
   - Guides:
-      - "Users": "guides/guide-user.md"
-      - "Developers": "guides/guide-dev.md"
-      - "Administrators": "guides/guide-admin.md"
-      - "Contributors": "guides/guide-contributor.md"
+      - Users:
+          - "guides/guide-user/index.md"
+      - Developers:
+          - "guides/guide-dev/index.md"
+      - Administrators:
+          - "guides/guide-admin/index.md"
+      - Contributors:
+          - "guides/guide-contributor/index.md"
+          - "Workflow": "guides/guide-contributor/workflow.md"
+          - Language-specific guidelines:
+              - "guides/guide-contributor/language-specific/index.md"
+              - "Python": "guides/guide-contributor/language-specific/python.md"
   - About:
       - "Contact": "about/contact.md"
       - "License": "about/license.md"
@@ -97,6 +107,7 @@ theme:
   custom_dir: overrides
   features:
     - announce.dismiss
+    - navigation.indexes
     - navigation.instant
     - navigation.sections
     - navigation.tabs
