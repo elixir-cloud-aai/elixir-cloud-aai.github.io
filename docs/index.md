@@ -32,14 +32,16 @@ solutions for your cloud needs.
     Conveniently run your genomics workflows and compute-intensive tasks in the
     cloud  
 
-    [:octicons-arrow-right-24: Get started](guides/guide-user.md){ .md-button }
+    [:octicons-arrow-right-24: Get
+    started](guides/guide-user/index.md){ .md-button }
 
 === ":fontawesome-solid-code: Developers"
 
     Integrate your tools and services with GA4GH-powered federated analytics
     environments
       
-    [:octicons-arrow-right-24: Get started](guides/guide-dev.md){ .md-button }
+    [:octicons-arrow-right-24: Get
+    started](guides/guide-dev/index.md){ .md-button }
 
 === ":material-database: Administrators"
 
@@ -47,7 +49,7 @@ solutions for your cloud needs.
     your organization and outscale peak performance needs to the cloud
       
     [:octicons-arrow-right-24: Get
-    started](guides/guide-admin.md){ .md-button }
+    started](guides/guide-admin/index.md){ .md-button }
 
 === ":material-hand-heart: Contributors"
 
@@ -55,4 +57,4 @@ solutions for your cloud needs.
     infrastructure
       
     [:octicons-arrow-right-24: Get
-    started](guides/guide-contributor.md){ .md-button }
+    started](guides/guide-contributor/index.md){ .md-button }
