@@ -1,3 +1,4 @@
+[contributor-covenant]: https://www.contributor-covenant.org
 [elixir]: <elixir-europe.org/>
 [elixir-cloud-aai]: <https://elixir-cloud.dcc.sib.swiss/>
 [elixir-cloud-aai-github]: <https://github.com/elixir-cloud-aai/>

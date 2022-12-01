@@ -86,6 +86,7 @@ nav:
   - About:
       - "Contact": "about/contact.md"
       - "License": "about/license.md"
+      - "Code of Conduct": "about/code-of-conduct.md"
       - "Release Notes": "about/release-notes.md"
 plugins:
   - search
