@@ -1,6 +1,7 @@
 copyright: >
   Copyright &copy; 2022 ELIXIR Cloud & AAI –
   <a href="#__consent">Change cookie settings</a>
+edit_uri: edit/main/docs/
 extra:
   analytics:
     feedback:
@@ -101,7 +102,7 @@ nav:
 plugins:
   - search
 repo_name: Visit us on GitHub
-repo_url: https://github.com/elixir-cloud-aai/
+repo_url: https://github.com/elixir-cloud-aai/elixir-cloud-aai.github.io
 site_name: ELIXIR Cloud & AAI Documentation Hub
 theme:
   custom_dir: overrides
