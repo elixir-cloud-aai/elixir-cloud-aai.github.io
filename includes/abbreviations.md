@@ -4,6 +4,7 @@
 *[FOSS]: Free & Open Source Software
 *[GA4GH]: The Global Alliance for Genomics and Health is a policy-framing and technical standards-setting organization, seeking to enable responsible genomic data sharing within a human rights framework.
 *[GSoC]: Google Summer of Code
+*[LIMS]: Laboratory Information Management System
 *[NBDC]: National Bioscience Database Center
 *[TES]: GA4GH Task Execution Service API
 *[TRS]: GA4GH Tool Registry Service API

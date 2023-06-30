@@ -10,6 +10,7 @@
 [conv-commits]: <https://www.conventionalcommits.org/en/v1.0.0-beta.2/#specification>
 [conv-commits-blog]: <https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular/>
 [conv-commits-lint]: <https://github.com/conventional-changelog/commitlint>
+[cwl-tes]: <https://github.com/ohsu-comp-bio/cwl-tes>
 [elixir]: <https://elixir-europe.org/>
 [elixir-cloud-aai]: <https://elixir-cloud.dcc.sib.swiss/>
 [elixir-cloud-aai-contributors]: <https://elixir-cloud.dcc.sib.swiss/contributors>
@@ -21,9 +22,20 @@
 [elixir-cloud-aai-news]: <https://elixir-cloud.dcc.sib.swiss/news>
 [elixir-cloud-aai-twitter]: <https://twitter.com/ELIXIRcloud_aai>
 [elixir-cloud-aai-email]: <mailto:cloud-service@elixir-europe.org>
+[elixir-cloud-demo-cwl]: <https://github.com/elixir-cloud-aai/elixir-cloud-demos/tree/main/demos/2023-ecp-f2f>
+[elixir-cloud-demo-smk]: <https://github.com/elixir-cloud-aai/demo-tes-hybrid-cloud>
+[elixir-cloud-registry]: <https://elixir-cloud.dcc.sib.swiss/ga4gh/registry/v1/ui/>
+[elixir-cloud-services]: <https://github.com/elixir-cloud-aai/elixir-cloud-aai/blob/dev/resources/resources.md>
 [fair]: <https://www.go-fair.org/fair-principles/>
+[funnel]: <https://ohsu-comp-bio.github.io/funnel/>
 [ga4gh]: <https://ga4gh.org/>
+[ga4gh-cloud]: <https://ga4gh-cloud.github.io/>
 [ga4gh-dps]: <https://www.ga4gh.org/how-we-work/driver-projects/>
+[ga4gh-drs]: <https://github.com/ga4gh/data-repository-service-schemas>
+[ga4gh-service-registry]: <https://github.com/ga4gh-discovery/ga4gh-service-registry>
+[ga4gh-tes]: <https://github.com/ga4gh/task-execution-schemas>
+[ga4gh-trs]: <https://github.com/ga4gh/tool-registry-service-schemas>
+[ga4gh-wes]: <https://github.com/ga4gh/workflow-execution-schemas>
 [git]: <https://git-scm.com/>
 [git-branch]: <https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging>
 [git-commit]: <https://git-scm.com/docs/git-commit>
@@ -60,6 +72,7 @@
 [linkedin-ayush]: <https://www.linkedin.com/in/ayush-kumar-514a17197/>
 [linkedin-lakshya]: <https://www.linkedin.com/in/lakshyaagarg/>
 [linkedin-suyash]: <https://www.linkedin.com/in/sgalpha01/>
+[nextflow]: <https://www.nextflow.io/>
 [osi]: <https://opensource.org/>
 [py]: <https://www.python.org/>
 [py-black]: <https://github.com/psf/black>
@@ -75,3 +88,6 @@
 [py-pytest]: <https://docs.pytest.org/en/latest/>
 [py-typing]: <https://docs.python.org/3/library/typing.html>
 [sem-ver]: <https://semver.org/>
+[snakemake]: <https://snakemake.readthedocs.io/en/stable/>
+[snakemake-docs]: <https://snakemake.readthedocs.io/en/stable/executing/cloud.html#executing-a-snakemake-workflow-via-ga4gh-tes>
+[tesk]: <https://github.com/elixir-cloud-aai/TESK>
