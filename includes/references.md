@@ -14,7 +14,7 @@
 [elixir-cloud-aai]: <https://elixir-cloud.dcc.sib.swiss/>
 [elixir-cloud-aai-contributors]: <https://elixir-cloud.dcc.sib.swiss/contributors>
 [elixir-cloud-aai-github]: <https://github.com/elixir-cloud-aai/>
-[elixir-cloud-aai-slack]: <https://join.slack.com/t/elixir-cloud/shared_invite/enQtNzA3NTQ5Mzg2NjQ3LTZjZGI1OGQ5ZTRiOTRkY2ExMGUxNmQyODAxMDdjM2EyZDQ1YWM0ZGFjOTJhNzg5NjE0YmJiZTZhZDVhOWE4MWM>
+[elixir-cloud-aai-slack]: <https://join.slack.com/t/elixir-cloud/shared_invite/zt-1uvebyx1e-NcC0Hof2guT9df~haBdQaw>
 [elixir-cloud-aai-slack-channel-oss]: <https://elixir-cloud.slack.com/archives/CSJ97K04E> 
 [elixir-cloud-aai-forum]: <https://github.com/elixir-cloud-aai/elixir-cloud-aai/discussions>
 [elixir-cloud-aai-issues]: https://github.com/orgs/elixir-cloud-aai/projects
