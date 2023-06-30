@@ -1,9 +1,11 @@
 [all-contributors]: <https://github.com/all-contributors/all-contributors>
 [all-contributors-bot]: <https://allcontributors.org/docs/en/bot/overview>
 [all-contributors-types]: <https://allcontributors.org/docs/en/emoji-key>
+[bh-covid]: <https://github.com/virtual-biohackathons/covid-19-bh20>
 [bh-dbcls]: <http://www.biohackathon.org/>
 [bh-denbi]: <https://www.denbi.de/de-nbi-events/1454-biohackathon-germany>
 [bh-elixir]: <https://www.biohackathon-europe.org/>
+[bh-mena]: <https://cbrcconferences.kaust.edu.sa/bio-hackathon-2023>
 [contributor-covenant]: <https://www.contributor-covenant.org>
 [conv-commits]: <https://www.conventionalcommits.org/en/v1.0.0-beta.2/#specification>
 [conv-commits-blog]: <https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular/>
