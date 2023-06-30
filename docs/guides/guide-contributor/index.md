@@ -131,12 +131,14 @@ to procure funding for contributors.
 
 Here is a list of hackathons we have attended in the past:
 
-- [NBDC/DBCLS BioHackathon][bh-dbcls] 2019 in Fukuoka, Japan
 - [ELIXIR BioHackathon][bh-elixir] 2018, Paris, France
+- [NBDC/DBCLS BioHackathon][bh-dbcls] 2019 in Fukuoka, Japan
 - [ELIXIR BioHackathon][bh-elixir] 2019, Paris, France
+- [COVID19 BioHackathon][bh-covid] 2020, virtual
 - [ELIXIR BioHackathon][bh-elixir] 2020, virtual
 - [ELIXIR BioHackathon][bh-elixir] 2021, Barcelona, Spain
 - [ELIXIR BioHackathon][bh-elixir] 2022, Paris, France
+- [BioHackathon Germany][bh-denbi] 2022, Wittenberg, Germany
 - [BioHackathon MENA][bh-mena] 2023, Thuwal, Saudi Arabia
 - [NBDC/DBCLS BioHackathon][bh-dbcls] 2023 on Shodoshima Island, Japan
 
