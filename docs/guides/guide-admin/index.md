@@ -47,9 +47,8 @@ docker-compose up -d
 ```
 
 !!! note "Non-standard name or location of config file"
-
-   The command will be different if the Docker Compose config file is _not_ in
-   the current working directory and/or is _not_ called `docker-compose.yml`.
+    The command will be different if the Docker Compose config file is _not_ in
+    the current working directory and/or is _not_ called `docker-compose.yml`.
 
 This will bring the service up. The argument `-d` (or `--detach`) starts the
 app in daemonized mode, i.e., all launched containers that compose creates run
@@ -113,9 +112,8 @@ Follow these steps:
     ```
    
 3. Find the Helm chart at `charts/tesk`
-4. Edit file
-   [`values.yaml`]
-   (see [notes](#notes-for-editing-chart-values) below)
+4. Edit file [`values.yaml`][tesk-helm-values] (see
+   [notes](#notes-for-editing-chart-values) below)
 5. Log into the cluster and install TESK with:
    
    ```sh
@@ -238,18 +236,16 @@ If successfull Funnel should be listening on port `8080`.
 !!! warning "Under construction"
     More info coming soon...
 
-
 ### Deploying storage
 
 Follow the instructions below to connect your TES endpoint to one or more
 ELIXIR Cloud cloud storage solutions. The currently supported solutions are:
 
 - [MinIO][minio] (Amazon S3)
-- [`vsftpd`][vsftp] (FTP)
+- [`vsftpd`][vsftpd] (FTP)
 
 !!! note "Other storage solutions"
-
-   Other S3 and FTP implementations may work but have not being tested.
+    Other S3 and FTP implementations may work but have not being tested.
 
 #### Deploying MinIO (Amazon S3)
 
