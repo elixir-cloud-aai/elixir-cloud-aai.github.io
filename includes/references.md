@@ -1,6 +1,7 @@
 [all-contributors]: <https://github.com/all-contributors/all-contributors>
 [all-contributors-bot]: <https://allcontributors.org/docs/en/bot/overview>
 [all-contributors-types]: <https://allcontributors.org/docs/en/emoji-key>
+[bh-covid]: <https://github.com/virtual-biohackathons/covid-19-bh20>
 [bh-dbcls]: <http://www.biohackathon.org/>
 [bh-denbi]: <https://www.denbi.de/de-nbi-events/1454-biohackathon-germany>
 [bh-elixir]: <https://www.biohackathon-europe.org/>
