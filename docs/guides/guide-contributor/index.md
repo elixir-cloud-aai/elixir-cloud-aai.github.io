@@ -137,6 +137,8 @@ Here is a list of hackathons we have attended in the past:
 - [ELIXIR BioHackathon][bh-elixir] 2020, virtual
 - [ELIXIR BioHackathon][bh-elixir] 2021, Barcelona, Spain
 - [ELIXIR BioHackathon][bh-elixir] 2022, Paris, France
+- [BioHackathon MENA][bh-mena] 2023, Thuwal, Saudi Arabia
+- [NBDC/DBCLS BioHackathon][bh-dbcls] 2023 on Shodoshima Island, Japan
 
 ### Internships
 
