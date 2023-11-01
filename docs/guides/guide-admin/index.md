@@ -179,6 +179,181 @@ important are:
     When creating a `.secrets.yaml` file, ensure that the file is never shared
     or committed to a code repository!
 
+##### with microk8s
+
+This section is how to install TESK with microk8s on ubuntu 22.04.
+Normally, microk8s is as same as typ;ical Kubernetes environment.
+
+```
+sudo snap install microk8s --classic
+microk8s enable helm3
+```
+
+Add you to `microk8s` group.
+
+```
+sudo usermod -a -G microk8s $USER
+```
+
+Create directory.
+
+```
+mkdir  ~/.kube
+sudo chown -R $USER ~/.kube
+```
+
+Clone repository and change directory
+
+```
+git clone https://github.com/elixir-cloud-aai/TESK.git
+cd TESK/charts/tesk
+```
+
+Create: `secrets.yaml`
+Edit: `values.yaml`
+
+- `host_name`
+- In `service` , `type` and `node_port`
+  - Setup this, TESK can reach from the internet.
+
+Create namespace (helm3)
+
+```
+microk8s kubectl create namespace ns-tesk
+```
+
+Install helm chart
+
+```
+microk8s helm3 install  -n ns-tesk dn-tesk-1 .   -f secrets.yaml   -f values.yaml
+```
+
+If you want to uninstall
+
+```
+microk8s helm uninstall dn-tesk-1 -n ns-tesk
+```
+
+Find your IP(Cluster IP)
+
+```
+microk8s kubectl get svc -n ns-tesk
+```
+
+Following example is internal access only.
+It can not be accessed from Internet.
+See `PORT(S)` section `8080/TCP`.
+
+```
+$ microk8s kubectl get svc -n ns-tesk
+NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+tesk-api   ClusterIP   XXX.XXX.XXX.XXX   <none>        8080/TCP   8s
+```
+
+On same machine, you can see the tasks
+
+```
+curl http://XXX.XXX.XXX.XXX:8080/ga4gh/tes/v1/tasks
+```
+
+Setup is correct, you can see something like this.
+
+```json
+{
+  "tasks" : [ ]
+}
+```
+
+
+Throw job to TESK.
+This is very small examle.
+
+```console
+curl  -H "Accept: application/json"  \
+ -H "Content-Type: application/json" \
+ --data '{"executors": [ { "command": [ "echo", "TESK says: Hello World" ], "image": "alpine" } ]}'\
+ -X POST \
+"http://XXX.XXX.XXX.XXX:8080/ga4gh/tes/v1/tasks"
+```
+
+You can get your TASK ID.
+
+```json
+{
+  "id" : "task-544dd199"
+}
+```
+
+Check the result
+
+```json
+{
+  "tasks" : [ {
+    "id" : "task-544dd199",
+    "state" : "COMPLETE"
+  } ]
+}
+```
+
+See details
+
+```
+curl http://XXX.XXX.XXX.XXX:8080/ga4gh/tes/v1/tasks/TASKID?view=FULL
+```
+
+or
+
+```
+curl http://XXX.XXX.XXX.XXX:8080/ga4gh/tes/v1/tasks?view=FULL
+```
+
+For example using jq
+
+```console
+$curl -s http://XXX.XXX.XXX.XXX:8080/ga4gh/tes/v1/tasks/task-544dd199?view=FULL  | jq '.logs[0].logs'
+[
+  {
+    "start_time": "2023-11-01T14:54:20.000Z",
+    "end_time": "2023-11-01T14:54:25.000Z",
+    "stdout": "TESK says: Hello World\n",
+    "exit_code": 0
+  }
+]
+
+```
+
+Setup `NodePort`  to open TESK to the Internet.
+
+```yaml
+service:
+    # the following variables are specific to each deployment
+    # use:
+    # - NodePort, if you want to expose API directly
+    # - LoadBalancer for cloud provider (gcloud) or empty otherwise
+    type: "NodePort"
+    node_port: "31567"
+```
+
+See `PORT(S)` section ``8080:31567/TCP`
+This means when we access to `31567` on the host machine, it connects to 8080 on the pod.
+
+And CLUSTER-IP changed but k8s managed the mapping of IP and ports.
+
+At defalut setting first 3 are as same as `XXX.XXX.XXX`, last only changed
+
+```
+ubuntu@localhost:~/TESK/charts/tesk$ microk8s kubectl get svc -n ns-tesk
+NAME       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+tesk-api   NodePort   YYY.YYY.YYY.YYY   <none>        8080:31567/TCP   5s
+ubuntu@localhost:~/TESK/charts/tesk$ 
+```
+
+```
+curl http://YOURNOSTNAMEORIP:31567/ga4gh/tes/v1/tasks
+```
+
+If you can not access, please check your port is open for internet.
+
 #### Deploying Funnel
 
 Follow these instructions if you wish to deploy a TES endpoint in front of your
