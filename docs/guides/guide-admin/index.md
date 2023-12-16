@@ -179,6 +179,211 @@ important are:
     When creating a `.secrets.yaml` file, ensure that the file is never shared
     or committed to a code repository!
 
+##### Notes for deployment with microk8s
+
+This section outlines how to install TESK via [microk8s](https://microk8s.io/),
+as tested on an Ubuntu 22.04 machine.
+
+First, install microk8s through the Snap Store and add yourself to the
+`microk8s` group::
+
+```bash
+sudo snap install microk8s --classic
+sudo usermod -a -G microk8s $USER
+```
+
+Now let's create a directory for the microk8s configuration and enable Helm:
+
+```bash
+mkdir  ~/.kube
+sudo chown -R $USER ~/.kube
+microk8s enable helm3
+```
+
+Next, let's clone the TESK repository and move into it the Helm chart directory:
+
+```bash
+git clone https://github.com/elixir-cloud-aai/TESK.git
+cd TESK/charts/tesk
+```
+
+Follow the deployment instructions to create `secrets.yaml` and modify
+`values.yaml` as per your requirements.
+
+> You **MUST** set `host_name`. To make the service available through the
+> internet, see further below on how to configure the `service` section.
+
+Great - you are now ready to deploy TESK!
+
+First, let's create a namespace:
+
+```bash
+microk8s kubectl create namespace NAMESPACE
+```
+
+where `NAMESPACE` is an arbitrary name for your resource group.
+
+Now let's use Helm to install:
+
+```bash
+microk8s helm3 install -n NAMESPACE RELEASE_NAME . -f secrets.yaml -f values.yaml
+```
+
+where `RELEASE_NAME` is an arbitrary name for this particular TESK release.
+
+Congratulations - TESK should now be successfully deployed!
+
+To find out the IP address at which TESK is available, run the following
+command:
+
+```bash
+microk8s kubectl get svc -n NAMESPACE
+```
+
+The output could look something like this:
+
+```console
+NAME       TYPE        CLUSTER-IP        EXTERNAL-IP   PORT(S)    AGE
+tesk-api   ClusterIP   123.123.123.123   <none>        8080/TCP   8s
+```
+
+Use the `CLUSTER-IP` and the `PORT` with the following template to construct the
+URL at which the service is available (and make sure to replace the dummy URL
+when you want to try out the calls below):
+
+```console
+http://CLUSTER-IP:PORT/ga4gh/tes/v1
+```
+
+So, in this example case, we get the following URL:
+
+```console
+http://123.123.123.123:8080/ga4gh/tes/v1
+```
+
+You can now test the intallation with the following example call to get a list
+of tasks:
+
+```bash
+curl http://123.123.123.123:8080/ga4gh/tes/v1/tasks
+```
+
+If everything worked well, you should get an output like this:
+
+```json
+{
+  "tasks": []
+}
+```
+
+Let's try to send a small task to TESK:
+
+```console
+curl \
+  -H "Accept: application/json"  \
+  -H "Content-Type: application/json" \
+  -X POST \
+  --data '{"executors": [ { "command": [ "echo", "TESK says: Hello World" ], "image": "alpine" } ]}' \
+  "http://123.123.123.123:8080/ga4gh/tes/v1/tasks"
+```
+
+That should give you a task ID:
+
+```json
+{
+  "id" : "task-123ab456"
+}
+```
+
+You can run the task list command from before again. Now the response should not
+be an empty list anymore. Rather, you should see something like this:
+
+```json
+{
+  "tasks" : [ {
+    "id" : "task-123ab456",
+    "state" : "COMPLETE"
+  } ]
+}
+```
+
+To get more details on your task, use the task ID from before in a call like
+this:
+
+```bash
+curl http://123.123.123.123:8080/ga4gh/tes/v1/tasks/TASK_ID?view=FULL
+```
+
+We can use `jq` to parse the results. Let's say we want to see the logs of the
+first (only, in this case) TES executor, we could do something like this:
+
+```console
+$curl -s http://123.123.123.123:8080/ga4gh/tes/v1/tasks/task-123ab456?view=FULL  | jq '.logs[0].logs'
+```
+
+Which would give us an output like this:
+
+```json
+[
+  {
+    "start_time": "2023-11-01T14:54:20.000Z",
+    "end_time": "2023-11-01T14:54:25.000Z",
+    "stdout": "TESK says: Hello World\n",
+    "exit_code": 0
+  }
+]
+```
+
+Note that in the example, the API is only accessible internally. To make it
+accessible publicly, we need to properly configure the `service` section in
+`values.yaml`.
+
+In particular, we would like to set the type to `NodePort` and then set an open
+port on the host machine at which the API is exposed. For example, with
+
+```yaml
+service:
+    type: "NodePort"
+    node_port: "31567"
+```
+
+Kubernetes will route requests coming in to port `31567` on the host machine to
+port `8080` on the pod.
+
+Let's confirm this by upgrading the Helm chart and again inspecting the services
+in our namespace with:
+
+```bash
+microk8s helm3 upgrade -n NAMESPACE RELEASE_NAME . -f secrets.yaml -f values.yaml
+microk8s kubectl get svc -n NAMESPACE
+```
+
+We should get an output like this:
+
+```console
+NAME       TYPE       CLUSTER-IP        EXTERNAL-IP   PORT(S)          AGE
+tesk-api   NodePort   123.123.123.111   <none>        8080:31567/TCP   5s
+```
+
+Indeed, the port section changed as expected. Now, note that the `CLUSTER-IP`
+_also_ changed. However, this is not a problem as Kubernetes will manage the
+routing, so we don't really need to know the `CLUSTER-IP`. Instead, now we can
+use the hostname (or IP) of the host machine, together with the port we set to
+call our TES API from anywhere:
+
+```
+curl http://HOST_NAME_OR_IP:31567/ga4gh/tes/v1/tasks
+```
+
+> Of course you need to make sure that the port you selected is opened for
+> public access. This will depend on your router/firewall settings.
+
+If you would like to tear down the TESK service, simply run:
+
+```bash
+microk8s helm uninstall RELEASE_NAME -n NAMESPACE
+```
+
 #### Deploying Funnel
 
 Follow these instructions if you wish to deploy a TES endpoint in front of your
