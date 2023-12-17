@@ -119,6 +119,9 @@ projects they were working on):
 | 2022 | [Ayush Kumar][linkedin-ayush] | [Federating workflow execution using GA4GH Cloud APIs][gsoc-2022-ayush] |
 | 2022 | [Lakshya Garg][linkedin-lakshya] | [Compliance testing framework for the Task Execution Service API][gsoc-2022-lakshya] |
 | 2022 | [Suyash Gupta][linkedin-suyash] | [TES Callback endpoint and mechanism in TESK][gsoc-2022-suyash] |
+| 2023 | [Assel Abzalova][linkedin-assel] | [Web Components for discovering and using scientific software in the Cloud][gsoc-2023-assel] |
+| 2023 | [Javed Habib][linkedin-javed] | [Dashboard Web Components (React, Vue etc) for Workflow and Task Runs][gsoc-2023-javed] |
+| 2023 | [Lakshya Garg][linkedin-lakshya] | [Compliance testing framework for the Task Execution Service API][gsoc-2023-lakshya] |
 
 ### Hackathons
 

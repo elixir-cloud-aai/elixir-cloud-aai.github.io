@@ -181,8 +181,8 @@ important are:
 
 ##### Notes for deployment with microk8s
 
-This section outlines how to install TESK via [microk8s](https://microk8s.io/),
-as tested on an Ubuntu 22.04 machine.
+This section outlines how to install TESK via [microk8s][microk8s] as tested on
+an Ubuntu 22.04 machine.
 
 First, install microk8s through the Snap Store and add yourself to the
 `microk8s` group::
