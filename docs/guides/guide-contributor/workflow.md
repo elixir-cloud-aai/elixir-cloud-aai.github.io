@@ -165,9 +165,9 @@ Please follow these rules for your commit messages / PR titles:
   at **50 characters or less**
 - Only use the types listed in the table below; choose the type according to the
   predominant reason for the change
-- Never use types `feat`, `fix`, `perf`, `refactor` and `style` only for changes
-  in packaged/production code; use the dedicated types for all build-, CI-,
-  documentation- or test-related changess
+- Only use types `feat`, `fix`, `perf`, `refactor` and `style` for changes in
+  in package/production code; use the dedicated types for all build-, CI-,
+  documentation- or test-related changes
 - Indicating a scope is optional; it is only necessary if scopes are generally
   used in the repository you are working on
 - Start the `<description>` with a verb in imperative form (e.g., `add`, `fix`)
