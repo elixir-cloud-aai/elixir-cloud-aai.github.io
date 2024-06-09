@@ -141,46 +141,55 @@ visualizes this process.
 
 ### Commit messages
 
-Generally, no specific formatting of individual commit messages is required when working
-on feature branches. However, your pull request titles should always follow the
-[Conventional Commits specification][conv-commits]. The same is true for
+Generally, no specific formatting of individual commit messages is required when
+working on _feature branches_. However, your **pull request titles MUST follow
+the [Conventional Commits specification][conv-commits]**. The same is true for
 individual commit messages if you are requesting that your feature branch be
 "rebase merged" (see info box "Substantial changes" above).
 
-[Conventional Commits][conv-commits] help to increase consistency, simplify
-maintenance and enable automated versioning and change log generation.  Their
+[Conventional Commits][conv-commits] help to increase consistency, facilitate
+maintenance and enable automated versioning and change log generation. Their
 general structure is as follows:
 
 ```console
-<type>(optional scope): <description>  # not more than 50 characters!!!
+<type>(optional scope): <description>
 
 [optional body]
 
 [optional footer]
 ```
 
-Please keep the _title_ line short (50 characters or less). If you want to get
-more descriptive, you can use the optional _body_. Please use the _footer_
-only to signify breaking changes, by adding `BREAKING CHANGE` to the start of
-the footer and describing why/what breaks. You can use multiple lines for
-body and footer, but please keep each line to 100 characters or less. For
-smaller projects such as most of ours, use of _scope_ is not recommended.
+Please follow these rules for your commit messages / PR titles:
+
+- Keep your entire header/title line (including type and, if available, scope)
+  at **50 characters or less**
+- Only use the types listed in the table below; choose the type according to the
+  predominant reason for the change
+- Never use types `feat`, `fix`, `perf`, `refactor` and `style` only for changes
+  in packaged/production code; use the dedicated types for all build-, CI-,
+  documentation- or test-related changess
+- Indicating a scope is optional; it is only necessary if scopes are generally
+  used in the repository you are working on
+- Start the `<description>` with a verb in imperative form (e.g., `add`, `fix`)
+- If you include a body and/or footer, make sure it conforms to the
+  Conventional Commits specification
 
 Depending on the changes, we would kindly request you to use one of the
 following **type** prefixes:
 
 | Type | Description |
 | --- | --- |
-| build | The build type (formerly known as chore) is used to identify development changes related to the build system (involving scripts, configurations or tools) and package dependencies.  |
-| ci | The ci type is used to identify development changes related to the continuous integration and deployment system - involving scripts, configurations or tools. |
-| docs | The docs type is used to identify documentation changes related to the project - whether intended externally for the end users (in case of a library) or internally for the developers. |
-| feat | The feat type is used to identify production changes related to new backward-compatible abilities or functionality. |
-| fix | The fix type is used to identify production changes related to backward-compatible bug fixes. |
-| perf | The perf type is used to identify production changes related to backward-compatible performance improvements. |
-| refactor | The refactor type is used to identify development changes related to modifying the codebase, which neither adds a feature nor fixes a bug - such as removing redundant code, simplifying the code, renaming variables, etc. |
-| revert | For commits that revert one or more previous commits. |
-| style | The style type is used to identify development changes related to styling the codebase, regardless of the meaning - such as indentations, semi-colons, quotes, trailing commas and so on. |
-| test | The test type is used to identify development changes related to tests - such as refactoring existing tests or adding new tests. |
+| build | For changes related to the build system (e.g., scripts, configurations and tools) and package dependencies |
+| chore | For changes related to mundane repository maintenance tasks that are not covered by any of the other types (e.g., adding a `.gitignore file) | 
+| ci | For changes related to the continuous integration and deployment system (e.g., workflows, scripts, configurations and tools) |
+| docs | For changes related to the project documentation, regardless of the audience (end users, developers) |
+| feat | For changes related to new abilities or functionality |
+| fix | For changes related to bug fixes |
+| perf | For changes related to performance improvements |
+| refactor | For changes related to modifying the codebase, which neither adds a feature nor fixes a bug (e.g., removing redundant code, simplifying code, renaming variables) |
+| revert | For changes that revert one or more previous commits |
+| style | For changes related to styling the codebase (e.g., indentation, parentheses/brackets, white space, trailing commas) |
+| test | For changes related to tests |
 
 !!! info "Linting commit messages"
 
@@ -190,6 +199,9 @@ following **type** prefixes:
     found in this [blog post][conv-commits-blog].
 
 ### Filing pull requests
+
+**Make sure to follow the [commit message](#commit-messages) rules for your pull
+request titles.**
 
 The following pull request template will be successively added to all
 repositories. Until that is the case, you can already make use of it by
