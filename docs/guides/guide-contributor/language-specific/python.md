@@ -1,52 +1,62 @@
 # Python guidelines
 
-For any [Python][py] code, please stick to the guidelines described in this
+For all [Python][py] code, please stick to the guidelines described in this
 section.
 
 ## Python version
 
-For any new projects, please use one of the two most recent [Python minor
-versions][py-downloads]. For existing projects, use the Python version used
-throughout the project (mentioned in `pyproject.toml`).
+For any _new_ projects, please use one of the two most recent [Python minor
+versions][py-downloads], exclusing pre-releases. For existing projects, use the
+Python version used throughout the project (mentioned in `pyproject.toml`).
 
-## Dependency management
+## Packaging, build system & dependencies
 
-### pyproject.toml
-
-Use [`poetry`][py-poetry] for dependency management. Use the `pyproject.toml`
-file to specify the dependencies. Do not use `requirements.txt` files. Use
-`poetry.lock` to lock the dependencies and commit it to the repository.
+Please use [`pyproject.toml`][py-toml] to configure packaging, building, and
+dependency management. Please do not use `setup.py` and do no specify your
+dependencies in `requirements.txt`, except for legacy projects where they are
+still used.
 
 Preferably, segregate dependencies for different tasks. For example, use
 `[tool.poetry.test.dependencies]` for testing dependencies, and
 `[tool.poetry.dependencies]` for runtime dependencies.
 
-```python
-poetry add <package> --group=<group>
-```
+Please sort entries (sections, dependencies) in `pyproject.toml` alphabetically
+to ease maintenance. If using Poetry (see below), you can use the
+[`poetry-sort`][py-poetry-sort] plugin to help with this. Otherwise any other
+TOML sorter should work as well.
 
-> **Note**: It is preferable to sort toml files alphabetically. This makes it
-> easier to find dependencies and fields, you can use the poetry 
-> plugin or external toml sorters.
+> **Note**: We strongly recommend using the [Poetry][py-poetry] package manager
+> instead of `pip`. In that case, use `poetry.lock` to lock the dependencies
+> (make > sure to commit the file to version control). To add a new dependency,
+> use the following command:
+>
+> ```python
+> poetry add <package> --group=<group>
+> ```
+>
+> To build the project, use:
+>
+> ```python
+> poetry build
+> ```
 
-### Console script
-If your project has an entry point, use `pyproject.toml` file to define console
-scripts.
+### Console scripts
+
+If your project has one or more console script entry points, use
+`pyproject.toml` file to define them, e.g.:
 
 ```toml
 [tool.poetry.scripts]
-<name> = "<module>:<function>"
+my-script = "my_package.my_module.my_submodule:my_function"
 ```
-
-### Build system
-
-Use `poetry build` to build the project. Do not use `setup.py` or `setup.cfg`.
 
 ## Code formatting and linting
 
 ### Ruff
-In an effort to reduce dependencies, we recommend using [`ruff`][py-ruff]. Add strictness
-based on the project requirements, but at least use the following:
+
+In an effort to reduce dependencies, we recommend using [`ruff`][py-ruff] for
+new projects and configuring it in `pyproject.toml`. Configure strictness based
+on project requirements, but at least use the following:
 
 ```toml
 [tool.ruff.lint]
@@ -62,36 +72,76 @@ select = [
 ]
 ```
 
-> **Note**: You can fix lints by running `ruff check --fix <Path>` and
-> `ruff format <Path>` to format the code.
+> **Note**: You can fix lints by running `ruff check --fix <Path>` and `ruff
+> format <Path>` to format the code.
 
 ### Docstrings
 
-With pydocstyle, you can enforce the Google-style docstrings. Add the following
-to the `pyproject.toml` file:
+Please use [Google-style docstrings][py-doc-google] for all packages, modules,
+classes, methods and functions. With `pydocstyle`, you can enforce this style
+with the following entry in the `pyproject.toml` file:
 
 ```toml
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 ```
 
-The above will enforce Google-style docstrings. It is recommended to add at least
-`Arguments`, `Args`, `Returns`, `Raises` and `Example` sections to classes, methods 
-whereever possible.
+For **methods and functions**, please include at least the following sections,
+where applicable:
+
+- `Args`
+- `Returns` (or `Yields`, for generator functions)
+- `Raises`
+
+For **classes**, please include the `Attributes` section.
+
+Furthermore, in all cases, consider including `Examples` and `Note` sections.
 
 ## Type hints
 
 Add [type hints][py-typing] to _all_ function and method signatures, as well as
-any global variables. Adding type hints to local variables is recommended.
+any global variables. Adding type hints to local variables is recommended if
+types aren't obvious from assignments.
+
 Adding type hints to (unit) tests is not necessary.
 
-### static type checkers
+> **Note**: You can try using [MonkeyType][py-monkey-type] to help with adding
+> type hints to your code.
 
-please use [`mypy`][py-mypy] to check the type hints. 
+### Static type checkers
+
+Please use a type checker to check for type consistency across your project. We
+recommend using [`mypy`][py-mypy], but alternatives are acceptable.
 
 ## Testing
 
-Use [`pytest`][py-pytest] as a test runner for unit tests. You can determine
-the test coverage with the [`coverage`][py-cov] package. Strive for a test
-coverage of 100% for new projects. Proposed code changes should never reduce
-the previous test coverage.
+Please provide extensive tests (both unit and integration) for your code and
+determine the test coverage with the [`coverage`][py-cov] package. Strive
+for a test coverage of 100% for unit and 70% for integration tests, because:
+
+> Untested code is broken code.
+
+Please use [`pytest`][py-pytest] as a runner for your tests (it also comes with
+many useful features and extensions).
+
+Be aware that proposed code changes **must never** reduce the previous test
+coverage.
+
+## Documentation
+
+## Continuous Integration
+
+Please add one or more GitHub Actions workflows to your project that do the
+following for pushes to and pull requests against the repository's default
+branch:
+
+- Run linting and formatting checks with `ruff`
+- Run type checks with `mypy`
+- Run unit and integration tests with `pytest`
+- Check the test coverage with `coverage` and upload results to
+  [Codecov][py-codecov]
+- Build and publish documentation (if not set up to be triggered automatically
+  by the publishing system, e.g., Read the Docs)
+
+If the project you are working on is reasonably mature, also consider setting
+up one or more continuous delivery/deployment workflows.
