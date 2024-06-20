@@ -91,6 +91,8 @@ nav:
       - Contributors:
           - "guides/guide-contributor/index.md"
           - "Workflow": "guides/guide-contributor/workflow.md"
+          - "General guidelines": "guides/guide-contributor/general-guidelines.md"
+          - "Managing projects": "guides/guide-contributor/managing-projects.md"
           - Language-specific guidelines:
               - "guides/guide-contributor/language-specific/index.md"
               - "Python": "guides/guide-contributor/language-specific/python.md"
