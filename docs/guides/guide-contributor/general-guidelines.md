@@ -93,7 +93,7 @@ visualizes this process.
     of ["squash merged"][github-merge-squash]. However, we will only do so if
     you have exactly one clean commit for each semantic work package and each
     commit message follows the conventional commit specifications. You can use
-    [`git rebease --interactive`][git-rebase] to clean up your feature branch.
+    [`git rebase --interactive`][git-rebase] to clean up your feature branch.
 
 ??? warning "Feature branches unstable"
 

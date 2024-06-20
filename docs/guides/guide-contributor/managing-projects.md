@@ -15,7 +15,7 @@ root directory:
   Conduct](../../about/code-of-conduct.md) on this page)
 - **Contributing guidelines** in file `CONTRIBUTING.md` (can link to the
   [contributor guide](index.md) on this page)
-- **License** in file `LICENSE`)
+- **License** in file `LICENSE`
 - **Pull request template** in file `PULL_REQUEST_TEMPLATE.md`
 
 Also make sure that a project **description** (right hand panel on the
