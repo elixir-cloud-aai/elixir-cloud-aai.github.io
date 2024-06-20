@@ -17,7 +17,7 @@ Use [`poetry`][py-poetry] for dependency management. Use the `pyproject.toml`
 file to specify the dependencies. Do not use `requirements.txt` files. Use
 `poetry.lock` to lock the dependencies and commit it to the repository.
 
-Preegaferably, segregate dependencies for different tasks. For example, use
+Preferably, segregate dependencies for different tasks. For example, use
 `[tool.poetry.test.dependencies]` for testing dependencies, and
 `[tool.poetry.dependencies]` for runtime dependencies.
 
@@ -25,8 +25,9 @@ Preegaferably, segregate dependencies for different tasks. For example, use
 poetry add <package> --group=<group>
 ```
 
-> **Note**: It is preferable to sort toml files alphabetically, this makes it
-> easier to find dependencies, you can use the poetry plugin or external toml sorters.
+> **Note**: It is preferable to sort toml files alphabetically. This makes it
+> easier to find dependencies and fields, you can use the poetry 
+> plugin or external toml sorters.
 
 ### Console script
 If your project has an entry point, use `pyproject.toml` file to define console
@@ -74,9 +75,9 @@ to the `pyproject.toml` file:
 convention = "google"
 ```
 
-The above will enforce Google-style docstrings. It is recommended to add atleast
+The above will enforce Google-style docstrings. It is recommended to add at least
 `Arguments`, `Args`, `Returns`, `Raises` and `Example` sections to classes, methods 
-where ever possible.
+whereever possible.
 
 ## Type hints
 
