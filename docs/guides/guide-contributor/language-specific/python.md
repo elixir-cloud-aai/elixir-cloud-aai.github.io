@@ -76,8 +76,8 @@ select = [
 
 !!! note "Ruff usage"
 
-    You can fix lints by running `ruff check --fix <Path>` and
-    `ruff format <Path>` to format the code.
+    You can fix lints by running `ruff check --fix /src/my_module.py` and
+    `ruff format /src/my_module.py` to format the code.
 
 ### Docstrings
 
