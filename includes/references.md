@@ -7,6 +7,7 @@
 [bh-elixir]: <https://www.biohackathon-europe.org/>
 [bh-mena]: <https://cbrcconferences.kaust.edu.sa/bio-hackathon-2023>
 [cephfs]: <https://docs.ceph.com/en/quincy/cephfs/>
+[codecov]: <https://codecov.io/>
 [contributor-covenant]: <https://www.contributor-covenant.org>
 [conv-commits]: <https://www.conventionalcommits.org/en/v1.0.0-beta.2/#specification>
 [conv-commits-blog]: <https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular/>
@@ -81,6 +82,7 @@
 [k8s-jobs]: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion>
 [k8s-pvc]: <https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims>
 [k8s-storage-class]: <https://kubernetes.io/docs/concepts/storage/storage-classes/>
+[license-apache]: <https://www.apache.org/licenses/LICENSE-2.0>
 [linkedin-akash]: <https://www.linkedin.com/in/akash-saini-ak7778/>
 [linkedin-anurag]: <https://www.linkedin.com/in/anurag-gupta-1201/>
 [linkedin-assel]: <https://www.linkedin.com/in/assel-abzalova/>
@@ -96,6 +98,7 @@
 [minio]: <https://min.io/>
 [minio-deploy-openshift-template]: <https://github.com/CSCfi/Minio-OpenShift>
 [minio-docs-k8s]: <https://min.io/docs/minio/kubernetes/upstream/index.html>
+[mkdocs]: <https://www.mkdocs.org/>
 [nextflow]: <https://www.nextflow.io/>
 [netrc]: <https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html>
 [nfs]: <https://en.wikipedia.org/wiki/Network_File_System>
@@ -103,7 +106,6 @@
 [openshift]: <https://www.redhat.com/en/technologies/cloud-computing/openshift>
 [osi]: <https://opensource.org/>
 [py]: <https://www.python.org/>
-[py-codecov]: <https://codecov.io/>
 [py-cov]: <https://github.com/nedbat/coveragepy>
 [py-doc-google]: <https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html>
 [py-downloads]: <https://www.python.org/downloads/>
@@ -121,6 +123,7 @@
 [slurm]: <https://slurm.schedmd.com/>
 [snakemake]: <https://snakemake.readthedocs.io/en/stable/>
 [snakemake-docs]: <https://snakemake.readthedocs.io/en/stable/executing/cloud.html#executing-a-snakemake-workflow-via-ga4gh-tes>
+[sphinx]: <https://www.sphinx-doc.org/en/master/>
 [tesk]: <https://github.com/elixir-cloud-aai/TESK>
 [tesk-docs-deploy]: <https://github.com/elixir-cloud-aai/TESK/blob/master/charts/tesk/README.md>
 [tesk-docs-deploy-values]: <https://github.com/elixir-cloud-aai/TESK/tree/master/charts/tesk#description-of-values>
