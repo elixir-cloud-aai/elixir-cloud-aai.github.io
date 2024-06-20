@@ -126,22 +126,3 @@ many useful features and extensions).
 
 Be aware that proposed code changes **must never** reduce the previous test
 coverage.
-
-## Documentation
-
-## Continuous Integration
-
-Please add one or more GitHub Actions workflows to your project that do the
-following for pushes to and pull requests against the repository's default
-branch:
-
-- Run linting and formatting checks with `ruff`
-- Run type checks with `mypy`
-- Run unit and integration tests with `pytest`
-- Check the test coverage with `coverage` and upload results to
-  [Codecov][py-codecov]
-- Build and publish documentation (if not set up to be triggered automatically
-  by the publishing system, e.g., Read the Docs)
-
-If the project you are working on is reasonably mature, also consider setting
-up one or more continuous delivery/deployment workflows.
