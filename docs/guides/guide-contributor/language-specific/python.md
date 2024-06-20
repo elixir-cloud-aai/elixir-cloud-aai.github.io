@@ -7,20 +7,76 @@ section.
 
 For any new projects, please use one of the two most recent [Python minor
 versions][py-downloads]. For existing projects, use the Python version used
-throughout the project.
+throughout the project (mentioned in `pyproject.toml`).
 
-## Code formatting
+## Dependency management
 
-Please format the code using [`black`][py-black] and default parameters. Where
-[`black`][py-black] is not prescriptive, please use a consistent coding style.
-In particular, when contributing to an existing code base, please adhere to the
-coding style you find. In all cases, please adhere to [PEP 8][py-pep8].
+### pyproject.toml
 
-## Docstrings
+Use [`poetry`][py-poetry] for dependency management. Use the `pyproject.toml`
+file to specify the dependencies. Do not use `requirements.txt` files. Use
+`poetry.lock` to lock the dependencies and commit it to the repository.
 
-Please add [Google-style docstrings][py-doc-google] to _all_ modules, functions
-and methods. Follow [PEP 257][py-pep257]. Do not include types in the
-docstrings.
+Preegaferably, segregate dependencies for different tasks. For example, use
+`[tool.poetry.test.dependencies]` for testing dependencies, and
+`[tool.poetry.dependencies]` for runtime dependencies.
+
+```python
+poetry add <package> --group=<group>
+```
+
+> **Note**: It is preferable to sort toml files alphabetically, this makes it
+> easier to find dependencies, you can use the poetry plugin or external toml sorters.
+
+### Console script
+If your project has an entry point, use `pyproject.toml` file to define console
+scripts.
+
+```toml
+[tool.poetry.scripts]
+<name> = "<module>:<function>"
+```
+
+### Build system
+
+Use `poetry build` to build the project. Do not use `setup.py` or `setup.cfg`.
+
+## Code formatting and linting
+
+### Ruff
+In an effort to reduce dependencies, we recommend using [`ruff`][py-ruff]. Add strictness
+based on the project requirements, but at least use the following:
+
+```toml
+[tool.ruff.lint]
+select = [
+  "B", # flake8-bugbear
+  "D", # pydocstyle
+  "E", # pycodestyle
+  "F", # Pyflakes
+  "I", # isort
+  "PL", # pylint
+  "SIM", # flake8-simplify
+  "UP", # pyupgrade
+]
+```
+
+> **Note**: You can fix lints by running `ruff check --fix <Path>` and
+> `ruff format <Path>` to format the code.
+
+### Docstrings
+
+With pydocstyle, you can enforce the Google-style docstrings. Add the following
+to the `pyproject.toml` file:
+
+```toml
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+```
+
+The above will enforce Google-style docstrings. It is recommended to add atleast
+`Arguments`, `Args`, `Returns`, `Raises` and `Example` sections to classes, methods 
+where ever possible.
 
 ## Type hints
 
@@ -28,18 +84,9 @@ Add [type hints][py-typing] to _all_ function and method signatures, as well as
 any global variables. Adding type hints to local variables is recommended.
 Adding type hints to (unit) tests is not necessary.
 
-## Linters & static type checkers
+### static type checkers
 
-Please make use of the following tools with default parameters to make sure
-your code is of good quality:
-
-- [`flake8`][py-flake8]
-- [`flake8-docstring`][py-flake8-doc]
-- [`pylint`][py-pylint]
-- [`mypy`][py-mypy]
-
-When disabling rules is required, it is preferable to do so in-line, rather
-than globally.
+please use [`mypy`][py-mypy] to check the type hints. 
 
 ## Testing
 
