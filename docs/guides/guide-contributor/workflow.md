@@ -5,15 +5,16 @@ To start working with us, please follow these simple steps:
 1. Join [:custom-github-black: GitHub][github-join].
 2. Check out our [repositories][elixir-cloud-aai-github] and [open
    issues][elixir-cloud-aai-issues].
-3. Join our [:custom-slack: Slack board][elixir-cloud-aai-slack].
+3. Join our [:custom-slack: Slack board][elixir-cloud-aai-slack] (please let us
+   know by [email](mailto:cloud-service@elixir-europe.org) if the link expired).
 4. Join the [`#oss-community`][elixir-cloud-aai-slack-channel-oss] and leave
    a short message about yourself. Please include (1) your relevant skills and
    experience level, (2) your GitHub username, (3) your email address (e.g.,
    for calendar invitations), and (4) the repositories or issues you are most
    interested in. If you can't decide, no problem, just indicate that you are
    open to work on anything and we will suggest some issues for you.
-5. Once we have added you to our [GitHub
-   organization][elixir-cloud-aai-github], you can assign yourself to an issue.
+5. Once we have added you to our [GitHub organization][elixir-cloud-aai-github],
+   you can assign yourself to an issue.
 6. Please carefully read the [guidelines](#guidelines) below, as well as any
    relevant language-specific guidelines in this section.
 7. Start coding! :computer:
@@ -35,7 +36,8 @@ To start working with us, please follow these simple steps:
 
     If you like, you can skip steps 3. to 5. and raise pull requests from
     forks. Note, however, that some CI workflows may not (yet) be fully
-    supported for pull requests raised from forks.
+    supported for pull requests raised from forks, which may delay the review
+    process and the merging of your changes.
 
 ## Guidelines
 
@@ -207,25 +209,20 @@ The following pull request template will be successively added to all
 repositories. Until that is the case, you can already make use of it by
 self-reviewing your pull requests according to the checklist and descriptions.
 
-!!! note "All Contributors"
-
-    The [All Contributors][all-contributors] bot may not be available in all
-    repositories yet. In that case, please ignore the last bullet point.
-
 #### Pull request template
 
 ##### Description
 
 > Please include a summary of the change and the relevant issue(s) it resolves,
-> if any (otherwise delete that line). If the PR addresses more than one issue,
-> please add multiple lines, each starting with 'Fixes #'. In the summary, list
-> any dependencies that are required for this change. Please use bullet points
-> for the description. Please also include relevant motivation and context
-> briefly if not already covered in the corresponding issue(s). For very
-> trivial issues that are duly explained by the PR title, a description can be
-> omitted (in that case, please delete the placeholder bullet point).
-
-- 
+> if any (otherwise delete that line), e.g., `Fixes #123`. If the PR addresses
+> more than one issue, please add multiple lines, each starting with 'Fixes #'.
+> Please stick to that syntax precisely, including whitespaces, otherwise the
+> issue(s) may not be linked to the PR.
+>
+> In the summary, list any dependencies that are required for this change.
+> Please use bullet points for the description. Please also briefly describe
+> the relevant motivation and context briefly. For very trivial changes that are
+> duly explained by the PR title, a description can be omitted.
 
 Fixes #(issue number)
 
@@ -234,12 +231,13 @@ Fixes #(issue number)
 > Please go through the following checklist to ensure that your change is ready
 > for review. Please do not forget to double check the list after you have
 > modified your PR, e.g., if you have added commits to address reviewer
-> comments or to fix failing automated checks. Please check items also if they
-> do not apply to your change, e.g., if your change does not require an update
-> of the user-facing documentation, then still check the box. Generally, PRs
-> are only reviewed when all boxes are ticked off and all automated checks pass
-> (use the comment section below if you believe that your PR is ready to be
-> merged even though not all boxes were ticked off).
+> comments or to fix failing automated checks. **Please check items also if they
+> do not apply to your change**, e.g., if yourchange does not require an update
+> of the user-facing documentation, still check the box.
+>
+> Generally, **PRs are only reviewed when all boxes are ticked off and all
+> automated checks pass** (use the comment section below if you believe that
+> your PR is ready to be merged even though not all boxes were ticked off).
 
 - [ ] My code follows the [contributing guidelines](workflow.md) of this
       project, including, in particular, with regard to any style guidelines
@@ -253,10 +251,10 @@ Fixes #(issue number)
 - [ ] I have updated the user-facing documentation to describe any new or
       changed behavior
 - [ ] I have added type annotations for all function/class/method interfaces
-      or updated existing ones
+      or updated existing ones (only for Python, TypeScript, etc.)
 - [ ] I have provided appropriate documentation (e.g., [Google-style
       Python docstrings][py-doc-google] or [JSDoc block tags][jsdoc]) for all
-      functions/classes/methods or updated existing ones
+      packages/modules/functions/classes/methods or updated existing ones
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature
       works
@@ -270,10 +268,33 @@ Fixes #(issue number)
       not want my contributions to be acknowledged by [All
       Contributors][all-contributors]
 
+!!! note "All Contributors"
+
+    The [All Contributors][all-contributors] bot may not be available in all
+    repositories yet. In that case, please ignore the last bullet point.
+
 ##### Comments
 
 > If there are unchecked boxes in the list above, but you would still like your
 > PR to be reviewed or considered for merging, please describe here why boxes
 > were not checked. For example, if you are positive that your commits should
 > _not_ be squased when merging, please explain why you think the PR warrants
-> or requires multiple commits to be added to the history.
+> or requires multiple commits to be added to the history (but note that in
+> that case, it is a prerequisite that all commits follow the Conventional
+> Commits specification).
+
+### Continuous Integration
+
+Please add one or more GitHub Actions workflows to your project that do the
+following for pushes to and pull requests against the repository's default
+branch:
+
+- Run linting and formatting checks
+- Run type checks (if applicable)
+- Run unit and integration tests
+- Check test coverage and upload results to [Codecov][codecov]
+- Build and publish documentation (if not set up to be triggered automatically
+  by the publishing system, e.g., Read the Docs)
+
+If the project you are working on is reasonably mature, also consider setting
+up one or more continuous delivery/deployment workflows.
