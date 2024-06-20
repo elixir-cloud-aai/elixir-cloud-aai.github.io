@@ -249,7 +249,7 @@ Fixes #(issue number)
 > for review. Please do not forget to double check the list after you have
 > modified your PR, e.g., if you have added commits to address reviewer
 > comments or to fix failing automated checks. **Please check items also if they
-> do not apply to your change**, e.g., if yourchange does not require an update
+> do not apply to your change**, e.g., if your change does not require an update
 > of the user-facing documentation, still check the box.
 >
 > Generally, **PRs are only reviewed when all boxes are ticked off and all
@@ -384,7 +384,7 @@ Currently, we are using Markdown to write documentation. For new projects, we
 expect that each project has a `README.md` file that covers the following
 sections (fill in with "Coming soon" if not yet available):
 
-- **Synoposis**: A brief description of the project
+- **Synopsis**: A brief description of the project
 - **Basic usage**: A brief overview of how to use the project
 - **Installation**: Instructions on how to install/deploy the project
 - **Versioning**: Information on how the project is versioned
