@@ -15,8 +15,8 @@ To start working with us, please follow these simple steps:
    open to work on anything and we will suggest some issues for you.
 5. Once we have added you to our [GitHub organization][elixir-cloud-aai-github],
    you can assign yourself to an issue.
-6. Please carefully read the [guidelines](#guidelines) below, as well as any
-   relevant language-specific guidelines in this section.
+6. Please carefully read the [guidelines](#general-guidelines) below, as well as
+   any relevant [language-specific guidelines](language-specific/index.md).
 7. Start coding! :computer:
 
 !!! note "Privacy note"
@@ -204,8 +204,12 @@ following **type** prefixes:
 
 ### Filing pull requests
 
-**Make sure to follow the [commit message](#commit-messages) rules for your pull
-request titles.**
+Open pull requests through the GitHub interface, VS Code or your favorite Git
+client. Make sure to follow the branching model. Most importantly:
+
+??? warning "Use Conventional Commit messages for your PR titles!"
+
+    See details in the [commit message](#commit-messages) section.
 
 #### Code reviews
 
@@ -316,7 +320,7 @@ root directory:
 - **Code of Conduct** in file `CODE_OF_CONDUCT.md` (can link to the [Code of
   Conduct](../../about/code-of-conduct.md) on this page)
 - **Contributing guidelines** in file `CONTRIBUTING.md` (can link to the
-  [contributor guide](../index.md) on this page)
+  [contributor guide](index.md) on this page)
 - **License** in file `LICENSE`)
 - **Pull request template** in file `PULL_REQUEST_TEMPLATE.md`
 
@@ -389,7 +393,7 @@ sections (fill in with "Coming soon" if not yet available):
 - **Installation**: Instructions on how to install/deploy the project
 - **Versioning**: Information on how the project is versioned
 - **Contributing**: Guidelines on how to contribute to the project, with links
-    to the [contributing guidelines](../index.md) and our
+    to the [contributing guidelines](index.md) and our
     [code of conduct](../../about/code-of-conduct.md)
 - **Contact**: Information on how to contact the project leads
 
