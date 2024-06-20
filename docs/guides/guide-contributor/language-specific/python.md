@@ -25,20 +25,22 @@ to ease maintenance. If using Poetry (see below), you can use the
 [`poetry-sort`][py-poetry-sort] plugin to help with this. Otherwise any other
 TOML sorter should work as well.
 
-> **Note**: We strongly recommend using the [Poetry][py-poetry] package manager
-> instead of `pip`. In that case, use `poetry.lock` to lock the dependencies
-> (make > sure to commit the file to version control). To add a new dependency,
-> use the following command:
->
-> ```python
-> poetry add <package> --group=<group>
-> ```
->
-> To build the project, use:
->
-> ```python
-> poetry build
-> ```
+!!! note "Poetry"
+
+    We strongly recommend using the [Poetry][py-poetry] package manager instead
+    of `pip`. In that case, use `poetry.lock` to lock the dependencies (make
+    sure to commit the file to version control). To add a new dependency, use
+    the following command:
+
+    ```python
+    poetry add <package> --group=<group>
+    ```
+
+    To build the project, use:
+
+    ```python
+    poetry build
+    ```
 
 ### Console scripts
 
@@ -72,8 +74,10 @@ select = [
 ]
 ```
 
-> **Note**: You can fix lints by running `ruff check --fix <Path>` and `ruff
-> format <Path>` to format the code.
+!!! note "Ruff usage"
+
+    You can fix lints by running `ruff check --fix <Path>` and
+    `ruff format <Path>` to format the code.
 
 ### Docstrings
 
@@ -105,8 +109,11 @@ types aren't obvious from assignments.
 
 Adding type hints to (unit) tests is not necessary.
 
-> **Note**: You can try using [MonkeyType][py-monkey-type] to help with adding
-> type hints to your code.
+!!! note "Automating type hinting"
+
+    You can try using [MonkeyType][py-monkey-type] to help with adding type
+    hints to your code.
+
 
 ### Static type checkers
 
