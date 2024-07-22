@@ -61,9 +61,9 @@ visualizes this process.
 
 [![GitHub Flow](../../images/github_flow.svg)][github-flow]
 
-1. [Create a "feature branch"][git-branch] from the `dev` branch; use the
+1. [Create a "feature branch"][git-branch] from the default branch; use the
    `feature/my-feature` naming pattern to name your feature branch, e.g.,
-   `feature/update-docs`; make sure the `dev` [branch
+   `feature/update-docs`; make sure the default [branch
    is up to date][git-pull] before creating the feature branch!
 2. [Commit code changes][git-commit] to address the issue you are working on
 3. [Push the feature branch][git-push] to the remote and [create a pull
@@ -71,14 +71,15 @@ visualizes this process.
 4. Address any comments added during code review by pushing additional commits
    (there may be multiple rounds of reviews)
 5. Once all issues are resolved, code owners will merge the feature branch into
-   the `dev` branch using the ["squash merging"][github-merge-squash] method
+   the default branch using the ["squash merging"][github-merge-squash] method
 
 !!! note "Default branch"
 
-    `dev` is the default branch for all projects in pre-release state, i.e.,
-    those with version numbers below `v1.0.0`. Upon release, `main` becomes
-    the default branch, and [semantic versioning][sem-ver] is strictly adhered
-    by.
+    Typically, `dev` is the default branch for all projects in pre-release
+    state, i.e., those with version numbers below `v1.0.0`. Upon release,
+    `main` becomes the default branch, and [semantic versioning][sem-ver] is
+    strictly adhered by. In some cases, there may not be a `dev` branch and
+    `main` is used as the default branch straight away.
 
 ??? note "Substantial changes"
 
