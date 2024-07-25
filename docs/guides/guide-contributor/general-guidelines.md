@@ -83,7 +83,7 @@ visualizes this process.
 
 !!! note "Default branch"
 
-    For project in pre-release state, i.e., those with version numbers below
+    For projects in pre-release state, i.e., those with version numbers below
     `v1.0.0`, the development branch is typically the default branch (meaning
     that the correct target branch for your PRs is set automatically).
     
