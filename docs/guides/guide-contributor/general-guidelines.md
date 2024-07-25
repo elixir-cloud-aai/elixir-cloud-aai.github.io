@@ -77,7 +77,7 @@ visualizes this process.
 !!! note "Development branch"
 
     Typically, `dev` is the name of the development branch in our projects.
-    In few cases (e.g., _this_ repository), there is no development branch
+    In a few cases (e.g., _this_ repository), there is no development branch
     and changes are merged immediately into the main branch, typically called
     `main`.
 
