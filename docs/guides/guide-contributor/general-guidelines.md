@@ -61,25 +61,35 @@ visualizes this process.
 
 [![GitHub Flow](../../images/github_flow.svg)][github-flow]
 
-1. [Create a "feature branch"][git-branch] from the default branch; use the
+1. [Create a "feature branch"][git-branch] from the development branch; use the
    `feature/my-feature` naming pattern to name your feature branch, e.g.,
-   `feature/update-docs`; make sure the default [branch
+   `feature/update-docs`; make sure the development [branch
    is up to date][git-pull] before creating the feature branch!
 2. [Commit code changes][git-commit] to address the issue you are working on
 3. [Push the feature branch][git-push] to the remote and [create a pull
-   request][github-pr] in GitHub
+   request][github-pr] against the development branch in GitHub
 4. Address any comments added during code review by pushing additional commits
    (there may be multiple rounds of reviews)
 5. Once all issues are resolved, code owners will merge the feature branch into
-   the default branch using the ["squash merging"][github-merge-squash] method
+   the development branch using the ["squash merging"][github-merge-squash]
+   method
+
+!!! note "Development branch"
+
+    Typically, `dev` is the name of the development branch in our projects.
+    In few cases (e.g., _this_ repository), there is no development branch
+    and changes are merged immediately into the main branch, typically called
+    `main`.
 
 !!! note "Default branch"
 
-    Typically, `dev` is the default branch for all projects in pre-release
-    state, i.e., those with version numbers below `v1.0.0`. Upon release,
-    `main` becomes the default branch, and [semantic versioning][sem-ver] is
-    strictly adhered by. In some cases, there may not be a `dev` branch and
-    `main` is used as the default branch straight away.
+    For project in pre-release state, i.e., those with version numbers below
+    `v1.0.0`, the development branch is typically the default branch (meaning
+    that the correct target branch for your PRs is set automatically).
+    
+    With the first major release, the default branch is set to the main
+    branch instead. In that case, make sure to manually select the development
+    branch as the target branch for your PRs.
 
 ??? note "Substantial changes"
 
