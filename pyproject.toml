@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "elixir-cloud-aai-github-io"
+version = "0.1.0"
+description = "Documentation Hub for ELIXIR Cloud AAI"
+authors = ["ELIXIR Cloud AAI <cloud-service@elixir-europe.org>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mkdocs-i18n = "^0.4.6"
+mkdocs-material = "^9.5.28"
+pillow = "^10.4.0"
+cairosvg = "^2.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
