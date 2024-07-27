@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+# ELIXIR Cloud & AAI Code of Conduct
 
 ## Our Pledge
 
