@@ -22,7 +22,7 @@ hub:
       token_url: https://login.aai.lifescience-ri.eu/oidc/token
       userdata_url: https://login.aai.lifescience-ri.eu/oidc/userinfo
       username_claim: preferred_username # used in newer versions
-      username_key: preferred_username # this variable is depracted in newer versions
+      username_key: preferred_username # this variable is deprecated in newer versions
       scope: 
         - openid
         - email
