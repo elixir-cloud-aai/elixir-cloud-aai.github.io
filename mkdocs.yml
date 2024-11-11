@@ -82,7 +82,7 @@ markdown_extensions:
 nav:
   - Home: "index.md"
   - Guides:
-      - "guides/user-stories.md"
+      - "guides/user_stories.md"
       - Users:
           - "guides/guide-user/index.md"
       - Developers:
