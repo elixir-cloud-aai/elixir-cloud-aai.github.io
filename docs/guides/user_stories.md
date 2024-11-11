@@ -1,6 +1,6 @@
 # User Stories
 
-With the elixir cloud activities, we support the development of cloud services to provide access to data and compute for researchers. Thereby we have various user stories in mind, which are listed below to guide researcher as well as service/data provider.
+With the elixir cloud activities, we support the development of cloud services to provide access to data and compute for researchers. Thereby we have various user stories in mind, which are listed below to guide researchers as well as service/data provider.
 
 ## Access to services
 
@@ -25,6 +25,6 @@ With the elixir cloud activities, we support the development of cloud services t
 
 **As a data controller, I can give a researcher access to a specific dataset, so that the researcher can work with the data in accordance with my data usage policies.** The data controllers are responsible for providing access to sensitive data. Regarding sensitive human data, patients have usually specified the purposes for which personal data may be accessed and the controllers must check whether these purposes are fulfilled in the event of a request. For this purpose, GA4GH defines the [Data Use Ontology](https://www.ga4gh.org/product/data-use-ontology-duo/) to standardize both consents and requests. Approved access requests can be stored uniformly via the [GA4GH Passport](https://www.ga4gh.org/product/ga4gh-passports/) specification. Life Science Login acts as a passport broker and can provide user authorizations for the cloud services ([GA4GH passport support in LifeScience AAI](https://docs.google.com/document/d/1QpMgSeDdtPJWujdR9Z93WsTC5I9vyvd4bHjpWcGVnz0/edit?tab=t.0#heading=h.vdrx3flw0u2j)).
 
-# Analysis
+## Analysis
 
 **As a researcher, I can run a specific data analysis workflow on an external dataset in the cloud, so that I can integrate the results into my research activities.** The GA4GH standardizes the execution of workflows and workflow tasks in the cloud via the specification of the [Workflow Execution Service (WES)](https://www.ga4gh.org/product/workflow-execution-service-wes/) and the [Task Execution Service (TES)](https://www.ga4gh.org/product/task-execution-service-tes/) respectively. The ELIXIR on cloud project supports the execution of workflows and tasks by developing tools and providing guidance for researchers ([user-guide](https://elixir-cloud-aai.github.io/guides/guide-user/)). A user can trigger the execution of a workflow via a WES implementation. Once the workflow has been successfully completed, the resulting data can be used by the researcher for further activities.
