@@ -88,3 +88,31 @@ LS-Login can be activated in MinIO either by using the MinIO console using the O
   - Allow MinIO to request the userinfo endpoint for additional information (`on`).
 
 MinIO supports two different mechanisms for authorization of users with OIDC ([MinIO OIDC authorization](https://min.io/docs/minio/linux/administration/identity-access-management/oidc-access-management.html#minio-external-identity-management-openid)). It is recommended to use the RolePolicy flow. Here, all LS-Login users in MinIO will be assigned to one or more policies. These policies can control access to specific buckets by group membership; e.g. require that users belong to a specific LS-AAI group (see [policy based access control](https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html#tag-based-policy-conditions)).
+
+In the example below, access to buckets is restricted to a list of users which are identified by their `preferred_username` claims. 
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::sensitive",
+                "arn:aws:s3:::sensitive/*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "jwt:preferred_username": [
+                        "ELIXIR_USERNAME"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
