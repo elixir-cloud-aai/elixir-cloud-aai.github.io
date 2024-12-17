@@ -343,8 +343,8 @@ port on the host machine at which the API is exposed. For example, with
 
 ```yaml
 service:
-    type: "NodePort"
-    node_port: "31567"
+    type: NodePort
+    node_port: 31567
 ```
 
 Kubernetes will route requests coming in to port `31567` on the host machine to
