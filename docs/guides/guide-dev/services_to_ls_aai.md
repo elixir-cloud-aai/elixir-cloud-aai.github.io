@@ -36,6 +36,8 @@ cull:
 
 # Add LS_Login to Hedgedoc
 
+Before configuring Hedgedoc, you need to register your service with LS-Login. Follow the registration process at https://lifescience-ri.eu/ls-login/documentation/how-to-integrate/registration.html
+
 Hedgedoc is configured using environment variables. This guide assumes that a Hedgedoc is already deployed, in our case we used this chart:
 
 https://github.com/CSCfi/helm-charts/tree/main/charts/hedgedoc
