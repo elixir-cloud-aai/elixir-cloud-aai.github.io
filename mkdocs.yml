@@ -84,6 +84,7 @@ nav:
   - Guides:
       - Users:
           - "guides/guide-user/index.md"
+          - "User stories": "guides/guide-user/user_stories.md"
       - Developers:
           - "guides/guide-dev/index.md"
       - Administrators:
