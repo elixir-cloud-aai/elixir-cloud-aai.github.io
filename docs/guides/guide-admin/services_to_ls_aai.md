@@ -6,7 +6,7 @@
 * In the SAML/OIDC setting page, you will also find values for Client ID and Client Secret
 * To use LS-Login in Jupyterhub, you have to modify the config.yaml file (see also [here](https://z2jh.jupyter.org/en/stable/administrator/authentication.html)):
 
-```
+```yaml
 hub:
   config:
     Authenticator:
@@ -15,7 +15,7 @@ hub:
         - ADMIN # here you can specify an user as admin
     GenericOAuthenticator:
       client_id: # add client id from SPREG
-      client_secret: # add client id from SPREG
+      client_secret: # add client secret from SPREG
       login_service : LS LOGIN
       oauth_callback_url: https://{yourdomain}/hub/oauth_callback # change to you domain accordingly
       authorize_url: https://login.aai.lifescience-ri.eu/oidc/authorize
@@ -31,7 +31,6 @@ hub:
       authenticator_class: generic-oauth
 cull:
   enabled: false
-
 ```
 
 # Add LS_Login to Hedgedoc
@@ -59,7 +58,7 @@ Once Hedgedoc is deployed, in order to add LS-AAI login one just needs to add th
 - name: CMD_OAUTH2_CLIENT_ID
   - value: _REPLACE BY CLIENT ID_
 - name: CMD_OAUTH2_CLIENT_SECRET
-  - value: REPLACE BY CLIENT SECRET_
+  - value: _REPLACE BY CLIENT SECRET_
 - name: CMD_OAUTH2_PROVIDERNAME
   - value: ELIXIR Cloud & AAI
 - name: CMD_OAUTH2_SCOPE
@@ -73,11 +72,10 @@ https://docs.hedgedoc.org/configuration/#oauth2-login
 
 LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environmental variables ([MinIO OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html)).
 
-
 - Config URL (MINIO_IDENTITY_OPENID_CONFIG_URL)
   - https://login.aai.lifescience-ri.eu/oidc/.well-known/openid-configuration
 - Client ID (MINIO_IDENTITY_OPENID_CLIENT_ID)
-  - Id of the LS-Login service
+  - ID of the LS-Login service
 - Client secret (MINIO_IDENTITY_OPENID_CLIENT_SECRET)
   - Secret of the LS-Login service
 - Display Name (MINIO_IDENTITY_OPENID_DISPLAY_NAME)
