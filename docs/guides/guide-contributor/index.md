@@ -122,6 +122,11 @@ projects they were working on):
 | 2023 | [Assel Abzalova][linkedin-assel] | [Web Components for discovering and using scientific software in the Cloud][gsoc-2023-assel] |
 | 2023 | [Javed Habib][linkedin-javed] | [Dashboard Web Components (React, Vue etc) for Workflow and Task Runs][gsoc-2023-javed] |
 | 2023 | [Lakshya Garg][linkedin-lakshya] | [Common compliance testing framework for every OpenAPI specification][gsoc-2023-lakshya] |
+| 2024 | [Aarav Mehta][linkedin-aarav] | [Extensible GA4GH Client Library/SDK and Command Line Interface implemented in Rust][gsoc-2024-aarav] |
+| 2024 | [Athitheya Gobinathan][linkedin-athitheya] | [Crypt4GH Support for GA4GH Task Execution Service API Implementations][gsoc-2024-athitheya] |
+| 2024 | [Javed Habib][linkedin-javed] | [TESK - A GA4GH-TES based Kubernetes batch execution service][gsoc-2024-javed] |
+| 2024 | [Karanjot Singh][linkedin-karanjot] | [Python library for packaging and reusing Cloud Computing workload traces][gsoc-2024-karanjot] |
+| 2024 | [Pratiksha Sankhe][linkedin-pratiksha] | [Dashboard Web Components (React, Vue etc) for file upload and handling][gsoc-2024-pratiksha] |
 
 ### Hackathons
 
