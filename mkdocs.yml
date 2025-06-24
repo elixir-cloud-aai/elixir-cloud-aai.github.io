@@ -82,6 +82,9 @@ markdown_extensions:
 nav:
   - Home: "index.md"
   - Guides:
+      - "guides/index.md"
+      - Information:
+        - "Sensitive Data": "guides/guide-info/sensitive_data.md"
       - Users:
           - "guides/guide-user/index.md"
           - "User stories": "guides/guide-user/user_stories.md"
