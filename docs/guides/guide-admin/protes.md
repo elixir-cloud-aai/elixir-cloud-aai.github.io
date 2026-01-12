@@ -57,7 +57,7 @@ development environments, respectively.
 
 ## Installation
 
-You can find a Helm chart in the [GitHub repository](https://github.com/elixir-cloud-aai/proTES/tree/dev/deployment) of proWES
+You can find a Helm chart in the [GitHub repository](https://github.com/elixir-cloud-aai/proTES/tree/dev/deployment) of proTES
 
 Follow these instructions
 
@@ -72,7 +72,7 @@ Follow these instructions
 
 ## Usage
 
-First you must create a namespace in Kubernetes in which to deploy proWES. The
+First you must create a namespace in Kubernetes in which to deploy proTES. The
 commands below assume that everything is created in the context of this
 namespace. How the namespace is created depends on the cluster, so we won't
 document it here.

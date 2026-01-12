@@ -20,10 +20,10 @@ previous runs can be listed, and the status and run information of individual
 runs can be queried. The service leverages [cwl-tes][res-cwl-tes] to
 interpret [CWL](https://www.commonwl.org) workflows, break them down into individual tasks and
 emit [GA4GH TES][ga4gh-tes]-compatible HTTP requests to a configured
-[TES][res-ga4gh-tes] instance. Access to endpoints can be configured to require
-[JSON Web Token]-based access tokens, such as those issued by
+[TES][ga4gh-tes] instance. Access to endpoints can be configured to require
+JSON Web Token-based access tokens, such as those issued by
 [ELIXIR AAI](https://elixir-europe.org/platforms/compute/aai). Run information is stored in a
-[MongoDB]database.
+MongoDB database.
 
 Note that development is currently in beta stage.
 Further test deployments can be found at the [ELIXIR Cloud & AAI's resource
