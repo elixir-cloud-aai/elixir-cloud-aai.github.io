@@ -83,7 +83,7 @@ nav:
   - Home: "index.md"
   - Guides:
       - "guides/index.md"
-      - Information:
+      - General:
         - "Sensitive Data": "guides/guide-info/sensitive_data.md"
       - Users:
           - "guides/guide-user/index.md"
