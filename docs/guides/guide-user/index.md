@@ -91,7 +91,7 @@ A demo workflow is available [here][elixir-cloud-demo-cwl].
 
 You can find an article about NextFlow with GA4GH TES [here](https://techcommunity.microsoft.com/blog/healthcareandlifesciencesblog/introducing-nextflow-with-ga4gh-tes-a-new-era-of-scalable-data-processing-on-azu/4253160)
 
-To use TES in your Nextflow config, use the plugins `nf-ga4gh`:
+To use TES in your Nextflow config, use the plugin `nf-ga4gh`:
 
 ```
 plugins {
