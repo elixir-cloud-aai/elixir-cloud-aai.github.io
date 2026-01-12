@@ -118,7 +118,7 @@ are deployed using:
 - `templates/prowes/prowes-deployment.yaml`
 - `templates/prowes/celery-deployment.yaml`
 
-You can use `ReadWriteOnce` if you don't have `StorageClass`
+You can use `ReadWriteOnce` if you don't have a `StorageClass`
 that supports `RWX`. In that case, a `podAffinity` will be set to have the proWES pods
 running on the same node.
 
