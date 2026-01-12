@@ -82,7 +82,7 @@ ELIXIR Cloud cloud storage solutions. The currently supported solutions are:
 - [vsftpd][vsftpd] (FTP)
 
 !!! note "Other storage solutions"
-    Other S3 and FTP implementations may work but have not being tested.
+    Other S3 and FTP implementations may work but have not been tested.
 
 #### Deploying MinIO (Amazon S3)
 
