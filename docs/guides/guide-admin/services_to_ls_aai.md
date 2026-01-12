@@ -68,7 +68,7 @@ The documentation from Hedgedoc about this is available [here](https://docs.hedg
 
 # Using LS-Login in MinIO
 
-LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environmental variables ([MinIO OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html)).
+LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environment variables ([MinIO OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html)).
 
 ```sh
 export MINIO_IDENTITY_OPENID_CONFIG_URL="https://login.aai.lifescience-ri.eu/oidc/.well-known/openid-configuration"
