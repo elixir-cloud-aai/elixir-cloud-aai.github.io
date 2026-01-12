@@ -212,7 +212,7 @@ So, in this example case, we get the following URL:
 http://123.123.123.123:8080/ga4gh/tes/v1
 ```
 
-You can now test the intallation with the following example call to get a list
+You can now test the installation with the following example call to get a list
 of tasks:
 
 ```bash
