@@ -16,7 +16,7 @@ instances. As such, it can serve, for example, as a compatibility layer, a load
 balancer workload distribution layer, a public entry point to an enclave of
 independent compute nodes, or a means of collecting telemetry.
 
-When TES requests are received, proTES applies a configured middlewares before
+When TES requests are received, proTES applies configured middleware before
 forwarding the requests to appropriate TES instances in the network. A plugin
 system makes it easy to write and inject middlewares tailored to specific
 requirements, such as for access control, request/response processing or
