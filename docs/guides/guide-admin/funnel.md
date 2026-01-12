@@ -55,7 +55,7 @@ For the use of Funnel with Slurm, make sure the following conditions are met:
    [this file][funnel-config-slurm-service] can be used as a template. Set the
    correct paths to the `funnel` binary and config file.
 
-If successfull Funnel should be listening on port `8080`.
+If successful, Funnel should be listening on port `8080`.
 
 ### OpenPBS
 
