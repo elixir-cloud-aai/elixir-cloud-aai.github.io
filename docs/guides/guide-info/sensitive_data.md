@@ -9,7 +9,7 @@ This page summarizes scenarios and requirements for handling sensitive data with
 
 Sensitive data processing in research is governed by several legal frameworks, most notably the General Data Protection Regulation (GDPR) and the European Health Data Space (EHDS):
 
-* **GDPR**: Allows the use of sensitive personal data for research when specific safeguards are in place. Processing is permitted in the public interest, provided measures such as data minimization, pseudonymization, and strict access controls are implemented. Explicit informed consent is often required, and a Data Protection Impact Assessment (DPIA) is strongly recommended.
+* **GDPR**: Allows the use of sensitive personal data for research when specific safeguards are in place. Under GDPR, processing may rely on different legal bases, such as tasks carried out in the public interest or explicit informed consent from data subjects, depending on the research context and applicable national law. In all cases, measures such as data minimization, pseudonymization, and strict access controls should be implemented, and a Data Protection Impact Assessment (DPIA) is strongly recommended.
 * **EHDS**: Builds on GDPR by establishing a unified framework for secure sharing and secondary use of electronic health data across the EU. The EHDS is defined as "the first common EU data space dedicated to a specific sector, establishing a common framework for use and exchange of electronic health data across the EU" ([Regulation (EU) 2025/327](eur-lex-ehds)). The EHDS aims to improve individuals' access to their electronic health data and enable secondary use for research, innovation, policymaking, health threats preparedness, patient safety, and regulatory activities.
 
 ## Environments
