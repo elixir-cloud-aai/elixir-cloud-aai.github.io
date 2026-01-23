@@ -35,7 +35,7 @@ Sensitive data processing in research is governed by several legal frameworks, m
 Researchers may require access to sensitive data in different scenarios.
 The four use cases are derived from the two dimensions of data storage and data processing.
 Research data can be stored in a single location or in multiple locations and institutions.
-We also distinguish between whether the data should be processed in the cloud or in the knowledge worker's own environment.
+We also distinguish between whether the data should be processed in the cloud or in the researcher's own environment.
 
 |                    | Local processing    | Cloud processing     |
 | ------------------ | ------------------- | -------------------- |
