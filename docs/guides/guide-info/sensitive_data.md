@@ -28,7 +28,7 @@ Sensitive data processing in research is governed by several legal frameworks, m
 * **Integrity**: Ensures the integrity of data and code within the environment.
 * **Confidentiality**: Maintains confidentiality of sensitive information if the environment is compromised.
 * **Controlled Access and Authentication**: Authenticates code and data before execution to ensure only trusted and verified code runs.
-* **Collaboration and Analysis**: There is an offer of tools and infrastructure that enable researchers to perform analysis and collaborate within a secure environment. This allows for sharing and combining datasets while maintaining data privacy.
+* **Collaboration and Analysis**: Provides tools and infrastructure that enable researchers to perform analysis and collaborate within a secure environment. This allows for sharing and combining datasets while maintaining data privacy.
 
 ## Use Cases
 
