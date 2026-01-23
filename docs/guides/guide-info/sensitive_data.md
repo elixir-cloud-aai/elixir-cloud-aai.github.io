@@ -21,7 +21,7 @@ Sensitive data processing in research is governed by several legal frameworks, m
 !!! note "SPEs vs TREs"
     Secure Processing Environments (SPEs) and Trusted Research Environments (TREs) are conceptually very similar and serve comparable purposes in providing secure environments for sensitive data processing. The key difference lies in their regulatory and geographical context: SPEs are specifically required within the framework of the EHDS, while TREs are primarily a UK-developed concept and implementation approach.
 
-### Similarities
+### Similarities Between TEE, SPE, and TRE
 
 * **Isolation**: Operates separately from the main platform it runs on.
 * **Security**: Provides a secure environment for computations and data storage, including cryptographic key management and protection against malware.
