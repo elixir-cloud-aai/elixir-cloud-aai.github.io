@@ -31,11 +31,13 @@
 [elixir-cloud-demo-smk]: <https://github.com/elixir-cloud-aai/demo-tes-hybrid-cloud>
 [elixir-cloud-registry]: <https://elixir-cloud.dcc.sib.swiss/ga4gh/registry/v1/ui/>
 [elixir-cloud-services]: <https://github.com/elixir-cloud-aai/elixir-cloud-aai/blob/dev/resources/resources.md>
+[eur-lex-ehds]: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500327>
 [fair]: <https://www.go-fair.org/fair-principles/>
 [funnel]: <https://ohsu-comp-bio.github.io/funnel/>
 [funnel-config-slurm]: <https://raw.githubusercontent.com/lvarin/test-funnel-slurm/main/funnel_config.yml>
 [funnel-config-slurm-service]: <https://raw.githubusercontent.com/ohsu-comp-bio/funnel/52ef90fb76e620226f2af1bca5d14d35e1c4ad4a/deployments/systemd/funnel-server.service>
 [ga4gh]: <https://ga4gh.org/>
+[ga4gh-cloud-ws]: <https://www.ga4gh.org/work_stream/cloud/>
 [ga4gh-cloud]: <https://ga4gh-cloud.github.io/>
 [ga4gh-dps]: <https://www.ga4gh.org/how-we-work/driver-projects/>
 [ga4gh-drs]: <https://github.com/ga4gh/data-repository-service-schemas>
@@ -140,3 +142,4 @@
 [tesk-helm-values]: <https://github.com/elixir-cloud-aai/TESK/blob/master/charts/tesk/values.yaml>
 [vsftpd]: <https://security.appspot.com/vsftpd.html>
 [vsftpd-deploy]: <https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-ubuntu-20-04>
+[ukdataservice-5-safes]: <https://ukdataservice.ac.uk/help/secure-lab/what-is-the-five-safes-framework>
