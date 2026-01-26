@@ -40,7 +40,13 @@ i: install
 .PHONY: venv
 venv:
 	@echo "\nCreating a virtual environment ++++++++++++++++++++++++++++++++++++++++++++++++\n"
-	@python -m venv .venv
+	@if command -v python3 >/dev/null 2>&1; then \
+		python3 -m venv .venv; \
+	elif command -v python >/dev/null 2>&1; then \
+		python -m venv .venv; \
+	else \
+		echo "Python interpreter not found" >&2; exit 1; \
+	fi
 	@echo "\nSummary +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
 	@echo "Virtual environment created successfully."
 	@echo "To activate the environment for this shell session, run:"

@@ -89,11 +89,17 @@ A demo workflow is available [here][elixir-cloud-demo-cwl].
 
 ### Nextflow
 
-!!! warning "Under construction"
-    More info coming soon...
+You can find an article about NextFlow with GA4GH TES [here](https://techcommunity.microsoft.com/blog/healthcareandlifesciencesblog/introducing-nextflow-with-ga4gh-tes-a-new-era-of-scalable-data-processing-on-azu/4253160)
+
+To use TES in your Nextflow config, use the plugin `nf-ga4gh`:
+
+```
+plugins {
+  id 'nf-ga4gh'
+}
+```
 
 ## Workflow Execution Service (WES)
-
 The GA4GH [WES][ga4gh-wes] is a standard specification protocol for executing
 and monitoring bioinformatics workflows. It allows researchers to easily
 execute and manage complex analysis pipelines across multiple computing
@@ -119,10 +125,42 @@ specification are:
 
 ## Data Repository Service (DRS)
 
-!!! warning "Under construction"
-    More info coming soon...
+The GA4GH [DRS][ga4gh-drs] API provides a standard set of data retrieval methods
+to access genomic and related health data across different repositories.
+It allows researchers to simplify and standardize data retrieval in cloud-based
+environements. Some key features like Standardized data access that offers a consistent
+API for retrieving datasets. Cloud-agnostic means that it works accross different
+cloud infrastructures. Two use cases for the GA4GH DRS:
+
+- Scenario 1: A researcher wants to run an analysis pipeline on a dataset without
+  worrying about where the data physically resides. The researcher uses a DRS ID
+  to request the dataset. DRS resolves the ID to the actual storage location and
+  provides signed URLs or access tokens and the pipeline retrievess the data
+  seamlessly, regardless of the underlying cloud or storage system.
+
+- Scenario 2: A pharmaceutical company is collaborating with hospitals to analyze
+  patient genomic data. Due to privacy regulations, raw data cannot be moved outside
+  the hospital’s secure environment. The hospital can expose their datasets via DRS
+  endpointsand the pharmaceutical company's workflow engine queries DRS to get metadata.
+  Finally, the analysis is performed without violating data residency rules.
 
 ## Tool Registry Service (TRS)
 
-!!! warning "Under construction"
-    More info coming soon...
+The GA4GH [TRS][ga4gh-trs] API provides a standard mechanism to list, search and
+register tools and worflows across different platforms and cloud environments.
+It supports workflows written in CWL, WDL, Nextflow, Galaxy, Snakemake.
+Here are examples of two use cases:
+
+- Scenario 1: A bioinformatics researcher develops a workflow for variant calling
+  using WDL and Docker containers. They want to share it with collaborators who use
+  different platform. TRS can help, the researcher registers the workflow in a 
+  TRS-compliant registry like Dockstore. The collaborators can discover the workflow
+  via TRS API and run it on their platform.
+  TRS will ensure that metadata, versioning, and container are standardized and
+  accessible
+
+- Scenario 2: A hospital’s genomics lab uses an automated pipeline to analyze patient
+  exome data for rare disease diagnosis. The pipeline queries a TRS registry to find
+  the latest version of tools (like VEP or GATK), retrieves the workflow descriptor
+  and container images. Finally, the pipeline executes the tools in a secure,
+  compliant environment.

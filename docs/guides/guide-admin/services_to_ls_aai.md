@@ -37,55 +37,48 @@ cull:
 
 Before configuring Hedgedoc, you need to register your service with LS-Login. Follow the registration process at https://lifescience-ri.eu/ls-login/documentation/how-to-integrate/registration.html
 
-Hedgedoc is configured using environment variables. This guide assumes that a Hedgedoc is already deployed, in our case we used this chart:
-
-https://github.com/CSCfi/helm-charts/tree/main/charts/hedgedoc
+Hedgedoc is configured using environment variables. This guide assumes that a Hedgedoc is already deployed, in our case we used this [chart](https://github.com/CSCfi/helm-charts/tree/main/charts/hedgedoc).
 
 Once Hedgedoc is deployed, in order to add LS-AAI login one just needs to add these variables:
 
+```yaml
 - name: CMD_OAUTH2_USER_PROFILE_URL
-  - value: https://login.aai.lifescience-ri.eu/oidc/userinfo
+  value: https://login.aai.lifescience-ri.eu/oidc/userinfo
 - name: CMD_OAUTH2_USER_PROFILE_USERNAME_ATTR
-  - value: preferred_username
+  value: preferred_username
 - name: CMD_OAUTH2_USER_PROFILE_DISPLAY_NAME_ATTR
-  - value: name
+  value: name
 - name: CMD_OAUTH2_USER_PROFILE_EMAIL_ATTR
-  - value: email
+  value: email
 - name: CMD_OAUTH2_TOKEN_URL
-  - value: https://login.aai.lifescience-ri.eu/oidc/token
+  value: https://login.aai.lifescience-ri.eu/oidc/token
 - name: CMD_OAUTH2_AUTHORIZATION_URL
-  - value: https://login.aai.lifescience-ri.eu/oidc/authorize
+  value: https://login.aai.lifescience-ri.eu/oidc/authorize
 - name: CMD_OAUTH2_CLIENT_ID
-  - value: _REPLACE BY CLIENT ID_
+  value: _REPLACE BY CLIENT ID_
 - name: CMD_OAUTH2_CLIENT_SECRET
-  - value: _REPLACE BY CLIENT SECRET_
+  value: _REPLACE BY CLIENT SECRET_
 - name: CMD_OAUTH2_PROVIDERNAME
-  - value: ELIXIR Cloud & AAI
+  value: ELIXIR Cloud & AAI
 - name: CMD_OAUTH2_SCOPE
-  - value: openid email profile
-  
-The documentation from Hedgedoc about this is at:
+  value: openid email profile
+```
 
-https://docs.hedgedoc.org/configuration/#oauth2-login
+The documentation from Hedgedoc about this is available [here](https://docs.hedgedoc.org/configuration/#oauth2-login).
 
 # Using LS-Login in MinIO
 
-LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environmental variables ([MinIO OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html)).
+LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environment variables ([MinIO OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html)).
 
-- Config URL (MINIO_IDENTITY_OPENID_CONFIG_URL)
-  - https://login.aai.lifescience-ri.eu/oidc/.well-known/openid-configuration
-- Client ID (MINIO_IDENTITY_OPENID_CLIENT_ID)
-  - ID of the LS-Login service
-- Client secret (MINIO_IDENTITY_OPENID_CLIENT_SECRET)
-  - Secret of the LS-Login service
-- Display Name (MINIO_IDENTITY_OPENID_DISPLAY_NAME)
-  - A human readable label for the login button (e.g. `LS-Login`)
-- Scopes (MINIO_IDENTITY_OPENID_SCOPES)
-  - Scopes that will be requested from LS-Login (e.g. `openid,email,profile`)
-- Role policy (MINIO_IDENTITY_OPENID_ROLE_POLICY)
-  - Name of a policy in MinIO that will be used to manage access of LS-Login users (e.g. `readonly`).
-- Claim User Info (MINIO_IDENTITY_OPENID_CLAIM_USERINFO)
-  - Allow MinIO to request the userinfo endpoint for additional information (`on`).
+```sh
+export MINIO_IDENTITY_OPENID_CONFIG_URL="https://login.aai.lifescience-ri.eu/oidc/.well-known/openid-configuration"
+export MINIO_IDENTITY_OPENID_CLIENT_ID="<ID of the LS-Login service>"
+export MINIO_IDENTITY_OPENID_CLIENT_SECRET="<Secret of the LS-Login service>"
+export MINIO_IDENTITY_OPENID_DISPLAY_NAME="<A human readable label for the login button (e.g. `LS-Login`)>"
+export MINIO_IDENTITY_OPENID_SCOPES="<Scopes that will be requested from LS-Login (e.g. `openid,email,profile`)>"
+export MINIO_IDENTITY_OPENID_ROLE_POLICY="<Name of a policy in MinIO that will be used to manage access of LS-Login users (e.g. `readonly`).>"
+export MINIO_IDENTITY_OPENID_CLAIM_USERINFO="<Allow MinIO to request the userinfo endpoint for additional information (`on`).>"
+```
 
 MinIO supports two different mechanisms for authorization of users with OIDC ([MinIO OIDC authorization](https://min.io/docs/minio/linux/administration/identity-access-management/oidc-access-management.html#minio-external-identity-management-openid)). It is recommended to use the RolePolicy flow. Here, all LS-Login users in MinIO will be assigned to one or more policies. These policies can control access to specific buckets by group membership; e.g. require that users belong to a specific LS-AAI group (see [policy based access control](https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html#tag-based-policy-conditions)).
 

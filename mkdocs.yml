@@ -92,7 +92,15 @@ nav:
           - "guides/guide-dev/index.md"
       - Administrators:
           - "guides/guide-admin/index.md"
+          - "Cloud-Registry": "guides/guide-admin/cloudregistry.md"
+          - "CWL-WES": "guides/guide-admin/cwlwes.md"
+          - "DRS-Filer": "guides/guide-admin/drsfiler.md"
+          - "Funnel": "guides/guide-admin/funnel.md"
           - "LS Login configuration": "guides/guide-admin/services_to_ls_aai.md"
+          - "proWES": "guides/guide-admin/prowes.md"
+          - "proTES": "guides/guide-admin/protes.md"
+          - "TESK" : "guides/guide-admin/tesk.md"
+          - "TRS-Filer": "guides/guide-admin/trsfiler.md"
       - Contributors:
           - "guides/guide-contributor/index.md"
           - "Workflow": "guides/guide-contributor/workflow.md"
