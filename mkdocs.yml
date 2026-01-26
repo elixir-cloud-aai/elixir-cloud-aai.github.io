@@ -101,6 +101,8 @@ nav:
           - "proTES": "guides/guide-admin/protes.md"
           - "TESK" : "guides/guide-admin/tesk.md"
           - "TRS-Filer": "guides/guide-admin/trsfiler.md"
+          - "Sensitive Data analysis in Secure Processing Environments (SPE)": "guides/guide-admin/sensitive_data_analysis.md"
+          - "Crypt4GH Middleware with proTES and Funnel": "guides/guide-admin/crypt4gh_to_protes.md"
       - Contributors:
           - "guides/guide-contributor/index.md"
           - "Workflow": "guides/guide-contributor/workflow.md"
