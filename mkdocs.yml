@@ -83,6 +83,7 @@ nav:
   - Home: "index.md"
   - General:
     - "general/index.md"
+    - "GA4GH Cloud Workstream": "general/ga4gh_cloud.md"
     - "Sensitive Data": "general/sensitive_data.md"
     - "User stories": "general/user_stories.md"
   - Sandbox:
@@ -99,8 +100,8 @@ nav:
     - "TESK" : "services/tesk.md"
     - "TRS-Filer": "services/trsfiler.md"
   - Tutorials:
-    - "Sensitive Data analysis in Secure Processing Environments (SPE)": "tutorials/sensitive_data_analysis.md"
-    - "Crypt4GH Middleware with proTES and Funnel": "tutorials/crypt4gh_to_protes.md"
+    - "SPE based on WES": "tutorials/sensitive_data_analysis.md"
+    - "Crypt4GH with proTES": "tutorials/crypt4gh_to_protes.md"
   - Contribute:
     - "contribute/index.md"
     - "Workflow": "contribute/workflow.md"
