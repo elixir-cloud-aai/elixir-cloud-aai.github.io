@@ -100,6 +100,7 @@ nav:
     - "TESK" : "services/tesk.md"
     - "TRS-Filer": "services/trsfiler.md"
   - Tutorials:
+    - "tutorials/index.md"
     - "SPE based on WES": "tutorials/sensitive_data_analysis.md"
     - "Crypt4GH with proTES": "tutorials/crypt4gh_to_protes.md"
   - Contribute:
