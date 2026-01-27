@@ -7,12 +7,12 @@ hide:
 
 # Welcome
 
-Welcome to the Documentation Hub for [ELIXIR][elixir] [Cloud &
-AAI][elixir-cloud-aai], a [Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
+Welcome to the Documentation Hub for [ELIXIR-on-Cloud][elixir-cloud-aai], a
+[Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
 
 <div>
     <a href="https://elixir-cloud.dcc.sib.swiss/">
-        <img src="images/logo.256px.png" alt="ELIXIR Cloud & AAI logo" width="60"/>
+        <img src="images/logo.256px.png" alt="ELIXIR-on-Cloud logo" width="60"/>
     </a>
     <a href="https://elixir-europe.org/">
         <img src="images/logo.elixir.svg" alt="ELIXIR logo" width="81"/>
@@ -24,8 +24,9 @@ AAI][elixir-cloud-aai], a [Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
 
 Whether you are a (potential) user, developer, systems administrator or
 contributor, this is your one-stop shop for documentation around the
-ELIXIR::GA4GH Cloud federated analytics platform and bespoke ELIXIR Cloud & AAI
+ELIXIR-on-Cloud federated analytics platform and bespoke ELIXIR-on-Cloud
 solutions for your cloud needs.
+
 
 === ":fontawesome-solid-user: Users"
 

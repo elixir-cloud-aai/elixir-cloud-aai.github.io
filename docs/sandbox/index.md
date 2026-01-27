@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the user documentation for the ELIXIR Cloud & AAI ecosystem. With
+Welcome to the user documentation for the ELIXIR-on-Cloud ecosystem. With
 this powerful set of services, you'll be able to easily access cloud resources
 and send analysis pipelines to your data with just a few simple commands.
 Imagine being able to run complex genomic analyses on massive datasets without
@@ -29,9 +29,9 @@ provide you with all the information you need to start using ELIXIR's GA4GH
 cloud services ecosystem and harness the power of cloud computing for your
 genomic data analysis needs. Let's get started!
 
-## ELIXIR Cloud & AAI deployments
+## ELIXIR-on-Cloud deployments
 
-The ELIXIR Cloud & AAI group manages different services and appliocations as
+The ELIXIR-on-Cloud group manages different services and appliocations as
 part of the ELIXIR cloud framework. Currently, these services are temporarily
 listed in a dedicated [services list applications][elixir-cloud-services].  In
 the mid-term, all services instances will be registered in the [ELIXIR Cloud

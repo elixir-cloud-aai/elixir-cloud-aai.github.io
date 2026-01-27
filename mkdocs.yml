@@ -1,5 +1,5 @@
 copyright: >
-  Copyright &copy; 2022 ELIXIR Cloud & AAI –
+  Copyright &copy; 2022 ELIXIR-on-Cloud –
   <a href="#__consent">Change cookie settings</a>
 edit_uri: edit/main/docs/
 extra:
@@ -35,7 +35,7 @@ extra:
   social:
     - icon: custom/elixir-cloud-aai
       link: https://elixir-cloud.dcc.sib.swiss/
-      name: ELIXIR Cloud & AAI website
+      name: ELIXIR-on-Cloud website
     - icon: custom/elixir
       link: https://elixir-europe.org/
       name: ELIXIR website
@@ -44,19 +44,19 @@ extra:
       name: GA4GH website
     - icon: custom/github
       link: https://github.com/elixir-cloud-aai
-      name: ELIXIR Cloud & AAI GitHub organization
+      name: ELIXIR-on-Cloud GitHub organization
     - icon: custom/twitter
       link: https://twitter.com/ELIXIRcloud_aai
-      name: ELIXIR Cloud & AAI Twitter profile
+      name: ELIXIR-on-Cloud Twitter profile
     - icon: custom/slack
       link: https://join.slack.com/t/elixir-cloud/shared_invite/enQtNzA3NTQ5Mzg2NjQ3LTZjZGI1OGQ5ZTRiOTRkY2ExMGUxNmQyODAxMDdjM2EyZDQ1YWM0ZGFjOTJhNzg5NjE0YmJiZTZhZDVhOWE4MWM
-      name: ELIXIR Cloud & AAI Slack board
+      name: ELIXIR-on-Cloud Slack board
     - icon: custom/forum
       link: https://github.com/elixir-cloud-aai/elixir-cloud-aai/discussions
-      name: ELIXIR Cloud & AAI Q&A forum
+      name: ELIXIR-on-Cloud Q&A forum
     - icon: custom/email
       link: mailto:cloud-service@elixir-europe.org
-      name: ELIXIR Cloud & AAI service email
+      name: ELIXIR-on-Cloud service email
 markdown_extensions:
   - abbr
   - admonition
@@ -118,7 +118,7 @@ plugins:
   - search
 repo_name: Visit us on GitHub
 repo_url: https://github.com/elixir-cloud-aai/elixir-cloud-aai.github.io
-site_name: ELIXIR Cloud & AAI Documentation Hub
+site_name: ELIXIR-on-Cloud Documentation Hub
 theme:
   custom_dir: overrides
   features:

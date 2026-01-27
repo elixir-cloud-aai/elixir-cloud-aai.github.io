@@ -3,7 +3,7 @@
 Great to see you here - we would be delighted to have you join our team! So if
 you are interested, just read on for information on how to contribute.
 
-If you don't know what [ELIXIR][elixir] [Cloud & AAI][elixir-cloud-aai] is all
+If you don't know what [ELIXIR-on-Cloud][elixir-cloud-aai] is all
 about, follow the link or check out these documentation pages. Otherwise,
 please read on to find out more about the general topics you can help us with,
 our core values, what we can offer you and what we expect from contributors.
@@ -130,7 +130,7 @@ projects they were working on):
 
 ### Hackathons
 
-We regularly lead [ELIXIR][elixir] [Cloud & AAI][elixir-cloud-aai]-related
+We regularly lead [ELIXIR-on-Cloud][elixir-cloud-aai]-related
 projects at various (bio)hackathons. These are always fun events and often a
 highlight of the year! Check our [news
 page][elixir-cloud-aai-news] for any upcoming events. If you are interested in
