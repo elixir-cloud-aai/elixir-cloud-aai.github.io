@@ -6,7 +6,7 @@ section.
 ## Python version
 
 For any _new_ projects, please use one of the two most recent [Python minor
-versions][py-downloads], exclusing pre-releases. For existing projects, use the
+versions][py-downloads], excluding pre-releases. For existing projects, use the
 Python version used throughout the project (mentioned in `pyproject.toml`).
 
 ## Packaging, build system & dependencies

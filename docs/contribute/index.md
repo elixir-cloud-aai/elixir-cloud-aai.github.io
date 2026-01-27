@@ -61,7 +61,7 @@ We offer you
   experts with diverse technical and cultural backgrounds
 - the opportunity to tackle modern, highly relevant technical challenges on the
   way to personalized medicine and genome-scale analytics in the cloud
-- support, feedback and appreciation for your work, as well as involvment in
+- support, feedback and appreciation for your work, as well as involvement in
   and influence on policy decisions proportional to the level of your
   engagement
 - networking opportunities within the [ELIXIR][elixir] and [GA4GH][ga4gh]
@@ -69,7 +69,7 @@ We offer you
 
 !!! note "Regular contributors"
 
-    Check out the additional [exiciting opportunities](#opportunities) for
+  Check out the additional [exciting opportunities](#opportunities) for
     regular contributors!
 
 ## Our expectations

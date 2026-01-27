@@ -44,7 +44,7 @@ The deployment of WESkit involves the following steps:
 
 1. **Install WESkit:** Simple deployment [using Docker](https://gitlab.com/one-touch-pipeline/weskit/documentation/-/blob/master/admin/README.md).
 2. **Set up compute environment:** WESkit must be configured according to the [compute environment](https://gitlab.com/one-touch-pipeline/weskit/documentation/-/blob/master/admin/executor.md).
-3. **Provide workflows:** In this scenario, a data controller has to validate and provide every workflow on the compute evironment. Only then they are available for the researchers. WESkit provides instructions for [workflow installation](https://gitlab.com/one-touch-pipeline/weskit/documentation/-/blob/master/admin/workflow-installation.md). Workflows are Snakemake or Nextflow scripts, along with all dependencies and additional data. 
+3. **Provide workflows:** In this scenario, a data controller has to validate and provide every workflow on the compute environment. Only then they are available for the researchers. WESkit provides instructions for [workflow installation](https://gitlab.com/one-touch-pipeline/weskit/documentation/-/blob/master/admin/workflow-installation.md). Workflows are Snakemake or Nextflow scripts, along with all dependencies and additional data. 
 4. **Configure workflow engine:** Define workflow [engine parameters](https://gitlab.com/one-touch-pipeline/weskit/documentation/-/blob/master/admin/executor.md).
 5. **Provide data:** The workflows are executed on sensitive data within the compute environment. Therefore, the data should be available in the file system of the compute environment (e.g. Slurm).
 6. **Publish web service:** We assume that the service will be available online. This requires configuration on the provider side.
