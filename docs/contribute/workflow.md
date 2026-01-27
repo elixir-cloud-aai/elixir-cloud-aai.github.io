@@ -6,7 +6,7 @@ To start working with us, please follow these simple steps:
 2. Check out our [repositories][elixir-cloud-aai-github] and [open
    issues][elixir-cloud-aai-issues].
 3. Join our [:custom-slack: Slack board][elixir-cloud-aai-slack] (please [let us
-   know](../../about/contact.md) if the link expired).
+   know](../about/contact.md) if the link expired).
 4. Join the [`#oss-community`][elixir-cloud-aai-slack-channel-oss] and leave
    a short message about yourself. Please include (1) your relevant skills and
    experience level, (2) your GitHub username, (3) your email address (e.g.,

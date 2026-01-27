@@ -81,36 +81,34 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Home: "index.md"
-  - Guides:
-      - "guides/index.md"
-      - General:
-        - "Sensitive Data": "guides/guide-info/sensitive_data.md"
-      - Users:
-          - "guides/guide-user/index.md"
-          - "User stories": "guides/guide-user/user_stories.md"
-      - Developers:
-          - "guides/guide-dev/index.md"
-      - Administrators:
-          - "guides/guide-admin/index.md"
-          - "Cloud-Registry": "guides/guide-admin/cloudregistry.md"
-          - "CWL-WES": "guides/guide-admin/cwlwes.md"
-          - "DRS-Filer": "guides/guide-admin/drsfiler.md"
-          - "Funnel": "guides/guide-admin/funnel.md"
-          - "LS Login configuration": "guides/guide-admin/services_to_ls_aai.md"
-          - "proWES": "guides/guide-admin/prowes.md"
-          - "proTES": "guides/guide-admin/protes.md"
-          - "TESK" : "guides/guide-admin/tesk.md"
-          - "TRS-Filer": "guides/guide-admin/trsfiler.md"
-          - "Sensitive Data analysis in Secure Processing Environments (SPE)": "guides/guide-admin/sensitive_data_analysis.md"
-          - "Crypt4GH Middleware with proTES and Funnel": "guides/guide-admin/crypt4gh_to_protes.md"
-      - Contributors:
-          - "guides/guide-contributor/index.md"
-          - "Workflow": "guides/guide-contributor/workflow.md"
-          - "General guidelines": "guides/guide-contributor/general-guidelines.md"
-          - "Managing projects": "guides/guide-contributor/managing-projects.md"
-          - Language-specific guidelines:
-              - "guides/guide-contributor/language-specific/index.md"
-              - "Python": "guides/guide-contributor/language-specific/python.md"
+  - General:
+    - "general/index.md"
+    - "Sensitive Data": "general/sensitive_data.md"
+    - "User stories": "general/user_stories.md"
+  - Sandbox:
+    - "sandbox/index.md"
+  - Services:
+    - "services/index.md"
+    - "Cloud-Registry": "services/cloudregistry.md"
+    - "CWL-WES": "services/cwlwes.md"
+    - "DRS-Filer": "services/drsfiler.md"
+    - "Funnel": "services/funnel.md"
+    - "LS Login": "services/services_to_ls_aai.md"
+    - "proWES": "services/prowes.md"
+    - "proTES": "services/protes.md"
+    - "TESK" : "services/tesk.md"
+    - "TRS-Filer": "services/trsfiler.md"
+  - Tutorials:
+    - "Sensitive Data analysis in Secure Processing Environments (SPE)": "tutorials/sensitive_data_analysis.md"
+    - "Crypt4GH Middleware with proTES and Funnel": "tutorials/crypt4gh_to_protes.md"
+  - Contribute:
+    - "contribute/index.md"
+    - "Workflow": "contribute/workflow.md"
+    - "General guidelines": "contribute/general-guidelines.md"
+    - "Managing projects": "contribute/managing-projects.md"
+    - Language-specific guidelines:
+      - "contribute/language-specific/index.md"
+      - "Python": "contribute/language-specific/python.md"
   - About:
       - "Contact": "about/contact.md"
       - "License": "about/license.md"

@@ -12,7 +12,7 @@ root directory:
 
 - **README** in file `README.md`
 - **Code of Conduct** in file `CODE_OF_CONDUCT.md` (can link to the [Code of
-  Conduct](../../about/code-of-conduct.md) on this page)
+  Conduct](../about/code-of-conduct.md) on this page)
 - **Contributing guidelines** in file `CONTRIBUTING.md` (can link to the
   [contributor guide](index.md) on this page)
 - **License** in file `LICENSE`
@@ -88,7 +88,7 @@ sections (fill in with "Coming soon" if not yet available):
 - **Versioning**: Information on how the project is versioned
 - **Contributing**: Guidelines on how to contribute to the project, with links
     to the [contributing guidelines](index.md) and our
-    [code of conduct](../../about/code-of-conduct.md)
+    [code of conduct](../about/code-of-conduct.md)
 - **Contact**: Information on how to contact the project leads
 
 ### Hosted documentation

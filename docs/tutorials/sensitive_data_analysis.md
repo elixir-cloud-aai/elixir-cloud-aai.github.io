@@ -105,7 +105,8 @@ In this tutorial, we assume a single LS-Login service for all the deployed tools
 
 ### LS-Login in MinIO
 
-LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environmental variables, as described in the MinIO [OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html). There are detailed instructions in the [ELIXIR-Cloud-AAI documentation](https://elixir-cloud-aai.github.io/guides/guide-admin/services_to_ls_aai/) for using MinIO with LS-Login.
+LS-Login can be activated in MinIO either by using the MinIO console using the OIDC configuration or by setting environmental variables, as described in the MinIO [OIDC Documentation](https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html). There are detailed instructions in the [ELIXIR-Cloud-AAI documentation](../services/services_to_ls_aai.md) for using MinIO with LS-Login.
+
 
 ### LS-Login in WESkit
 

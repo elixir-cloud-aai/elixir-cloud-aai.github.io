@@ -77,7 +77,7 @@ We offer you
 If all of that sounds tempting and you are still interested to contribute, we
 would only expect you to please
 
-- respect our [Code of Conduct](../../about/code-of-conduct.md)
+- respect our [Code of Conduct](../about/code-of-conduct.md)
 - make an effort to adhere to good coding practices and our [contribution
 guidelines] (we will of course help you with that!)
 - communicate clearly and openly with us with regard to any issues that you
