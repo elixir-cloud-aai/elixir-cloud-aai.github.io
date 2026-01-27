@@ -1,7 +1,18 @@
-# ELIXIR-on-Cloud documentation
+# General
 
-The ELIXIR-on-Cloud project is an initiative from the ELIXIR Compute Platform.
-Our goal is to support scientists across Europe in using cloud environments for their research activities.
-We support the use of ELIXIR services as well as open-source software, and the project has close connections with various academic cloud providers.
-One of our key focuses is developing and providing software that implements the specifications defined by the Global Alliance for Genomics and Health (GA4GH) for federated processing of workloads ([GA4GH Cloud Work Stream][ga4gh-cloud-ws]).
-This documentation offers guidance and best practices on how to use the services, further develop our services, and deploy services within the ELIXIR-on-Cloud Framework.
+This section provides the cross-cutting context for the ELIXIR-on-Cloud ecosystem: the standards we align with, the constraints that matter (especially for sensitive data), and practical narratives that connect researchers, data providers, and service operators.
+
+## In this section
+
+- [GA4GH Cloud Workstream](ga4gh_cloud.md)
+	Introduces the GA4GH cloud APIs that enable interoperable, federated analysis across providers. It gives background and examples for core standards used throughout this documentation (WES, TES, DRS, TRS) and how they fit into real workflows.
+
+- [Processing Sensitive Data](sensitive_data.md)
+	Summarizes key requirements and scenarios for working with sensitive human data in cloud contexts, including relevant legal/regulatory frameworks (e.g., GDPR, EHDS) and typical secure analysis environments (TEE/SPE/TRE).
+
+- [User Stories](user_stories.md)
+	Collects user stories that describe common journeys (access to services, access to data, and running analyses). Use these to align expectations between researchers, service providers, and data controllers.
+
+## Where to go next
+
+If you are new to the project, start with the user stories to get an end-to-end picture, then dive into the GA4GH overview for the technical standards. If you handle human data (or build platforms that do), read the sensitive data page early to avoid design decisions that conflict with governance and compliance requirements.
