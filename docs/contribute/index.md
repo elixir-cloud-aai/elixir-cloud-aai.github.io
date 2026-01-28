@@ -3,7 +3,7 @@
 Great to see you here - we would be delighted to have you join our team! So if
 you are interested, just read on for information on how to contribute.
 
-If you don't know what [ELIXIR][elixir] [Cloud & AAI][elixir-cloud-aai] is all
+If you don't know what [ELIXIR-on-Cloud][elixir-on-cloud] is all
 about, follow the link or check out these documentation pages. Otherwise,
 please read on to find out more about the general topics you can help us with,
 our core values, what we can offer you and what we expect from contributors.
@@ -61,7 +61,7 @@ We offer you
   experts with diverse technical and cultural backgrounds
 - the opportunity to tackle modern, highly relevant technical challenges on the
   way to personalized medicine and genome-scale analytics in the cloud
-- support, feedback and appreciation for your work, as well as involvment in
+- support, feedback and appreciation for your work, as well as involvement in
   and influence on policy decisions proportional to the level of your
   engagement
 - networking opportunities within the [ELIXIR][elixir] and [GA4GH][ga4gh]
@@ -69,7 +69,7 @@ We offer you
 
 !!! note "Regular contributors"
 
-    Check out the additional [exiciting opportunities](#opportunities) for
+  Check out the additional [exciting opportunities](#opportunities) for
     regular contributors!
 
 ## Our expectations
@@ -77,7 +77,7 @@ We offer you
 If all of that sounds tempting and you are still interested to contribute, we
 would only expect you to please
 
-- respect our [Code of Conduct](../../about/code-of-conduct.md)
+- respect our [Code of Conduct](../about/code-of-conduct.md)
 - make an effort to adhere to good coding practices and our [contribution
 guidelines] (we will of course help you with that!)
 - communicate clearly and openly with us with regard to any issues that you
@@ -130,10 +130,10 @@ projects they were working on):
 
 ### Hackathons
 
-We regularly lead [ELIXIR][elixir] [Cloud & AAI][elixir-cloud-aai]-related
+We regularly lead [ELIXIR-on-Cloud][elixir-on-cloud]-related
 projects at various (bio)hackathons. These are always fun events and often a
 highlight of the year! Check our [news
-page][elixir-cloud-aai-news] for any upcoming events. If you are interested in
+page][elixir-on-cloud-news] for any upcoming events. If you are interested in
 attending a hackathon, please reach out to us. In some cases, we may be able
 to procure funding for contributors.
 

@@ -1,5 +1,5 @@
 copyright: >
-  Copyright &copy; 2022 ELIXIR Cloud & AAI –
+  Copyright &copy; 2022 ELIXIR-on-Cloud –
   <a href="#__consent">Change cookie settings</a>
 edit_uri: edit/main/docs/
 extra:
@@ -33,9 +33,9 @@ extra:
       make our documentation better.
     title: Cookie consent
   social:
-    - icon: custom/elixir-cloud-aai
+    - icon: custom/elixir-on-cloud
       link: https://elixir-cloud.dcc.sib.swiss/
-      name: ELIXIR Cloud & AAI website
+      name: ELIXIR-on-Cloud website
     - icon: custom/elixir
       link: https://elixir-europe.org/
       name: ELIXIR website
@@ -44,19 +44,19 @@ extra:
       name: GA4GH website
     - icon: custom/github
       link: https://github.com/elixir-cloud-aai
-      name: ELIXIR Cloud & AAI GitHub organization
+      name: ELIXIR-on-Cloud GitHub organization
     - icon: custom/twitter
       link: https://twitter.com/ELIXIRcloud_aai
-      name: ELIXIR Cloud & AAI Twitter profile
+      name: ELIXIR-on-Cloud Twitter profile
     - icon: custom/slack
       link: https://join.slack.com/t/elixir-cloud/shared_invite/enQtNzA3NTQ5Mzg2NjQ3LTZjZGI1OGQ5ZTRiOTRkY2ExMGUxNmQyODAxMDdjM2EyZDQ1YWM0ZGFjOTJhNzg5NjE0YmJiZTZhZDVhOWE4MWM
-      name: ELIXIR Cloud & AAI Slack board
+      name: ELIXIR-on-Cloud Slack board
     - icon: custom/forum
       link: https://github.com/elixir-cloud-aai/elixir-cloud-aai/discussions
-      name: ELIXIR Cloud & AAI Q&A forum
+      name: ELIXIR-on-Cloud Q&A forum
     - icon: custom/email
       link: mailto:cloud-service@elixir-europe.org
-      name: ELIXIR Cloud & AAI service email
+      name: ELIXIR-on-Cloud service email
 markdown_extensions:
   - abbr
   - admonition
@@ -81,36 +81,36 @@ markdown_extensions:
       custom_checkbox: true
 nav:
   - Home: "index.md"
-  - Guides:
-      - "guides/index.md"
-      - General:
-        - "Sensitive Data": "guides/guide-info/sensitive_data.md"
-      - Users:
-          - "guides/guide-user/index.md"
-          - "User stories": "guides/guide-user/user_stories.md"
-      - Developers:
-          - "guides/guide-dev/index.md"
-      - Administrators:
-          - "guides/guide-admin/index.md"
-          - "Cloud-Registry": "guides/guide-admin/cloudregistry.md"
-          - "CWL-WES": "guides/guide-admin/cwlwes.md"
-          - "DRS-Filer": "guides/guide-admin/drsfiler.md"
-          - "Funnel": "guides/guide-admin/funnel.md"
-          - "LS Login configuration": "guides/guide-admin/services_to_ls_aai.md"
-          - "proWES": "guides/guide-admin/prowes.md"
-          - "proTES": "guides/guide-admin/protes.md"
-          - "TESK" : "guides/guide-admin/tesk.md"
-          - "TRS-Filer": "guides/guide-admin/trsfiler.md"
-          - "Sensitive Data analysis in Secure Processing Environments (SPE)": "guides/guide-admin/sensitive_data_analysis.md"
-          - "Crypt4GH Middleware with proTES and Funnel": "guides/guide-admin/crypt4gh_to_protes.md"
-      - Contributors:
-          - "guides/guide-contributor/index.md"
-          - "Workflow": "guides/guide-contributor/workflow.md"
-          - "General guidelines": "guides/guide-contributor/general-guidelines.md"
-          - "Managing projects": "guides/guide-contributor/managing-projects.md"
-          - Language-specific guidelines:
-              - "guides/guide-contributor/language-specific/index.md"
-              - "Python": "guides/guide-contributor/language-specific/python.md"
+  - General:
+    - "general/index.md"
+    - "GA4GH Cloud Workstream": "general/ga4gh_cloud.md"
+    - "Sensitive Data": "general/sensitive_data.md"
+    - "User stories": "general/user_stories.md"
+  - Sandbox:
+    - "sandbox/index.md"
+  - Services:
+    - "services/index.md"
+    - "Cloud-Registry": "services/cloudregistry.md"
+    - "CWL-WES": "services/cwlwes.md"
+    - "DRS-Filer": "services/drsfiler.md"
+    - "Funnel": "services/funnel.md"
+    - "LS Login": "services/services_to_ls_aai.md"
+    - "proWES": "services/prowes.md"
+    - "proTES": "services/protes.md"
+    - "TESK" : "services/tesk.md"
+    - "TRS-Filer": "services/trsfiler.md"
+  - Tutorials:
+    - "tutorials/index.md"
+    - "SPE based on WES": "tutorials/sensitive_data_analysis.md"
+    - "Crypt4GH with proTES": "tutorials/crypt4gh_to_protes.md"
+  - Contribute:
+    - "contribute/index.md"
+    - "Workflow": "contribute/workflow.md"
+    - "General guidelines": "contribute/general-guidelines.md"
+    - "Managing projects": "contribute/managing-projects.md"
+    - Language-specific guidelines:
+      - "contribute/language-specific/index.md"
+      - "Python": "contribute/language-specific/python.md"
   - About:
       - "Contact": "about/contact.md"
       - "License": "about/license.md"
@@ -120,7 +120,7 @@ plugins:
   - search
 repo_name: Visit us on GitHub
 repo_url: https://github.com/elixir-cloud-aai/elixir-cloud-aai.github.io
-site_name: ELIXIR Cloud & AAI Documentation Hub
+site_name: ELIXIR-on-Cloud Documentation Hub
 theme:
   custom_dir: overrides
   features:

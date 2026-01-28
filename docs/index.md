@@ -7,12 +7,12 @@ hide:
 
 # Welcome
 
-Welcome to the Documentation Hub for [ELIXIR][elixir] [Cloud &
-AAI][elixir-cloud-aai], a [Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
+Welcome to the Documentation Hub for [ELIXIR-on-Cloud][elixir-on-cloud], a
+[Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
 
 <div>
     <a href="https://elixir-cloud.dcc.sib.swiss/">
-        <img src="images/logo.256px.png" alt="ELIXIR Cloud & AAI logo" width="60"/>
+        <img src="images/logo.256px.png" alt="ELIXIR-on-Cloud logo" width="60"/>
     </a>
     <a href="https://elixir-europe.org/">
         <img src="images/logo.elixir.svg" alt="ELIXIR logo" width="81"/>
@@ -24,8 +24,9 @@ AAI][elixir-cloud-aai], a [Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
 
 Whether you are a (potential) user, developer, systems administrator or
 contributor, this is your one-stop shop for documentation around the
-ELIXIR::GA4GH Cloud federated analytics platform and bespoke ELIXIR Cloud & AAI
+ELIXIR-on-Cloud federated analytics platform and bespoke ELIXIR-on-Cloud
 solutions for your cloud needs.
+
 
 === ":fontawesome-solid-user: Users"
 
@@ -33,15 +34,7 @@ solutions for your cloud needs.
     cloud  
 
     [:octicons-arrow-right-24: Get
-    started](guides/guide-user/index.md){ .md-button }
-
-=== ":fontawesome-solid-code: Developers"
-
-    Integrate your tools and services with GA4GH-powered federated analytics
-    environments
-      
-    [:octicons-arrow-right-24: Get
-    started](guides/guide-dev/index.md){ .md-button }
+    started](sandbox/index.md){ .md-button }
 
 === ":material-database: Administrators"
 
@@ -49,7 +42,7 @@ solutions for your cloud needs.
     your organization and outscale peak performance needs to the cloud
       
     [:octicons-arrow-right-24: Get
-    started](guides/guide-admin/index.md){ .md-button }
+    started](services/index.md){ .md-button }
 
 === ":material-hand-heart: Contributors"
 
@@ -57,4 +50,4 @@ solutions for your cloud needs.
     infrastructure
       
     [:octicons-arrow-right-24: Get
-    started](guides/guide-contributor/index.md){ .md-button }
+    started](contribute/index.md){ .md-button }

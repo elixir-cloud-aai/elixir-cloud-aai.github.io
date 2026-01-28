@@ -1,4 +1,4 @@
-# ELIXIR Cloud & AAI Code of Conduct
+# ELIXIR-on-Cloud Code of Conduct
 
 ## Our Pledge
 

@@ -1,6 +1,6 @@
 # Documentation Hub
 
-Documentation for ELIXIR Cloud & AAI project.
+Documentation for the ELIXIR-on-Cloud project.
 
 ## Development
 

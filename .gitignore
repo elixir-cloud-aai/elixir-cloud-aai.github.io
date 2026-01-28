@@ -1,3 +1,5 @@
 site/
 _site/
 .venv
+.notes
+.codespell*

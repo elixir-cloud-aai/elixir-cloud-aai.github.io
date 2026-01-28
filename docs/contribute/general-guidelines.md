@@ -17,8 +17,8 @@ of your ability.
 
 Please use the comment functions available on GitHub to discuss issues and
 pull requests. For all other communications please refer to the communication
-channels listed in the [contact](../../about/contact.md) section. In
-particular, use the [chat][elixir-cloud-aai-slack] to discuss project ideas,
+channels listed in the [contact](../about/contact.md) section. In
+particular, use the [chat][elixir-on-cloud-slack] to discuss project ideas,
 get help on a problem, or any other informal discussion that does not need to
 be preserved as part of the repository you are working on.
 
@@ -59,7 +59,7 @@ that code changes are always merged into protected branches via pull requests
 that will undergo one or more rounds of review and testing. The schema below
 visualizes this process.
 
-[![GitHub Flow](../../images/github_flow.svg)][github-flow]
+[![GitHub Flow](../images/github_flow.svg)][github-flow]
 
 1. [Create a "feature branch"][git-branch] from the development branch; use the
    `feature/my-feature` naming pattern to name your feature branch, e.g.,

@@ -1,14 +1,4 @@
-# User guide
-
-## Introduction
-
-Welcome to the user documentation for the ELIXIR Cloud & AAI ecosystem. With
-this powerful set of services, you'll be able to easily access cloud resources
-and send analysis pipelines to your data with just a few simple commands.
-Imagine being able to run complex genomic analyses on massive datasets without
-worrying about infrastructure limitations or having to manage complex server
-environments. The GA4GH Cloud APIs give you access to powerful tools and
-resources that allow you to focus on your research goals, not IT.
+# GA4GH Cloud Workstream
 
 The GA4GH (Global Alliance for Genomics and Health) cloud [APIs][ga4gh-cloud]
 are a set of standard APIs that provide a common interface for accessing
@@ -24,19 +14,10 @@ while the TES API allows you to execute individual tasks within those
 workflows. The DRS API provides a way to access and download genomic data, and
 the TRS API enables the discovery of genomic analysis tools.
 
-Whether you are a bioinformatician or a data scientist, this documentation will
+Whether you are a bioinformatician or a data scientist, this site will
 provide you with all the information you need to start using ELIXIR's GA4GH
 cloud services ecosystem and harness the power of cloud computing for your
 genomic data analysis needs. Let's get started!
-
-## ELIXIR Cloud & AAI deployments
-
-The ELIXIR Cloud & AAI group manages different services and appliocations as
-part of the ELIXIR cloud framework. Currently, these services are temporarily
-listed in a dedicated [services list applications][elixir-cloud-services].  In
-the mid-term, all services instances will be registered in the [ELIXIR Cloud
-Registry][elixir-cloud-registry], an implementation of the [GA4GH Service
-Registry API][ga4gh-service-registry].
 
 ## Task Execution Service (TES)
 
@@ -100,6 +81,7 @@ plugins {
 ```
 
 ## Workflow Execution Service (WES)
+
 The GA4GH [WES][ga4gh-wes] is a standard specification protocol for executing
 and monitoring bioinformatics workflows. It allows researchers to easily
 execute and manage complex analysis pipelines across multiple computing
@@ -128,14 +110,14 @@ specification are:
 The GA4GH [DRS][ga4gh-drs] API provides a standard set of data retrieval methods
 to access genomic and related health data across different repositories.
 It allows researchers to simplify and standardize data retrieval in cloud-based
-environements. Some key features like Standardized data access that offers a consistent
-API for retrieving datasets. Cloud-agnostic means that it works accross different
+environments. Some key features like Standardized data access that offers a consistent
+API for retrieving datasets. Cloud-agnostic means that it works across different
 cloud infrastructures. Two use cases for the GA4GH DRS:
 
 - Scenario 1: A researcher wants to run an analysis pipeline on a dataset without
   worrying about where the data physically resides. The researcher uses a DRS ID
   to request the dataset. DRS resolves the ID to the actual storage location and
-  provides signed URLs or access tokens and the pipeline retrievess the data
+  provides signed URLs or access tokens and the pipeline retrieves the data
   seamlessly, regardless of the underlying cloud or storage system.
 
 - Scenario 2: A pharmaceutical company is collaborating with hospitals to analyze
@@ -147,7 +129,7 @@ cloud infrastructures. Two use cases for the GA4GH DRS:
 ## Tool Registry Service (TRS)
 
 The GA4GH [TRS][ga4gh-trs] API provides a standard mechanism to list, search and
-register tools and worflows across different platforms and cloud environments.
+register tools and workflows across different platforms and cloud environments.
 It supports workflows written in CWL, WDL, Nextflow, Galaxy, Snakemake.
 Here are examples of two use cases:
 
