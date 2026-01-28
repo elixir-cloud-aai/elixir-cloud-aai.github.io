@@ -5,7 +5,7 @@ Health][ga4gh] (GA4GH) [Workflow Execution Service][ga4gh-wes] (WES)
 API specification for the execution of workflows written in the [Common
 Workflow Language](https://www.commonwl.org/) (CWL).
 
-cwl-WES is a core service of the [ELIXIR-on-Cloud project][elixir-cloud-aai-github].
+cwl-WES is a core service of the [ELIXIR-on-Cloud project][elixir-on-cloud-github].
 
 ## Description
 

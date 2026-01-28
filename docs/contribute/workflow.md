@@ -3,17 +3,17 @@
 To start working with us, please follow these simple steps:
 
 1. Join [:custom-github-black: GitHub][github-join].
-2. Check out our [repositories][elixir-cloud-aai-github] and [open
-   issues][elixir-cloud-aai-issues].
-3. Join our [:custom-slack: Slack board][elixir-cloud-aai-slack] (please [let us
+2. Check out our [repositories][elixir-on-cloud-github] and [open
+   issues][elixir-on-cloud-issues].
+3. Join our [:custom-slack: Slack board][elixir-on-cloud-slack] (please [let us
    know](../about/contact.md) if the link expired).
-4. Join the [`#oss-community`][elixir-cloud-aai-slack-channel-oss] and leave
+4. Join the [`#oss-community`][elixir-on-cloud-slack-channel-oss] and leave
    a short message about yourself. Please include (1) your relevant skills and
    experience level, (2) your GitHub username, (3) your email address (e.g.,
    for calendar invitations), and (4) the repositories or issues you are most
    interested in. If you can't decide, no problem, just indicate that you are
    open to work on anything and we will suggest some issues for you.
-5. Once we have added you to our [GitHub organization][elixir-cloud-aai-github],
+5. Once we have added you to our [GitHub organization][elixir-on-cloud-github],
    you can assign yourself to an issue.
 6. Please carefully read the [guidelines](general-guidelines.md) below, as well
    as any relevant [language-specific guidelines](language-specific/index.md).
@@ -25,7 +25,7 @@ To start working with us, please follow these simple steps:
 
     If you do not want to share your GitHub username and/or your email address
     in the public channel, please send a direct message to a
-    [project lead][elixir-cloud-aai-contributors] instead.
+   [project lead][elixir-on-cloud-contributors] instead.
 
 !!! note "Always work on issues"
 

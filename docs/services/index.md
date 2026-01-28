@@ -7,7 +7,7 @@ solutions, this is the right place to get you off the ground.
 
 ## General deployment notes
 
-Most of our services (see our [GitHub organization][elixir-cloud-aai-github]
+Most of our services (see our [GitHub organization][elixir-on-cloud-github]
 for a comprehensive list) come with [Helm](https://helm.sh/) charts for
 deployment on Cloud Native infrastructure and [Docker
 Compose](https://docs.docker.com/compose/) configurations for
@@ -102,7 +102,7 @@ example [this one][vsftpd-deploy]. There are only two considerations:
 1. It is required to activate secure FTP support with `ssl_enable=YES`.
 2. For onboarding with the ELIXIR Cloud, currently the server should have one
    account with a specific username and password created. Please [contact
-   us][elixir-cloud-aai-email] for details.
+    us][elixir-on-cloud-email] for details.
 
 ### Registering your TES service
 
@@ -110,7 +110,8 @@ We are currently working on implementing access control mechanisms and
 providing a user interface for the [ELIXIR Cloud
 Registry][elixir-cloud-registry]. Once available, we will add registration
 instructions here. For now, please let us know about your new TES endpoint by
-[email][elixir-cloud-aai-email].
+[email][elixir-on-cloud-email].
+
 ## Custom cloud deployments
 
 !!! warning "Under construction"

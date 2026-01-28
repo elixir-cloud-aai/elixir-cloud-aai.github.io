@@ -18,7 +18,7 @@ of your ability.
 Please use the comment functions available on GitHub to discuss issues and
 pull requests. For all other communications please refer to the communication
 channels listed in the [contact](../about/contact.md) section. In
-particular, use the [chat][elixir-cloud-aai-slack] to discuss project ideas,
+particular, use the [chat][elixir-on-cloud-slack] to discuss project ideas,
 get help on a problem, or any other informal discussion that does not need to
 be preserved as part of the repository you are working on.
 

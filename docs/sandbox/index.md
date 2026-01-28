@@ -10,11 +10,10 @@ resources that allow you to focus on your research goals, not IT.
 
 !!! warning "Under construction"
     More info coming soon...
-    Idea: introduce ELIXIR-on-Cloud Sandbox cloud - TES instances, dashboard, proTES entrypoint, storage, etc.
 
 ## ELIXIR-on-Cloud deployments
 
-The ELIXIR-on-Cloud group manages different services and applications as
+The ELIXIR-on-Cloud group manages different services as
 part of the ELIXIR cloud framework. Currently, these services are temporarily
 listed in a dedicated [services list applications][elixir-cloud-services]. In
 the mid-term, all services instances will be registered in the [ELIXIR Cloud

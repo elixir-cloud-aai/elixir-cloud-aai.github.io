@@ -1,6 +1,6 @@
 # Documentation Hub
 
-Documentation for ELIXIR-on-Cloud project.
+Documentation for the ELIXIR-on-Cloud project.
 
 ## Development
 

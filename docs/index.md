@@ -7,7 +7,7 @@ hide:
 
 # Welcome
 
-Welcome to the Documentation Hub for [ELIXIR-on-Cloud][elixir-cloud-aai], a
+Welcome to the Documentation Hub for [ELIXIR-on-Cloud][elixir-on-cloud], a
 [Driver Project][ga4gh-dps] of the [GA4GH][ga4gh].
 
 <div>

@@ -33,7 +33,7 @@ extra:
       make our documentation better.
     title: Cookie consent
   social:
-    - icon: custom/elixir-cloud-aai
+    - icon: custom/elixir-on-cloud
       link: https://elixir-cloud.dcc.sib.swiss/
       name: ELIXIR-on-Cloud website
     - icon: custom/elixir
