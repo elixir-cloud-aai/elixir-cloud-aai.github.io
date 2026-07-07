@@ -17,7 +17,7 @@ researchers often need to execute thousands of Docker-based analysis jobs across
 Funnel abstracts the underlying infrastructure behind the GA4GH TES API, allowing clients to 
 submit tasks without being tied to a specific cluster scheduler or cloud platform.
 
-See [Funnel deployment]( ../services/funnel.md) for a detailed instruction of service deployment.
+See [Funnel deployment](../services/funnel.md) for detailed deployment instructions.
 
 ## TESK
 TESK (Task Execution Service for Kubernetes) is an open-source implementation of the 
@@ -30,16 +30,16 @@ Poiesis is a cloud-native implementation of the GA4GH Task Execution Service (TE
 designed specifically for Kubernetes environments. Like TESK and Funnel, it exposes a 
 standards-compliant TES API for running containerized computational workloads, 
 but its architecture emphasizes stateless execution, strong authentication,
-Kubernetes-native operations, and task handling
+Kubernetes-native operations, and task handling.
 
 See [Poiesis GitHub repo](https://github.com/JaeAeich/poiesis) for detailed instructions.
 
 ## Authentication with LS Login
 Life Science Login (LS Login), also known as the Life Science Authentication and Authorization Infrastructure [(LS AAI)](https://elixir-europe.org/platforms/compute/aai), is the federated identity and access management platform used across ELIXIR and numerous European life-science research infrastructures. It provides a single authentication and authorization layer that enables researchers to access scientific services, datasets, workflows, and computational resources using their existing institutional or community identities.
 
-LS Login evolved from the original ELIXIR AAI and became the primary authentication platform in 2022 after integration with multiple European life-science infrastructures
+LS Login evolved from the original ELIXIR AAI and became the primary authentication platform in 2022 after integration with multiple European life-science infrastructures.
 
-Various examples of LS Login deployment examples can be found [here](../services/services_to_ls_aai.md)
+Various LS Login deployment examples can be found [here](../services/services_to_ls_aai.md).
 
 !!! warning "Under construction"
     More info coming soon...
@@ -49,6 +49,6 @@ Various examples of LS Login deployment examples can be found [here](../services
 The ELIXIR-on-Cloud group manages different services as
 part of the ELIXIR cloud framework. Currently, these services are temporarily
 listed in a dedicated [services list applications][elixir-cloud-services]. In
-the mid-term, all services instances will be registered in the [ELIXIR Cloud
+the mid-term, all service instances will be registered in the [ELIXIR Cloud
 Registry][elixir-cloud-registry], an implementation of the [GA4GH Service
 Registry API][ga4gh-service-registry].
