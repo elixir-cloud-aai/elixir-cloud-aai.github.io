@@ -25,6 +25,8 @@ GA4GH Task Execution Service (TES) standard that provides a Kubernetes-native ba
 containerized scientific workloads. It is part of the ELIXIR Cloud & AAI ecosystem and serves as the 
 cloud-native counterpart to Funnel.
 
+See [TESK](../services/tesk.md) for detailed deployment instructions.
+
 ## Poiesis
 Poiesis is a cloud-native implementation of the GA4GH Task Execution Service (TES) v1.1.0 
 designed specifically for Kubernetes environments. Like TESK and Funnel, it exposes a 
