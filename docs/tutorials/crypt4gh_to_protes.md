@@ -169,6 +169,8 @@ funnel server run --config server-config.yaml &
 
 ```bash
 cd funnel
+# If worker terminates after one task execution, put the command in a while loop.
+# while true; do funnel node run --config worker-config.yaml; done
 funnel node run --config worker-config.yaml &
 ```
 
@@ -176,9 +178,11 @@ Verify that both services are running by checking the logs or accessing the Funn
 
 ### Step 5: Configure ProTES
 
-ProTES acts as a gateway and provides middleware for automatic Crypt4GH decryption. Follow the [proTES](https://github.com/elixir-cloud-aai/proTES) installation guide to deploy proTES on your third VM. 
+ProTES acts as a gateway and provides middleware for automatic Crypt4GH decryption. Follow the [proTES](https://github.com/elixir-cloud-aai/proTES) installation guide to deploy proTES on your third VM.
 
-For detailed middleware installation, refer to the [protes-middleware-crypt4gh](https://github.com/elixir-cloud-aai/protes-middleware-crypt4gh).
+For detailed middleware installation, refer to the [protes-middleware-crypt4gh](https://github.com/elixir-cloud-aai/protes-middleware-crypt4gh) repository.
+
+**Note:** If the branch-specific changes are not yet merged, use the `adjust_middleware` branch for `proTES` and the `update_middleware` branch for `protes-middleware-crypt4gh`. Once those changes are merged, use each repository's default branch.
 
 Once installed, configure the Crypt4GH middleware by editing the `pro_tes/config.yaml` file:
 
