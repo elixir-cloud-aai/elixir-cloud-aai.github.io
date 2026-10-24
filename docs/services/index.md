@@ -106,11 +106,10 @@ example [this one][vsftpd-deploy]. There are only two considerations:
 
 ### Registering your TES service
 
-We are currently working on implementing access control mechanisms and
-providing a user interface for the [ELIXIR Cloud
-Registry][elixir-cloud-registry]. Once available, we will add registration
-instructions here. For now, please let us know about your new TES endpoint by
-[email][elixir-on-cloud-email].
+Register your TES endpoint in the [ELIXIR Cloud
+Registry][elixir-cloud-registry]: log in with LS Login and register the
+service; you become its owner and can update it later. Please also let us
+know about your new TES endpoint by [email][elixir-on-cloud-email].
 
 ## Custom cloud deployments
 
