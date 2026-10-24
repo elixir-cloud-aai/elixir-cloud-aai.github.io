@@ -29,7 +29,7 @@
 [elixir-on-cloud-email]: <mailto:cloud-service@elixir-europe.org>
 [elixir-cloud-demo-cwl]: <https://github.com/elixir-cloud-aai/elixir-cloud-demos/tree/main/demos/2023-ecp-f2f>
 [elixir-cloud-demo-smk]: <https://github.com/elixir-cloud-aai/demo-tes-hybrid-cloud>
-[elixir-cloud-registry]: <https://elixir-cloud.dcc.sib.swiss/ga4gh/registry/v1/ui/>
+[elixir-cloud-registry]: <https://registry.elixir-on.cloud/>
 [elixir-cloud-services]: <https://github.com/elixir-cloud-aai/elixir-cloud-aai/blob/dev/resources/resources.md>
 [eur-lex-ehds]: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500327>
 [fair]: <https://www.go-fair.org/fair-principles/>
