@@ -82,6 +82,11 @@ deployment:
     kubectl get pvc -n <namespace>
     ```
 
+    If the volume's reclaim policy is `Retain`, deleting the claim keeps the
+    PersistentVolume and its data: delete it too (`kubectl get pv` lists it
+    as `Released`; `kubectl delete pv <name>`), and its storage, if the
+    storage isn't deleted with it.
+
 4. Install v0.4.0 (see [Installation](#installation)). Then ask the
    operators of the exported services to register them again (e.g., in the
    front end), so that they become their owners; admins verify them (see
@@ -169,11 +174,12 @@ urn:geant:lifescience-ri.eu:group:elixir:ECP_CLN:ADMIN#aai.lifescience-ri.eu
 It is a value of the user's `eduperson_entitlement` claim. To see the groups
 that LS Login releases for a user, call its user info endpoint with an
 access token of that user, e.g., one issued to the front end. Read the token
-into a variable, so that it stays out of the shell history:
+into a variable, so that it stays out of the shell history, and pass the
+header via standard input, so that it stays out of process listings:
 
 ```bash
 read -rs TOKEN
-curl -fsS -H "Authorization: Bearer $TOKEN" \
+printf 'Authorization: Bearer %s\n' "$TOKEN" | curl -fsS -H @- \
   https://login.aai.lifescience-ri.eu/oidc/userinfo
 ```
 
@@ -289,16 +295,22 @@ network plugin enforces them.
 
 ## Installation
 
-1. Create the Secret with the MongoDB credentials, with random passwords
-   that are never written down (the command and the Secret's keys are those
-   of [Authentication][cr-authentication]):
+1. Create the namespace, unless it exists:
+
+    ```bash
+    kubectl create namespace <namespace>
+    ```
+
+2. Create the Secret with the MongoDB credentials, with random passwords
+   that are never written down. The Secret's keys are those of
+   [Authentication][cr-authentication]; unlike the command there, this one
+   (for Bash or Zsh) passes the passwords via a file descriptor rather than
+   as arguments, so that they don't show up in process listings:
 
     ```bash
     kubectl create secret generic cloud-registry-mongodb-credentials -n <namespace> \
-      --from-literal=root-username=root \
-      --from-literal=root-password="$(openssl rand -hex 24)" \
-      --from-literal=username=cloud-registry \
-      --from-literal=password="$(openssl rand -hex 24)"
+      --from-env-file=<(printf 'root-username=root\nroot-password=%s\nusername=cloud-registry\npassword=%s\n' \
+        "$(openssl rand -hex 24)" "$(openssl rand -hex 24)")
     ```
 
     To check an existing Secret, list its keys without printing the values:
@@ -308,7 +320,7 @@ network plugin enforces them.
     kubectl describe secret cloud-registry-mongodb-credentials -n <namespace>
     ```
 
-2. Install the chart of the release, and wait for the app:
+3. Install the chart of the release, and wait for the app:
 
     ```bash
     helm install cloud-registry \
@@ -352,7 +364,7 @@ network plugin enforces them.
 
     ```bash
     read -rs TOKEN
-    curl -fsS -H "Authorization: Bearer $TOKEN" \
+    printf 'Authorization: Bearer %s\n' "$TOKEN" | curl -fsS -H @- \
       https://elixir-on.cloud/ga4gh/registry/v1/me
     ```
 
@@ -385,7 +397,8 @@ helm uninstall cloud-registry -n <namespace>
 The chart keeps MongoDB's volume (the claim `cloud-registry-mongodb`) and
 the data when the release is uninstalled, and a new release of the same name
 uses it again; delete the claim by hand to remove the data (see
-[Persistence][cr-persistence]).
+[Persistence][cr-persistence]), and the PersistentVolume, if its reclaim
+policy is `Retain`.
 
 [cr-repo]: <https://github.com/elixir-cloud-aai/cloud-registry>
 [cr-release]: <https://github.com/elixir-cloud-aai/cloud-registry/releases/tag/v0.4.0>
