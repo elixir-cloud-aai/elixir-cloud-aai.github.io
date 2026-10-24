@@ -96,7 +96,8 @@ then deploys the image of its release (see [Image][cr-image] and
 or `dev`, nor the chart from the repository's `deployment` folder (which
 deploys `dev`): a restart of a pod could then start another version than the
 one the config was written for. Optionally, [verify the image and the
-chart][cr-verifying] before installing.
+chart][cr-verifying] before installing. The development docs explain this
+for all deployments now (see [Image][cr-latest-image]).
 
 ### MongoDB and the nodes' kernels
 
@@ -109,8 +110,10 @@ check the kernels of all nodes that MongoDB may run on:
 kubectl get nodes -o custom-columns=NODE:.metadata.name,KERNEL:.status.nodeInfo.kernelVersion
 ```
 
-MongoDB upgrades go one major version at a time, and binaries can't be
-downgraded (see [Version][cr-mongodb-version]).
+This covers only the current nodes: nodes added later (e.g., by an
+autoscaler) need compatible kernels too (see [Version][cr-latest-version] in
+the development docs). MongoDB upgrades go one major version at a time, and
+binaries can't be downgraded (see [Version][cr-mongodb-version]).
 
 ## Configuration
 
@@ -224,7 +227,7 @@ config:
       description: Registry of GA4GH and other web services of ELIXIR On-Cloud.
       organization:
         name: ELIXIR On-Cloud
-        url: https://elixir-cloud.dcc.sib.swiss/
+        url: https://elixir-on.cloud/
       contactUrl: mailto:cloud-service@elixir-europe.org
       environment: prod
 
@@ -398,6 +401,8 @@ uses it again; delete the claim by hand to remove the data (see
 [cr-mongodb-version]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#version>
 [cr-authentication]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#authentication>
 [cr-persistence]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#persistence>
+[cr-latest-image]: <https://cloud-registry.readthedocs.io/en/latest/deployment/#image>
+[cr-latest-version]: <https://cloud-registry.readthedocs.io/en/latest/deployment/#version>
 [cr-upgrading-0.4.0]: <https://cloud-registry.readthedocs.io/en/v0.4.0/upgrading/#from-versions-before-040>
 [cr-configuration]: <https://cloud-registry.readthedocs.io/en/v0.4.0/configuration/>
 [cr-service-info]: <https://cloud-registry.readthedocs.io/en/v0.4.0/configuration/#service-info>
