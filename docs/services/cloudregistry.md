@@ -452,7 +452,9 @@ image again.
 Register the front end with [LS Login][ls-login] as a service (an OpenID
 Connect client):
 
-- **Flow:** authorization code, with a client secret.
+- **Flow:** authorization code, with a client secret and PKCE (`S256`,
+  which LS Login supports); the front end also sends a nonce and checks the
+  ID token's issuer, audience and nonce.
 - **Redirect URI:** `https://registry.elixir-on.cloud/auth/api/callback`.
   Use a separate client for local development, with
   `http://localhost:3000/auth/api/callback`.
@@ -461,7 +463,7 @@ Connect client):
 
 Add the client ID to the registry's audience (see [Audience](#audience)).
 Keep the client secret in a secret store, never in a repository or in the
-image.
+image. Configure only this one login provider (see [Login][cr-ui-login]).
 
 #### Building the image
 
@@ -484,14 +486,20 @@ docker build -t "cloud-registry-ui:$COMMIT" \
 The defaults of the other settings `NEXT_PUBLIC_*` match the registry's
 defaults (e.g., the environments `prod`, `test`, `dev` and `staging`); if
 the values file changes the allowed environments or URL schemes, set them
-too (see [Registry][cr-ui-registry-settings]). Push the image to a registry
-that the cluster can pull from.
+too (see [Registry][cr-ui-registry-settings]). Missing or invalid settings
+`NEXT_PUBLIC_*` stop the build, with a message that names the setting. Push
+the image to a registry that the cluster can pull from.
 
 !!! warning "No secrets in build arguments"
     Build arguments are stored in the image's history. Pass only the
     settings `NEXT_PUBLIC_*` with them, never the login settings with the
     client secret. `docker build` reads neither `.env` files nor variables
-    exported in the shell, only `--build-arg` values.
+    exported in the shell, only `--build-arg` values, and `.dockerignore`
+    keeps `.env*` files out of the build.
+
+Images built this way are production builds: they don't offer "Copy token
+to Dashboard", which only development servers have (see [Copying the access
+token][cr-ui-copy-token]). Don't deploy development builds.
 
 #### Login settings
 
@@ -507,11 +515,30 @@ container starts, e.g., from a Kubernetes Secret (`envFrom` with a
 
 The UI has no Helm chart. Run the image as a Deployment with a Service on
 port 3000 (`PORT`; the app listens on all IPv4 interfaces, set
-`LISTEN_HOSTNAME`, e.g. to `::`, for IPv6), and route `registry.elixir-on.cloud` to it with HTTPS: the login
-cookies are marked `Secure`, so logging in fails over plain HTTP. The
-front end calls the API from the user's browser; the registry accepts
-requests from any origin by default, so there is nothing to configure for
-it.
+`LISTEN_HOSTNAME`, e.g. to `::`, for IPv6), and route
+`registry.elixir-on.cloud` to it with HTTPS: the login cookies are marked
+`Secure`, so logging in fails over plain HTTP. Serve it at the address of
+`LOGIN_REDIRECT_URI`: logging out is a `POST` that the app accepts only from
+that origin (see [Sessions and logout][cr-ui-sessions]). The front end calls
+the API from the user's browser; the registry accepts requests from any
+origin by default, so there is nothing to configure for it.
+
+- **Health:** the image's health check (it requests the start page every 30
+  seconds) only applies to Docker; Kubernetes ignores it. Give the
+  Deployment HTTP probes on `/` and port 3000 instead (the start page
+  answers with a redirect; probes count `2xx` and `3xx` as success).
+- **Security context:** the app runs as the unprivileged user `bun` and
+  writes only to `/app/.next/cache`; with a read-only root file system,
+  mount an `emptyDir` there.
+- **Security headers:** the app sets its own Content Security Policy, with a
+  nonce per request. Don't let the ingress or a proxy add a second one:
+  browsers enforce both, and one without the nonce blocks the app's
+  scripts (see [Registry][cr-ui-registry-settings]).
+
+Users stay logged in as long as their LS Login access token is valid, at
+most 12 hours; the front end doesn't refresh tokens. Logins that were
+started before an update of the front end to the version with PKCE fail
+once, and users log in again.
 
 After deploying, open the front end, log in with LS Login and check that
 the services are listed; then go on with the [checks](#checks-after-installing)
@@ -602,6 +629,8 @@ policy is `Retain`.
 [cr-ui-configurations]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#configurations>
 [cr-ui-registry-settings]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#registry>
 [cr-ui-login]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#login>
+[cr-ui-sessions]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#sessions-and-logout>
+[cr-ui-copy-token]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#copying-the-access-token>
 [cr-deployment-readme]: <https://github.com/elixir-cloud-aai/cloud-registry/blob/v0.5.0/deployment/README.md>
 [cr-deployment]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/>
 [cr-image]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#image>
