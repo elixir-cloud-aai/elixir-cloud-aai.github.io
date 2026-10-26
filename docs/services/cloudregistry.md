@@ -451,10 +451,10 @@ image.
 
 #### Building the image
 
-The front end reads the settings `NEXT_PUBLIC_*` when it is built, from the
-file `.env` in the repository, and they are fixed in the image (see
-[Configurations][cr-ui-configurations]). For this deployment, set at least
-the API URL:
+The front end reads the settings `NEXT_PUBLIC_*` when it is built, and they
+are fixed in the image. Pass them to `docker build` as build arguments (see
+[Docker][cr-ui-docker] and [Configurations][cr-ui-configurations]); the
+build fails without the API URL. For this deployment:
 
 ```bash
 git clone https://github.com/elixir-cloud-aai/cloud-registry-ui.git
@@ -462,9 +462,9 @@ cd cloud-registry-ui
 git checkout ai
 COMMIT=$(git rev-parse HEAD)
 echo "$COMMIT"
-printf 'NEXT_PUBLIC_CLOUD_REGISTRY_URL=%s\n' \
-  https://elixir-on.cloud/ga4gh/registry/v1 > .env
-docker build -t "cloud-registry-ui:$COMMIT" .
+docker build -t "cloud-registry-ui:$COMMIT" \
+  --build-arg NEXT_PUBLIC_CLOUD_REGISTRY_URL=https://elixir-on.cloud/ga4gh/registry/v1 \
+  .
 ```
 
 The defaults of the other settings `NEXT_PUBLIC_*` match the registry's
@@ -473,9 +473,11 @@ the values file changes the allowed environments or URL schemes, set them
 too (see [Registry][cr-ui-registry-settings]). Push the image to a registry
 that the cluster can pull from.
 
-!!! warning "No secrets in `.env`"
-    `docker build` copies `.env` into the image. Put only the settings
-    `NEXT_PUBLIC_*` in it, never the login settings with the client secret.
+!!! warning "No secrets in build arguments"
+    Build arguments are stored in the image's history. Pass only the
+    settings `NEXT_PUBLIC_*` with them, never the login settings with the
+    client secret. `docker build` reads neither `.env` files nor variables
+    exported in the shell, only `--build-arg` values.
 
 #### Login settings
 
@@ -490,7 +492,8 @@ container starts, e.g., from a Kubernetes Secret (`envFrom` with a
 #### Running the front end
 
 The UI has no Helm chart. Run the image as a Deployment with a Service on
-port 3000, and route `registry.elixir-on.cloud` to it with HTTPS: the login
+port 3000 (`PORT`; the app listens on all IPv4 interfaces, set
+`LISTEN_HOSTNAME`, e.g. to `::`, for IPv6), and route `registry.elixir-on.cloud` to it with HTTPS: the login
 cookies are marked `Secure`, so logging in fails over plain HTTP. The
 front end calls the API from the user's browser; the registry accepts
 requests from any origin by default, so there is nothing to configure for
@@ -581,6 +584,7 @@ policy is `Retain`.
 [cr-ui-repo]: <https://github.com/elixir-cloud-aai/cloud-registry-ui>
 [cr-ui-ai]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/tree/ai>
 [cr-ui-readme]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md>
+[cr-ui-docker]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#docker>
 [cr-ui-configurations]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#configurations>
 [cr-ui-registry-settings]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#registry>
 [cr-ui-login]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#login>
