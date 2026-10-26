@@ -120,16 +120,19 @@ chart's notes [To app version 0.5.0][cr-chart-0.5.0]; for this deployment:
    and `list-approvals`.
 3. Tell the operators of clients that the registry sets the timestamps of
    services now (see [Timestamps][cr-timestamps]).
-4. Upgrade with the chart of v0.5.0 (see [Upgrades](#upgrades)), then
+4. Set up rate limits at the ingress, if there are none yet (see [Service
+   types](#service-types)).
+5. Upgrade with the chart of v0.5.0 (see [Upgrades](#upgrades)), then
    restart the app once, so that it stores the types of the services that
-   pods of 0.4.0 registered during the rollout:
+   pods of 0.4.0 registered during the rollout (the app also creates its new
+   indexes and marks pending services on startup; nothing to do for them):
 
     ```bash
     kubectl rollout restart deployment/cloud-registry -n <namespace>
     kubectl rollout status deploy/cloud-registry -n <namespace>
     ```
 
-5. Deploy the front end (see [Front end](#front-end)), and go through the
+6. Deploy the front end (see [Front end](#front-end)), and go through the
    [checks](#checks-after-installing).
 
 Switch the service types to the mode `moderated` (see [Service
@@ -258,6 +261,14 @@ config:
 
 Admins approve pending types and services in the front end. Without the
 admin group (see [Admins](#admins)), nobody could approve them.
+
+Users other than admins may add at most 10 types that no service has
+(`config.custom.access_control.max_unused_service_types`, default `10`; see
+[Service types][cr-service-types-config]). The limit is per user, and anyone
+can create an LS Login account, so also limit the request rate at the
+ingress, at least for `POST /services/types` and `POST /services` (see
+[Rate limits][cr-rate-limits]; the controller must see the clients'
+addresses, not those of a proxy in front of the cluster).
 
 ### Values file
 
@@ -578,6 +589,7 @@ policy is `Retain`.
 [cr-image]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#image>
 [cr-installation]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#installation>
 [cr-ingress]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#ingress>
+[cr-rate-limits]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#rate-limits>
 [cr-tls]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#tls>
 [cr-network-policies]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#network-policies>
 [cr-upgrades]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#upgrades>
