@@ -377,10 +377,11 @@ the API URL:
 git clone https://github.com/elixir-cloud-aai/cloud-registry-ui.git
 cd cloud-registry-ui
 git checkout ai
-git rev-parse HEAD
+COMMIT=$(git rev-parse HEAD)
+echo "$COMMIT"
 printf 'NEXT_PUBLIC_CLOUD_REGISTRY_URL=%s\n' \
   https://elixir-on.cloud/ga4gh/registry/v1 > .env
-docker build -t cloud-registry-ui:<commit> .
+docker build -t "cloud-registry-ui:$COMMIT" .
 ```
 
 The defaults of the other settings `NEXT_PUBLIC_*` match the registry's
