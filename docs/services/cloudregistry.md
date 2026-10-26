@@ -16,6 +16,7 @@ deployment:
 - [Configuration][cr-configuration], [Access control][cr-access-control]
   and [Operations][cr-operations]
 - [Release notes of 0.4.0][cr-release-notes]
+- The front end's [README][cr-ui-readme] (see [Front end](#front-end))
 
 !!! info "Last checked against Cloud Registry v0.4.0"
     For a later release, read its release notes and upgrade steps first,
@@ -332,6 +333,89 @@ network plugin enforces them.
     Rendering fails if the issuer, the audience or the admin group is
     missing.
 
+## Front end
+
+The front end ([Cloud Registry UI][cr-ui-repo]) is a web app, served at
+<https://registry.elixir-on.cloud/>. Anyone can browse the services in it;
+logged-in users register services, edit and delete their own, and share
+them with others (access management). Admins also verify services, and
+approve new service types and the services that are pending until their
+type is approved (see the [UI's README][cr-ui-readme]).
+
+### UI version
+
+UI versions follow the registry in major and minor version: UI 0.5.x works
+with Cloud Registry 0.5.x. Until the UI's first release, its
+[`ai` branch][cr-ui-ai] goes with Cloud Registry 0.5.0: deploy it together
+with the upgrade to that release, not with 0.4.0. Note the commit you build
+from, so that you can build the same image again.
+
+### Registering the front end with LS Login
+
+Register the front end with [LS Login][ls-login] as a service (an OpenID
+Connect client):
+
+- **Flow:** authorization code, with a client secret.
+- **Redirect URI:** `https://registry.elixir-on.cloud/auth/api/callback`.
+  Use a separate client for local development, with
+  `http://localhost:3000/auth/api/callback`.
+- **Scopes:** `openid`, `profile`, `email` and `eduperson_entitlement` (see
+  [Identity provider](#identity-provider)).
+
+Add the client ID to the registry's audience (see [Audience](#audience)).
+Keep the client secret in a secret store, never in a repository or in the
+image.
+
+### Building the image
+
+The front end reads the settings `NEXT_PUBLIC_*` when it is built, from the
+file `.env` in the repository, and they are fixed in the image (see
+[Configurations][cr-ui-configurations]). For this deployment, set at least
+the API URL:
+
+```bash
+git clone https://github.com/elixir-cloud-aai/cloud-registry-ui.git
+cd cloud-registry-ui
+git checkout ai
+git rev-parse HEAD
+printf 'NEXT_PUBLIC_CLOUD_REGISTRY_URL=%s\n' \
+  https://elixir-on.cloud/ga4gh/registry/v1 > .env
+docker build -t cloud-registry-ui:<commit> .
+```
+
+The defaults of the other settings `NEXT_PUBLIC_*` match the registry's
+defaults (e.g., the environments `prod`, `test`, `dev` and `staging`); if
+the values file changes the allowed environments or URL schemes, set them
+too (see [Registry][cr-ui-registry-settings]). Push the image to a registry
+that the cluster can pull from.
+
+!!! warning "No secrets in `.env`"
+    `docker build` copies `.env` into the image. Put only the settings
+    `NEXT_PUBLIC_*` in it, never the login settings with the client secret.
+
+### Login settings
+
+The login settings are read when the app starts: `LOGIN_PROVIDERS` (a JSON
+list with LS Login, including the client ID and secret) and
+`LOGIN_REDIRECT_URI` (`https://registry.elixir-on.cloud/auth/api/callback`).
+The [LS Login example][cr-ui-login] in the UI's README shows the format,
+with the scopes above. Pass them as environment variables when the
+container starts, e.g., from a Kubernetes Secret (`envFrom` with a
+`secretRef`); without them, the app refuses to start.
+
+### Running the front end
+
+The UI has no Helm chart. Run the image as a Deployment with a Service on
+port 3000, and route `registry.elixir-on.cloud` to it with HTTPS: the login
+cookies are marked `Secure`, so logging in fails over plain HTTP. The
+front end calls the API from the user's browser; the registry accepts
+requests from any origin by default, so there is nothing to configure for
+it.
+
+After deploying, open the front end, log in with LS Login and check that
+the services are listed; then go on with the [checks](#checks-after-installing)
+below, which include logging in as an admin.
+
 ## Checks after installing
 
 1. The service info shows version `0.4.0` and the deployment's fields:
@@ -403,6 +487,11 @@ policy is `Retain`.
 [cr-repo]: <https://github.com/elixir-cloud-aai/cloud-registry>
 [cr-release]: <https://github.com/elixir-cloud-aai/cloud-registry/releases/tag/v0.4.0>
 [cr-ui-repo]: <https://github.com/elixir-cloud-aai/cloud-registry-ui>
+[cr-ui-ai]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/tree/ai>
+[cr-ui-readme]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md>
+[cr-ui-configurations]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#configurations>
+[cr-ui-registry-settings]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#registry>
+[cr-ui-login]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#login>
 [cr-deployment-readme]: <https://github.com/elixir-cloud-aai/cloud-registry/blob/v0.4.0/deployment/README.md>
 [cr-deployment]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/>
 [cr-image]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#image>
