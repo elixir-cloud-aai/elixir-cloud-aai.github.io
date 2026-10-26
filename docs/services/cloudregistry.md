@@ -115,10 +115,12 @@ chart's notes [To app version 0.5.0][cr-chart-0.5.0]; for this deployment:
     services are still served, but can only be updated with an allowed
     value. Users can still register and edit services until the upgrade,
     so run the check again right before upgrading.
-2. The values file below doesn't give
-   `config.security.access_control.policies`, so it needs no new policy
-   rules. If yours gives them as a list, add the rules `add-service-types`
-   and `list-approvals`.
+2. The values file below gives neither
+   `config.security.access_control.policies` nor its own `x-bearerInfoFunc`
+   (`config.api.specs.registry.add_security_fields`), so nothing changes for
+   them. If yours gives the policies as a list, add the rules
+   `add-service-types` and `list-approvals`; if it sets `x-bearerInfoFunc`,
+   drop it (see [From 0.4.0][cr-upgrading-0.4.0-to-0.5.0]).
 3. Tell the operators of clients that the registry sets the timestamps of
    services now (see [Timestamps][cr-timestamps]).
 4. Set up rate limits at the ingress, if there are none yet (see [Service
@@ -188,6 +190,13 @@ scopes `openid profile eduperson_entitlement`** (`profile` for `name`), and
 their client registration in LS Login must allow them; otherwise, admins act
 as ordinary users and roles of groups don't apply. LS Login access tokens are
 JWTs as per RFC 9068 (`typ: at+jwt`), as the registry requires.
+
+The public reads (`GET /services`, `GET /services/types` and the
+verifications) accept an optional token: with one, they apply that user's
+visibility rules, e.g., show the user's pending types and services. Invalid
+or expired tokens are rejected with `401`, so that the front end logs the
+user in again; if LS Login can't be reached, such reads are served as
+anonymous (see [Authentication][cr-ac-authentication]).
 
 ### Audience
 
@@ -264,8 +273,11 @@ Admins approve pending types and services in the front end. Without the
 admin group (see [Admins](#admins)), nobody could approve them.
 
 Users other than admins may add at most 10 types that no service has
-(`config.custom.access_control.max_unused_service_types`, default `10`; see
-[Service types][cr-service-types-config]). The limit is per user, and anyone
+(`config.custom.access_control.max_unused_service_types`, default `10`;
+`null` for no limit, `0` to let only admins add types other than those of
+services; see [Service types][cr-service-types-config]). Further types are
+rejected with `409 Conflict`; admins remove unwanted types that no service
+has (`DELETE /ga4gh/registry/v1/services/types`). The limit is per user, and anyone
 can create an LS Login account, so also limit the request rate at the
 ingress, at least for `POST /ga4gh/registry/v1/services/types` and
 `POST /ga4gh/registry/v1/services` (see
@@ -608,6 +620,7 @@ policy is `Retain`.
 [cr-configuration]: <https://cloud-registry.readthedocs.io/en/v0.5.0/configuration/>
 [cr-service-info]: <https://cloud-registry.readthedocs.io/en/v0.5.0/configuration/#service-info>
 [cr-access-control]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/>
+[cr-ac-authentication]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#authentication>
 [cr-admins]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#admins>
 [cr-group-membership-changes]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#group-membership-changes>
 [cr-current-user]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#current-user>
