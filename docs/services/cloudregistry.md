@@ -12,13 +12,14 @@ deployment:
 
 - [Deployment][cr-deployment] (the Helm chart; in the repository:
   [`deployment/README.md`][cr-deployment-readme])
-- [Upgrading: From versions before 0.4.0][cr-upgrading-0.4.0]
+- Upgrading: [From 0.4.0][cr-upgrading-0.4.0-to-0.5.0] and [From versions
+  before 0.4.0][cr-upgrading-0.4.0]
 - [Configuration][cr-configuration], [Access control][cr-access-control]
   and [Operations][cr-operations]
-- [Release notes of 0.4.0][cr-release-notes]
+- [Release notes of 0.5.0][cr-release-notes]
 - The front end's [README][cr-ui-readme] (see [Front end](#front-end))
 
-!!! info "Last checked against Cloud Registry v0.4.0"
+!!! info "Last checked against Cloud Registry v0.5.0"
     For a later release, read its release notes and upgrade steps first,
     then update the version in the links and commands of this page (the
     chart URL and the links to the documentation).
@@ -35,7 +36,7 @@ For anything this page doesn't answer, write to
 | API documentation (Swagger UI) | <https://elixir-on.cloud/ga4gh/registry/v1/ui/> |
 | Identity provider | [LS Login][ls-login], issuer `https://login.aai.lifescience-ri.eu/oidc/` |
 | Admins | members of the LS Login group `ECP_CLN:ADMIN` (see [Admins](#admins)) |
-| Helm chart | `cloud-registry-0.4.0.tgz` of the [v0.4.0 release][cr-release] (deploys the image `elixircloud/cloud-registry:0.4.0`) |
+| Helm chart | `cloud-registry-0.5.0.tgz` of the [v0.5.0 release][cr-release] (deploys the image `elixircloud/cloud-registry:0.5.0`) |
 | Database | MongoDB 7.0, deployed by the chart |
 
 The API's base path is `/ga4gh/registry/v1` (not
@@ -88,10 +89,57 @@ deployment:
     as `Released`; `kubectl delete pv <name>`), and its storage, if the
     storage isn't deleted with it.
 
-4. Install v0.4.0 (see [Installation](#installation)). Then ask the
+4. Install v0.5.0 (see [Installation](#installation)). Then ask the
    operators of the exported services to register them again (e.g., in the
    front end), so that they become their owners; admins verify them (see
    [Verified services][cr-verified-services]).
+
+## Upgrading from 0.4.0
+
+Data is kept. Follow [From 0.4.0][cr-upgrading-0.4.0-to-0.5.0] and the
+chart's notes [To app version 0.5.0][cr-chart-0.5.0]; for this deployment:
+
+1. Before upgrading, check the environments of the stored services. The
+   list of services is public, so no access to the database is needed:
+
+    ```bash
+    curl -fsS https://elixir-on.cloud/ga4gh/registry/v1/services \
+      | jq '[.[].environment] | unique'
+    ```
+
+    Registrations may only use the allowed environments now, by default
+    `prod`, `test`, `dev` and `staging` (`null` means services without
+    one). To keep other values, allow them in
+    `config.custom.endpoints.services.environments` in the same upgrade (see
+    [Service environments](#service-environments)); otherwise, those
+    services are still served, but can only be updated with an allowed
+    value. Users can still register and edit services until the upgrade,
+    so run the check again right before upgrading.
+2. The values file below gives neither
+   `config.security.access_control.policies` nor its own `x-bearerInfoFunc`
+   (`config.api.specs.registry.add_security_fields`), so nothing changes for
+   them. If yours gives the policies as a list, add the rules
+   `add-service-types` and `list-approvals`; if it sets `x-bearerInfoFunc`,
+   drop it (see [From 0.4.0][cr-upgrading-0.4.0-to-0.5.0]).
+3. Tell the operators of clients that the registry sets the timestamps of
+   services now (see [Timestamps][cr-timestamps]).
+4. Set up rate limits at the ingress, if there are none yet (see [Service
+   types](#service-types)).
+5. Upgrade with the chart of v0.5.0 (see [Upgrades](#upgrades)), then
+   restart the app once, so that it stores the types of the services that
+   pods of 0.4.0 registered during the rollout (the app also creates its new
+   indexes and marks pending services on startup; nothing to do for them):
+
+    ```bash
+    kubectl rollout restart deployment/cloud-registry -n <namespace>
+    kubectl rollout status deploy/cloud-registry -n <namespace>
+    ```
+
+6. Deploy the front end (see [Front end](#front-end)), and go through the
+   [checks](#checks-after-installing).
+
+Switch the service types to the mode `moderated` (see [Service
+types](#service-types)) only after the restart, in a later upgrade.
 
 ## Version
 
@@ -143,6 +191,13 @@ their client registration in LS Login must allow them; otherwise, admins act
 as ordinary users and roles of groups don't apply. LS Login access tokens are
 JWTs as per RFC 9068 (`typ: at+jwt`), as the registry requires.
 
+The public reads (`GET /services`, `GET /services/types` and the
+verifications) accept an optional token: with one, they apply that user's
+visibility rules, e.g., show the user's pending types and services. Invalid
+or expired tokens are rejected with `401`, so that the front end logs the
+user in again; if LS Login can't be reached, such reads are served as
+anonymous (see [Authentication][cr-ac-authentication]).
+
 ### Audience
 
 The registry accepts tokens only for the client IDs in
@@ -188,6 +243,46 @@ The response lists the groups in `eduperson_entitlement` (if the token's
 scopes allow it). Group changes reach the registry within 5 minutes, as it
 caches the user info per token (see [Group membership
 changes][cr-group-membership-changes]).
+
+### Service environments
+
+The deployment keeps the default environments (`prod`, `test`, `dev` and
+`staging`, as suggested by the GA4GH specification): registrations with
+other values are rejected (see [Service
+environments][cr-service-environments]). If the values file changes them,
+build the front end with the same values (see [Building the
+image](#building-the-image)).
+
+### Service types
+
+Service types are stored, and `config.custom.access_control.service_types`
+sets who may add them (see [Service types][cr-service-types-config]):
+`open` (the default, any logged-in user), `controlled` (admins only) or
+`moderated` (any logged-in user, but types of users other than admins, and
+the services that have them, are pending until an admin approves them). The
+values file below keeps the default; to moderate new types, set:
+
+```yaml title="values-prod.yaml"
+config:
+  custom:
+    access_control:
+      service_types: moderated
+```
+
+Admins approve pending types and services in the front end. Without the
+admin group (see [Admins](#admins)), nobody could approve them.
+
+Users other than admins may add at most 10 types that no service has
+(`config.custom.access_control.max_unused_service_types`, default `10`;
+`null` for no limit, `0` to let only admins add types other than those of
+services; see [Service types][cr-service-types-config]). Further types are
+rejected with `409 Conflict`; admins remove unwanted types that no service
+has (`DELETE /ga4gh/registry/v1/services/types`). The limit is per user, and anyone
+can create an LS Login account, so also limit the request rate at the
+ingress, at least for `POST /ga4gh/registry/v1/services/types` and
+`POST /ga4gh/registry/v1/services` (see
+[Rate limits][cr-rate-limits]; the controller must see the clients'
+addresses, not those of a proxy in front of the cluster).
 
 ### Values file
 
@@ -325,7 +420,7 @@ network plugin enforces them.
 
     ```bash
     helm install cloud-registry \
-      https://github.com/elixir-cloud-aai/cloud-registry/releases/download/v0.4.0/cloud-registry-0.4.0.tgz \
+      https://github.com/elixir-cloud-aai/cloud-registry/releases/download/v0.5.0/cloud-registry-0.5.0.tgz \
       -n <namespace> -f values-prod.yaml
     kubectl rollout status deploy/cloud-registry -n <namespace>
     ```
@@ -333,7 +428,9 @@ network plugin enforces them.
     Rendering fails if the issuer, the audience or the admin group is
     missing.
 
-## Front end
+4. Deploy the front end (see [Front end](#front-end)).
+
+### Front end
 
 The front end ([Cloud Registry UI][cr-ui-repo]) is a web app, served at
 <https://registry.elixir-on.cloud/>. Anyone can browse the services in it;
@@ -342,20 +439,22 @@ them with others (access management). Admins also verify services, and
 approve new service types and the services that are pending until their
 type is approved (see the [UI's README][cr-ui-readme]).
 
-### UI version
+#### UI version
 
 UI versions follow the registry in major and minor version: UI 0.5.x works
 with Cloud Registry 0.5.x. Until the UI's first release, its
-[`ai` branch][cr-ui-ai] goes with Cloud Registry 0.5.0: deploy it together
-with the upgrade to that release, not with 0.4.0. Note the commit you build
-from, so that you can build the same image again.
+[`ai` branch][cr-ui-ai] goes with Cloud Registry 0.5.0; it doesn't work
+with 0.4.0. Note the commit you build from, so that you can build the same
+image again.
 
-### Registering the front end with LS Login
+#### Registering the front end with LS Login
 
 Register the front end with [LS Login][ls-login] as a service (an OpenID
 Connect client):
 
-- **Flow:** authorization code, with a client secret.
+- **Flow:** authorization code, with a client secret and PKCE (`S256`,
+  which LS Login supports); the front end also sends a nonce and checks the
+  ID token's issuer, audience and nonce.
 - **Redirect URI:** `https://registry.elixir-on.cloud/auth/api/callback`.
   Use a separate client for local development, with
   `http://localhost:3000/auth/api/callback`.
@@ -364,14 +463,14 @@ Connect client):
 
 Add the client ID to the registry's audience (see [Audience](#audience)).
 Keep the client secret in a secret store, never in a repository or in the
-image.
+image. Configure only this one login provider (see [Login][cr-ui-login]).
 
-### Building the image
+#### Building the image
 
-The front end reads the settings `NEXT_PUBLIC_*` when it is built, from the
-file `.env` in the repository, and they are fixed in the image (see
-[Configurations][cr-ui-configurations]). For this deployment, set at least
-the API URL:
+The front end reads the settings `NEXT_PUBLIC_*` when it is built, and they
+are fixed in the image. Pass them to `docker build` as build arguments (see
+[Docker][cr-ui-docker] and [Configurations][cr-ui-configurations]); the
+build fails without the API URL. For this deployment:
 
 ```bash
 git clone https://github.com/elixir-cloud-aai/cloud-registry-ui.git
@@ -379,22 +478,30 @@ cd cloud-registry-ui
 git checkout ai
 COMMIT=$(git rev-parse HEAD)
 echo "$COMMIT"
-printf 'NEXT_PUBLIC_CLOUD_REGISTRY_URL=%s\n' \
-  https://elixir-on.cloud/ga4gh/registry/v1 > .env
-docker build -t "cloud-registry-ui:$COMMIT" .
+docker build -t "cloud-registry-ui:$COMMIT" \
+  --build-arg NEXT_PUBLIC_CLOUD_REGISTRY_URL=https://elixir-on.cloud/ga4gh/registry/v1 \
+  .
 ```
 
 The defaults of the other settings `NEXT_PUBLIC_*` match the registry's
 defaults (e.g., the environments `prod`, `test`, `dev` and `staging`); if
 the values file changes the allowed environments or URL schemes, set them
-too (see [Registry][cr-ui-registry-settings]). Push the image to a registry
-that the cluster can pull from.
+too (see [Registry][cr-ui-registry-settings]). Missing or invalid settings
+`NEXT_PUBLIC_*` stop the build, with a message that names the setting. Push
+the image to a registry that the cluster can pull from.
 
-!!! warning "No secrets in `.env`"
-    `docker build` copies `.env` into the image. Put only the settings
-    `NEXT_PUBLIC_*` in it, never the login settings with the client secret.
+!!! warning "No secrets in build arguments"
+    Build arguments are stored in the image's history. Pass only the
+    settings `NEXT_PUBLIC_*` with them, never the login settings with the
+    client secret. `docker build` reads neither `.env` files nor variables
+    exported in the shell, only `--build-arg` values, and `.dockerignore`
+    keeps `.env*` files out of the build.
 
-### Login settings
+Images built this way are production builds: they don't offer "Copy token
+to Dashboard", which only development servers have (see [Copying the access
+token][cr-ui-copy-token]). Don't deploy development builds.
+
+#### Login settings
 
 The login settings are read when the app starts: `LOGIN_PROVIDERS` (a JSON
 list with LS Login, including the client ID and secret) and
@@ -404,14 +511,34 @@ with the scopes above. Pass them as environment variables when the
 container starts, e.g., from a Kubernetes Secret (`envFrom` with a
 `secretRef`); without them, the app refuses to start.
 
-### Running the front end
+#### Running the front end
 
 The UI has no Helm chart. Run the image as a Deployment with a Service on
-port 3000, and route `registry.elixir-on.cloud` to it with HTTPS: the login
-cookies are marked `Secure`, so logging in fails over plain HTTP. The
-front end calls the API from the user's browser; the registry accepts
-requests from any origin by default, so there is nothing to configure for
-it.
+port 3000 (`PORT`; the app listens on all IPv4 interfaces, set
+`LISTEN_HOSTNAME`, e.g. to `::`, for IPv6), and route
+`registry.elixir-on.cloud` to it with HTTPS: the login cookies are marked
+`Secure`, so logging in fails over plain HTTP. Serve it at the address of
+`LOGIN_REDIRECT_URI`: logging out is a `POST` that the app accepts only from
+that origin (see [Sessions and logout][cr-ui-sessions]). The front end calls
+the API from the user's browser; the registry accepts requests from any
+origin by default, so there is nothing to configure for it.
+
+- **Health:** the image's health check (it requests the start page every 30
+  seconds) only applies to Docker; Kubernetes ignores it. Give the
+  Deployment HTTP probes on `/` and port 3000 instead (the start page
+  answers with a redirect; probes count `2xx` and `3xx` as success).
+- **Security context:** the app runs as the unprivileged user `bun` and
+  writes only to `/app/.next/cache`; with a read-only root file system,
+  mount an `emptyDir` there.
+- **Security headers:** the app sets its own Content Security Policy, with a
+  nonce per request. Don't let the ingress or a proxy add a second one:
+  browsers enforce both, and one without the nonce blocks the app's
+  scripts (see [Registry][cr-ui-registry-settings]).
+
+Users stay logged in as long as their LS Login access token is valid, at
+most 12 hours; the front end doesn't refresh tokens. Logins that were
+started before an update of the front end to the version with PKCE fail
+once, and users log in again.
 
 After deploying, open the front end, log in with LS Login and check that
 the services are listed; then go on with the [checks](#checks-after-installing)
@@ -419,7 +546,7 @@ below, which include logging in as an admin.
 
 ## Checks after installing
 
-1. The service info shows version `0.4.0` and the deployment's fields:
+1. The service info shows version `0.5.0` and the deployment's fields:
 
     ```bash
     curl -fsS https://elixir-on.cloud/ga4gh/registry/v1/service-info
@@ -434,13 +561,21 @@ below, which include logging in as an admin.
     ```
 
 3. The app logs the admin group on startup; the line must name the
-   `ECP_CLN:ADMIN` group above:
+   `ECP_CLN:ADMIN` group above. It also warns of stored services whose
+   environment is not allowed; there should be no such warning:
 
     ```bash
     kubectl logs deploy/cloud-registry -n <namespace> | grep "mapped to the role 'admin'"
+    kubectl logs deploy/cloud-registry -n <namespace> | grep "environments not allowed"
     ```
 
-4. An admin logs in to the front end and calls `GET /me` (see [Current
+4. The stored service types include those of the registered services:
+
+    ```bash
+    curl -fsS https://elixir-on.cloud/ga4gh/registry/v1/services/types
+    ```
+
+5. An admin logs in to the front end and calls `GET /me` (see [Current
    user][cr-current-user]) with their access token; the response must
    contain `"admin": true`. If it says `false`, the token lacks the group
    (check the scopes and the user info, see [Admins](#admins)); if the
@@ -453,7 +588,7 @@ below, which include logging in as an admin.
       https://elixir-on.cloud/ga4gh/registry/v1/me
     ```
 
-5. Register a test service in the front end, then delete it.
+6. Register a test service in the front end, then delete it.
 
 ## Upgrades
 
@@ -486,37 +621,47 @@ uses it again; delete the claim by hand to remove the data (see
 policy is `Retain`.
 
 [cr-repo]: <https://github.com/elixir-cloud-aai/cloud-registry>
-[cr-release]: <https://github.com/elixir-cloud-aai/cloud-registry/releases/tag/v0.4.0>
+[cr-release]: <https://github.com/elixir-cloud-aai/cloud-registry/releases/tag/v0.5.0>
 [cr-ui-repo]: <https://github.com/elixir-cloud-aai/cloud-registry-ui>
 [cr-ui-ai]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/tree/ai>
 [cr-ui-readme]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md>
+[cr-ui-docker]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#docker>
 [cr-ui-configurations]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#configurations>
 [cr-ui-registry-settings]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#registry>
 [cr-ui-login]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#login>
-[cr-deployment-readme]: <https://github.com/elixir-cloud-aai/cloud-registry/blob/v0.4.0/deployment/README.md>
-[cr-deployment]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/>
-[cr-image]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#image>
-[cr-installation]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#installation>
-[cr-ingress]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#ingress>
-[cr-tls]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#tls>
-[cr-network-policies]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#network-policies>
-[cr-upgrades]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#upgrades>
-[cr-mongodb-version]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#version>
-[cr-authentication]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#authentication>
-[cr-persistence]: <https://cloud-registry.readthedocs.io/en/v0.4.0/deployment/#persistence>
+[cr-ui-sessions]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#sessions-and-logout>
+[cr-ui-copy-token]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai/README.md#copying-the-access-token>
+[cr-deployment-readme]: <https://github.com/elixir-cloud-aai/cloud-registry/blob/v0.5.0/deployment/README.md>
+[cr-deployment]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/>
+[cr-image]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#image>
+[cr-installation]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#installation>
+[cr-ingress]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#ingress>
+[cr-rate-limits]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#rate-limits>
+[cr-tls]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#tls>
+[cr-network-policies]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#network-policies>
+[cr-upgrades]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#upgrades>
+[cr-mongodb-version]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#version>
+[cr-authentication]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#authentication>
+[cr-persistence]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#persistence>
 [cr-latest-image]: <https://cloud-registry.readthedocs.io/en/latest/deployment/#image>
 [cr-latest-version]: <https://cloud-registry.readthedocs.io/en/latest/deployment/#version>
-[cr-upgrading-0.4.0]: <https://cloud-registry.readthedocs.io/en/v0.4.0/upgrading/#from-versions-before-040>
-[cr-configuration]: <https://cloud-registry.readthedocs.io/en/v0.4.0/configuration/>
-[cr-service-info]: <https://cloud-registry.readthedocs.io/en/v0.4.0/configuration/#service-info>
-[cr-access-control]: <https://cloud-registry.readthedocs.io/en/v0.4.0/access-control/>
-[cr-admins]: <https://cloud-registry.readthedocs.io/en/v0.4.0/access-control/#admins>
-[cr-group-membership-changes]: <https://cloud-registry.readthedocs.io/en/v0.4.0/access-control/#group-membership-changes>
-[cr-current-user]: <https://cloud-registry.readthedocs.io/en/v0.4.0/access-control/#current-user>
-[cr-operations]: <https://cloud-registry.readthedocs.io/en/v0.4.0/operations/>
-[cr-verifying]: <https://cloud-registry.readthedocs.io/en/v0.4.0/operations/#verifying-images-and-charts>
-[cr-verified-services]: <https://cloud-registry.readthedocs.io/en/v0.4.0/api/#verified-services>
-[cr-release-notes]: <https://cloud-registry.readthedocs.io/en/v0.4.0/releases/0.4.0/>
+[cr-upgrading-0.4.0]: <https://cloud-registry.readthedocs.io/en/v0.5.0/upgrading/#from-versions-before-040>
+[cr-configuration]: <https://cloud-registry.readthedocs.io/en/v0.5.0/configuration/>
+[cr-service-info]: <https://cloud-registry.readthedocs.io/en/v0.5.0/configuration/#service-info>
+[cr-access-control]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/>
+[cr-ac-authentication]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#authentication>
+[cr-admins]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#admins>
+[cr-group-membership-changes]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#group-membership-changes>
+[cr-current-user]: <https://cloud-registry.readthedocs.io/en/v0.5.0/access-control/#current-user>
+[cr-operations]: <https://cloud-registry.readthedocs.io/en/v0.5.0/operations/>
+[cr-verifying]: <https://cloud-registry.readthedocs.io/en/v0.5.0/operations/#verifying-images-and-charts>
+[cr-verified-services]: <https://cloud-registry.readthedocs.io/en/v0.5.0/api/#verified-services>
+[cr-release-notes]: <https://cloud-registry.readthedocs.io/en/v0.5.0/releases/0.5.0/>
+[cr-upgrading-0.4.0-to-0.5.0]: <https://cloud-registry.readthedocs.io/en/v0.5.0/upgrading/#from-040>
+[cr-chart-0.5.0]: <https://cloud-registry.readthedocs.io/en/v0.5.0/deployment/#to-app-version-050>
+[cr-timestamps]: <https://cloud-registry.readthedocs.io/en/v0.5.0/api/#timestamps>
+[cr-service-environments]: <https://cloud-registry.readthedocs.io/en/v0.5.0/configuration/#service-environments>
+[cr-service-types-config]: <https://cloud-registry.readthedocs.io/en/v0.5.0/configuration/#service-types>
 [foca-networkpolicy-peers]: <https://github.com/elixir-cloud-aai/foca/blob/chart-v0.2.0/docs/helm-chart.md#networkpolicy-peers>
 [ls-login]: <https://www.lifescience-ri.eu/life-science-login/>
 [ls-login-discovery]: <https://login.aai.lifescience-ri.eu/oidc/.well-known/openid-configuration>
