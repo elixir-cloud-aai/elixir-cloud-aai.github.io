@@ -113,7 +113,8 @@ chart's notes [To app version 0.5.0][cr-chart-0.5.0]; for this deployment:
     `config.custom.endpoints.services.environments` in the same upgrade (see
     [Service environments](#service-environments)); otherwise, those
     services are still served, but can only be updated with an allowed
-    value.
+    value. Users can still register and edit services until the upgrade,
+    so run the check again right before upgrading.
 2. The values file below doesn't give
    `config.security.access_control.policies`, so it needs no new policy
    rules. If yours gives them as a list, add the rules `add-service-types`
@@ -266,7 +267,8 @@ Users other than admins may add at most 10 types that no service has
 (`config.custom.access_control.max_unused_service_types`, default `10`; see
 [Service types][cr-service-types-config]). The limit is per user, and anyone
 can create an LS Login account, so also limit the request rate at the
-ingress, at least for `POST /services/types` and `POST /services` (see
+ingress, at least for `POST /ga4gh/registry/v1/services/types` and
+`POST /ga4gh/registry/v1/services` (see
 [Rate limits][cr-rate-limits]; the controller must see the clients'
 addresses, not those of a proxy in front of the cluster).
 
