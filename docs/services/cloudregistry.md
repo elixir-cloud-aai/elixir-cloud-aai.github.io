@@ -17,7 +17,7 @@ deployment:
   0.4.0][cr-upgrading-0.4.0]
 - [Configuration][cr-configuration], [Access control][cr-access-control]
   and [Operations][cr-operations]
-- [Release notes of 0.6.0][cr-release]
+- [Release notes of 0.6.0][cr-release-notes]
 - The front end's [README][cr-ui-readme] (see [Front end](#front-end))
 
 !!! info "Last checked against Cloud Registry v0.6.0"
@@ -151,10 +151,13 @@ the front end (see [Front end](#front-end)); for this deployment:
 
 ## Upgrading from 0.4.0
 
-Data is kept. Follow [From 0.4.0][cr-upgrading-0.4.0-to-0.5.0] and the
-chart's notes [To app version 0.5.0][cr-chart-0.5.0], and the steps 1 to 4
-of [Upgrading from 0.5.0](#upgrading-from-050) in the same upgrade; for
-this deployment:
+Upgrade one release at a time, never directly from 0.4.0 to 0.6.0: first
+to 0.5.0, following the registry's guide [From
+0.4.0][cr-upgrading-0.4.0-to-0.5.0] and the chart's notes [To app version
+0.5.0][cr-chart-0.5.0], then to 0.6.0, following [From
+0.5.0][cr-upgrading-0.5.0] (see [Upgrading from
+0.5.0](#upgrading-from-050)). Data is kept. For the first step, for this
+deployment:
 
 1. Before upgrading, check the environments of the stored services. The
    list of services is public, so no access to the database is needed:
@@ -182,18 +185,21 @@ this deployment:
    services now (see [Timestamps][cr-timestamps]).
 4. Set up rate limits at the ingress, if there are none yet (see [Service
    types](#service-types)).
-5. Upgrade with the chart of v0.6.0 (see [Upgrades](#upgrades)), then
-   restart the app once, so that it stores the types of the services that
-   pods of 0.4.0 registered during the rollout (the app also creates its new
-   indexes and marks pending services on startup; nothing to do for them):
+5. Upgrade with the chart of v0.5.0 (see [Upgrades](#upgrades), with
+   `v0.5.0` and `0.5.0` in the chart URL; leave out
+   `config.security.access_control.opt_in_roles`, which 0.5.0 doesn't
+   know), then restart the app once, so that it stores the types of the
+   services that pods of 0.4.0 registered during the rollout (the app also
+   creates its new indexes and marks pending services on startup; nothing
+   to do for them):
 
     ```bash
     kubectl rollout restart deployment/cloud-registry -n <namespace>
     kubectl rollout status deploy/cloud-registry -n <namespace>
     ```
 
-6. Build and deploy the front end from `ai-post-deploy` (see [Front
-   end](#front-end)), and go through the [checks](#checks-after-installing).
+6. Then upgrade to 0.6.0 as in [Upgrading from
+   0.5.0](#upgrading-from-050), which also covers the front end.
 
 Switch the service types to the mode `moderated` (see [Service
 types](#service-types)) only after the restart, in a later upgrade.
@@ -742,6 +748,7 @@ policy is `Retain`.
 
 [cr-repo]: <https://github.com/elixir-cloud-aai/cloud-registry>
 [cr-release]: <https://github.com/elixir-cloud-aai/cloud-registry/releases/tag/v0.6.0>
+[cr-release-notes]: <https://cloud-registry.readthedocs.io/en/v0.6.0/releases/0.6.0/>
 [cr-ui-repo]: <https://github.com/elixir-cloud-aai/cloud-registry-ui>
 [cr-ui-ai-post-deploy]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/tree/ai-post-deploy>
 [cr-ui-readme]: <https://github.com/elixir-cloud-aai/cloud-registry-ui/blob/ai-post-deploy/README.md>
